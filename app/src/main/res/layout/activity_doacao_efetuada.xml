@@ -26,6 +26,7 @@
         android:width="333dp"
         android:height="53dp"
         android:backgroundTint="#FFFFFF"
+        android:onClick="outraDoacao"
         android:text="Fazer outra doação"
         android:textColor="#5BE43E"
         app:layout_constraintBottom_toBottomOf="parent"

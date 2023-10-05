@@ -2,6 +2,7 @@ package com.example.busco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Doacao extends AppCompatActivity {
 
@@ -93,5 +95,30 @@ public class Doacao extends AppCompatActivity {
 
     private boolean produtoValido(String nome) {
         return !nome.isEmpty() && nome.matches("[a-zA-Z ]+");
+    }
+
+    public void fazerDoacao(View view) {
+        if (!camposValidos()) {
+            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!checkBox.isChecked()) {
+            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(camposValidos() && checkBox.isChecked()){
+            Intent intent = new Intent(this, DoacaoEfetuada.class);
+            startActivity(intent);
+        }
+    }
+
+    private boolean camposValidos() {
+        String produtoDoado = produto.getText().toString();
+        String kg = quantidade.getText().toString();
+
+        return produtoValido(produtoDoado) &&
+                quantidadeValida(kg);
     }
 }
