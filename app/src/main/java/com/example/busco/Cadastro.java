@@ -1,5 +1,6 @@
 package com.example.busco;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -214,6 +215,11 @@ public class Cadastro extends AppCompatActivity {
         if (!checkBox.isChecked()) {
             Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if(camposValidos() && checkBox.isChecked()){
+            Intent intent = new Intent(this, ConfirmaCadastro.class);
+            startActivity(intent);
         }
     }
 

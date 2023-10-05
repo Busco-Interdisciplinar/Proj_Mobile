@@ -32,26 +32,30 @@ public class WebViewActivity extends AppCompatActivity {
 
         barra.setVisibility(View.INVISIBLE);
 
-        webView.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-                super.onPageStarted(view, url, favicon);
-                barra.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                barra.setVisibility(View.INVISIBLE);
-            }
-        });
-
         String url = getIntent().getStringExtra("URL");
+        if (isNetworkAvailable()) {
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                    super.onPageStarted(view, url, favicon);
+                    barra.setVisibility(View.VISIBLE);
+                }
 
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    barra.setVisibility(View.INVISIBLE);
+                }
+            });
 
-        webView.loadUrl(url);
+            WebSettings webSettings = webView.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+
+            webView.loadUrl(url);
+        } else {
+            Intent intent = new Intent(WebViewActivity.this, Erro.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -63,9 +67,17 @@ public class WebViewActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
     public void voltar(View view) {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
+        return false;
     }
 }

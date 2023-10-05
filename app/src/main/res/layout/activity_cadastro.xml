@@ -225,7 +225,7 @@
         android:height="65dp"
         android:backgroundTint="#5BE53E"
         android:onClick="criarConta"
-        android:text="Criar Conta"
+        android:text="Continuar"
         android:textStyle="bold"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"

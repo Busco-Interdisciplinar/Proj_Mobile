@@ -2,13 +2,18 @@ package com.example.busco;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +26,43 @@ public class Login extends AppCompatActivity {
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirWebView("https://www.google.com.br/");
+                if (isNetworkAvailable()) {
+                    abrirWebView("https://www.google.com.br/");
+                } else {
+                    Intent intent = new Intent(Login.this, Erro.class);
+                    startActivity(intent);
+                }
             }
         });
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirWebView("https://www.facebook.com/");
+                if (isNetworkAvailable()) {
+                    abrirWebView("https://www.facebook.com/");
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                abrirWebView("https://www.instagram.com/");
+                if (isNetworkAvailable()) {
+                    abrirWebView("https://www.instagram.com/");
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
+        return false;
     }
     private void abrirWebView(String url) {
         Intent intent = new Intent(this, WebViewActivity.class);
