@@ -24,7 +24,6 @@ public class Erro extends AppCompatActivity {
     }
 
     public void tentarNovamente(View view) {
-
         if (isNetworkAvailable()) {
             Intent intent = new Intent(this, WebViewActivity.class);
             startActivity(intent);
