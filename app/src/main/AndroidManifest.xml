@@ -49,7 +49,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".inflate"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
