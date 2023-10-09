@@ -6,11 +6,12 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.busco.fragments.carrinho_fragment;
-import com.example.busco.fragments.perfil_fragment;
-import com.example.busco.fragments.principal_fragment;
-import com.example.busco.fragments.produtos_fragment;
-import com.example.busco.fragments.promocao_fragment;
+import com.example.busco.R;
+import com.example.busco.carrinho_fragment;
+import com.example.busco.perfil_fragment;
+import com.example.busco.principal_fragment;
+import com.example.busco.produtos_fragment;
+import com.example.busco.promocao_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class inflate extends AppCompatActivity {

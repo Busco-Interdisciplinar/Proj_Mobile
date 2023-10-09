@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.busco.R;
+
 public class CadastroFornecedor extends AppCompatActivity {
 
     private EditText cnpj, produto;

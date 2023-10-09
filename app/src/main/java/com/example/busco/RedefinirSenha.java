@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.busco.Login;
+import com.example.busco.R;
+
 public class RedefinirSenha extends AppCompatActivity {
 
     private EditText senhaEditText, emailEditText;

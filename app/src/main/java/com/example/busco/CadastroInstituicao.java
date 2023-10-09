@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.busco.R;
+
 public class CadastroInstituicao extends AppCompatActivity {
 
     private EditText nomeEditText, emailEditText, CNPJEditText;

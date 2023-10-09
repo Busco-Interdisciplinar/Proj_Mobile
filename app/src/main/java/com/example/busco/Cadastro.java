@@ -12,6 +12,13 @@ import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Cadastro extends AppCompatActivity {
 
     private EditText nomeEditText, emailEditText, idadeEditText, senhaEditText, confirmarSenhaEditText, telefoneEditText;
@@ -218,6 +225,21 @@ public class Cadastro extends AppCompatActivity {
         }
 
         if(camposValidos() && checkBox.isChecked()){
+
+            String numero = telefoneEditText.toString();
+            ApiService.getInstance().enviarSms(numero).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                    System.out.println(response.body().getDescription());
+                    System.out.println(response.body().getAditionalInformation());
+                }
+
+                @Override
+                public void onFailure(Call<ApiResponse> call, Throwable t) {
+                    System.out.println(t);
+                }
+            });
+
             Intent intent = new Intent(this, ConfirmaCadastro.class);
             startActivity(intent);
         }

@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.busco.Login;
+import com.example.busco.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
