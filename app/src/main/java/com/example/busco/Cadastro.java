@@ -25,18 +25,18 @@ public class Cadastro extends AppCompatActivity {
 
         nomeEditText = findViewById(R.id.editTextTextPersonName);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
-        idadeEditText = findViewById(R.id.editTextNumber);
-        senhaEditText = findViewById(R.id.editTextTextPassword2);
-        confirmarSenhaEditText = findViewById(R.id.editTextTextPassword3);
-        telefoneEditText = findViewById(R.id.editTextTelefone);
+//        idadeEditText = findViewById(R.id.editTextNumber);
+//        senhaEditText = findViewById(R.id.editTextTextPassword2);
+//        confirmarSenhaEditText = findViewById(R.id.editTextTextPassword3);
+//        telefoneEditText = findViewById(R.id.editTextTelefone);
         checkBox = findViewById(R.id.checkBox);
 
-        checkIconTelefone = findViewById(R.id.checkIconTelefone);
-        checkIconNome = findViewById(R.id.checkIconNome);
-        checkIconEmail = findViewById(R.id.checkIconEmail);
-        checkIconIdade = findViewById(R.id.checkIconIdade);
-        checkIconSenha = findViewById(R.id.checkIconSenha);
-        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmacaoSenha);
+//        checkIconTelefone = findViewById(R.id.checkIconTelefone);
+//        checkIconNome = findViewById(R.id.checkIconNome);
+//        checkIconEmail = findViewById(R.id.checkIconEmail);
+//        checkIconIdade = findViewById(R.id.checkIconIdade);
+//        checkIconSenha = findViewById(R.id.checkIconSenha);
+//        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmacaoSenha);
 
         nomeEditText.addTextChangedListener(new TextWatcher() {
             @Override
