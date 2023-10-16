@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Cadastros.Cadastro_Fornecedor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.example.busco.R;
 
 public class CadastroFornecedor extends AppCompatActivity {
 

@@ -7,12 +7,11 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 
 public class Login extends AppCompatActivity {
     @Override

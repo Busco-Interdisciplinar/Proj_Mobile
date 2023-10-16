@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Fragments;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -6,11 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.busco.fragments.carrinho_fragment;
-import com.example.busco.fragments.perfil_fragment;
-import com.example.busco.fragments.principal_fragment;
-import com.example.busco.fragments.produtos_fragment;
-import com.example.busco.fragments.promocao_fragment;
+import com.example.busco.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class inflate extends AppCompatActivity {
@@ -46,11 +42,11 @@ public class inflate extends AppCompatActivity {
                                 .replace(R.id.fragment_container, new promocao_fragment())
                                 .commit();
                         return true;
-                    case R.id.perfil:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new perfil_fragment())
-                                .commit();
-                        return true;
+//                    case R.id.perfil:
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.fragment_container, new perfil_fragment())
+//                                .commit();
+//                        return true;
                 }
                 return false;
             }

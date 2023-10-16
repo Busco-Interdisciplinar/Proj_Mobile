@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Cadastros.Cadastro_Usuario;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,16 @@ import android.widget.Toast;
 import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+//import com.example.busco.Api.ApiResponse;
+//import com.example.busco.Api.ApiService;
+import com.example.busco.R;
+
+import javax.security.auth.callback.Callback;
+
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -25,18 +35,18 @@ public class Cadastro extends AppCompatActivity {
 
         nomeEditText = findViewById(R.id.editTextTextPersonName);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
-//        idadeEditText = findViewById(R.id.editTextNumber);
-//        senhaEditText = findViewById(R.id.editTextTextPassword2);
-//        confirmarSenhaEditText = findViewById(R.id.editTextTextPassword3);
-//        telefoneEditText = findViewById(R.id.editTextTelefone);
+        idadeEditText = findViewById(R.id.editTextNumber);
+        senhaEditText = findViewById(R.id.editTextTextPassword2);
+        confirmarSenhaEditText = findViewById(R.id.editTextTextPassword3);
+        telefoneEditText = findViewById(R.id.editTextTelefone);
         checkBox = findViewById(R.id.checkBox);
 
-//        checkIconTelefone = findViewById(R.id.checkIconTelefone);
-//        checkIconNome = findViewById(R.id.checkIconNome);
-//        checkIconEmail = findViewById(R.id.checkIconEmail);
-//        checkIconIdade = findViewById(R.id.checkIconIdade);
-//        checkIconSenha = findViewById(R.id.checkIconSenha);
-//        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmacaoSenha);
+        checkIconTelefone = findViewById(R.id.checkIconTelefone);
+        checkIconNome = findViewById(R.id.checkIconNome);
+        checkIconEmail = findViewById(R.id.checkIconEmail);
+        checkIconIdade = findViewById(R.id.checkIconIdade);
+        checkIconSenha = findViewById(R.id.checkIconSenha);
+        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmarSenha);
 
         nomeEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -206,22 +216,37 @@ public class Cadastro extends AppCompatActivity {
         return confirmarSenha.equals(senha);
     }
 
-    public void criarConta(View view) {
-        if (!camposValidos()) {
-            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!checkBox.isChecked()) {
-            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(camposValidos() && checkBox.isChecked()){
-            Intent intent = new Intent(this, ConfirmaCadastro.class);
-            startActivity(intent);
-        }
-    }
+//    public void criarConta(View view) {
+//        if (!camposValidos()) {
+//            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        if (!checkBox.isChecked()) {
+//            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
+//
+//        if(camposValidos() && checkBox.isChecked()){
+//
+//            String numero = telefoneEditText.toString();
+//            ApiService.getInstance().enviarSms(numero).enqueue(new Callback<ApiResponse>() {
+//                @Override
+//                public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+//                    System.out.println(response.body().getDescription());
+//                    System.out.println(response.body().getAditionalInformation());
+//                }
+//
+//                @Override
+//                public void onFailure(Call<ApiResponse> call, Throwable t) {
+//                    System.out.println(t);
+//                }
+//            });
+//
+//            Intent intent = new Intent(this, ConfirmaCadastro.class);
+//            startActivity(intent);
+//        }
+//    }
 
     private boolean camposValidos() {
         String nome = nomeEditText.getText().toString();
