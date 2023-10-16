@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import com.example.busco.R;
 
 public class CadastroFornecedor extends AppCompatActivity {
-
     private EditText cnpj, produto;
     private ImageView checkIconProduto, checkIconCNPJ;
     private CheckBox checkBox;

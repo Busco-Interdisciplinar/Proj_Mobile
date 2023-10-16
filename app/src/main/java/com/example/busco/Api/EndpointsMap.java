@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface EndpointsMap {
-    @GET("/usuarios/enviarSms/{numero}")
-    Call<ApiResponse> enviarSms(@Path("numero") String numero);
+//    @GET("/usuarios/enviarSms/{numero}")
+//    Call<ApiResponse> enviarSms(@Path("numero") String numero);
 }

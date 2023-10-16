@@ -1,7 +1,9 @@
 package com.example.busco;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -14,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
+
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -226,22 +230,22 @@ public class Cadastro extends AppCompatActivity {
 
         if(camposValidos() && checkBox.isChecked()){
 
-            String numero = telefoneEditText.toString();
-            ApiService.getInstance().enviarSms(numero).enqueue(new Callback<ApiResponse>() {
-                @Override
-                public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                    System.out.println(response.body().getDescription());
-                    System.out.println(response.body().getAditionalInformation());
-                }
+            String numero = "+55" + telefoneEditText.getText().toString();
+            Random random = new Random();
+            int codigo = random.nextInt(10000);
+            String codigoFormatado = String.format("%04d", codigo);
+            String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
 
-                @Override
-                public void onFailure(Call<ApiResponse> call, Throwable t) {
-                    System.out.println(t);
-                }
-            });
+            Bundle bundle = new Bundle();
+            bundle.putString("codigoFormatado", codigoFormatado);
+            Intent in = new Intent(Cadastro.this, ConfirmaCadastro.class);
+            in.putExtras(bundle);
 
-            Intent intent = new Intent(this, ConfirmaCadastro.class);
-            startActivity(intent);
+            Intent intentSMS = new Intent(Cadastro.this,ConfirmaCadastro.class);
+            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+            SmsManager sms = SmsManager.getDefault();
+            sms.sendTextMessage(numero, null, mensagem, pi,null);
+
         }
     }
 
