@@ -50,7 +50,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".RedefinirSenha"
+            android:name=".SplashScreen"
             android:exported="false" />
 
         <activity
@@ -65,7 +65,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".RedefinirSenha"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

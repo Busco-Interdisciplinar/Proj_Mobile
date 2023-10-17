@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.example.busco.R;
 
@@ -52,6 +54,18 @@ public class CadastroFornecedor extends AppCompatActivity {
                 }
             }
         });
+
+        Spinner spinnerCategoria = findViewById(R.id.spinnerCategoria);
+        String[] categorias = {"vegetais", "frutas", "legumes", "todos"};
+
+        // Crie um ArrayAdapter usando as opções e um layout padrão para o Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
+
+        // Especifique o layout a ser usado quando a lista de opções aparecer
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // Associe o adaptador ao Spinner
+        spinnerCategoria.setAdapter(adapter);
 
         produto.addTextChangedListener(new TextWatcher() {
             @Override

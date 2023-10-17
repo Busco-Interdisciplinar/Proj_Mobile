@@ -18,11 +18,10 @@
         android:text="Login"
         android:textStyle="bold"
         app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:ignore="MissingConstraints, TextSizeCheck" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fontFamily="@font/outfit_bold" />
 
     <TextView
         android:id="@+id/textView"
@@ -34,12 +33,10 @@
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:fontFamily="@font/outfit_regular" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
@@ -49,16 +46,17 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            app:fontFamily="@font/outfit_regular" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,24 +77,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            app:fontFamily="@font/outfit_regular" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:minHeight="48dp"
         android:onClick="redefinirSenha"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:text="Esqueceu sua senha?"
         android:textColor="#191818"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha"
-        tools:ignore="MissingConstraints" />
+        app:fontFamily="@font/outfit_regular" />
+        />
 
     <TextView
         android:id="@+id/textView4"
@@ -107,10 +108,10 @@
         android:textAlignment="center"
         android:textColor="#191818"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        tools:ignore="MissingConstraints" />
+        app:fontFamily="@font/outfit_regular" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -163,7 +164,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
+        app:fontFamily="@font/outfit_regular" />
 
     <TextView
         android:id="@+id/criarConta"
@@ -177,11 +178,8 @@
         android:textColor="#175C4C"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:ignore="MissingConstraints" />
-
+        app:fontFamily="@font/outfit_regular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

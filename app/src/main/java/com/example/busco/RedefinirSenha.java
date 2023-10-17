@@ -27,9 +27,6 @@ public class RedefinirSenha extends AppCompatActivity {
         senhaEditText = findViewById(R.id.textInputLayoutNovaSenha);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
 
-        checkIconSenha = findViewById(R.id.checkIconSenha);
-        checkIconEmail = findViewById(R.id.checkIconEmail);
-
 
         emailEditText.addTextChangedListener(new TextWatcher() {
             @Override

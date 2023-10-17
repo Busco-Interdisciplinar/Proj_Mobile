@@ -24,7 +24,9 @@
         android:text="Busco - Mais barato"
         android:textColor="#050505"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:fontFamily="@font/outfit_bold"
+        />
 
     <TextView
         android:id="@+id/textView3"
@@ -35,9 +37,12 @@
         android:text="Veja promoções especiais de diversos alimentos."
         android:textAlignment="center"
         android:textColor="#151515"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:fontFamily="@font/font_outfit"
+        />
 
     <Button
+        app:fontFamily="@font/outfit_bold"
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
