@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".Cadastros.Cadastro_Usuario.Cadastro">
 
+    <!-- Ícone de seta -->
+    <ImageView
+        android:onClick="voltarTelaLogin"
+        android:id="@+id/seta"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/seta_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp" />
+
     <!-- Título "Cadastro" -->
     <TextView
         android:id="@+id/textView"
@@ -16,10 +28,13 @@
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/seta"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"/>
 
     <!-- Campo de Nome -->
     <com.google.android.material.textfield.TextInputLayout
@@ -117,14 +132,77 @@
         app:layout_constraintEnd_toEndOf="@id/textInputLayoutIdade"
         app:layout_constraintTop_toTopOf="@id/textInputLayoutIdade" />
 
-    <!-- Campo de Senha -->
+    <!-- Campo de Telefone -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutTelefone"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutIdade">
+
+        <EditText
+            android:id="@+id/editTextTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Telefone"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Ícone de verificação para o campo de Telefone -->
+    <ImageView
+        android:id="@+id/checkIconTelefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutTelefone"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutTelefone" />
+
+    <!-- Campo de Cep -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutCep"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelefone">
+
+        <EditText
+            android:id="@+id/editTextCep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cep"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Ícone de verificação para o campo de Telefone -->
+    <ImageView
+        android:id="@+id/checkIconCep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutCep"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutCep" />
+
     <!-- Campo de Senha -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutSenha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutIdade"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCep"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
@@ -183,38 +261,6 @@
         app:layout_constraintEnd_toEndOf="@id/textInputLayoutConfirmarSenha"
         app:layout_constraintTop_toTopOf="@id/textInputLayoutConfirmarSenha" />
 
-    <!-- Campo de Telefone -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutTelefone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmarSenha">
-
-        <EditText
-            android:id="@+id/editTextTelefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Telefone"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Ícone de verificação para o campo de Telefone -->
-    <ImageView
-        android:id="@+id/checkIconTelefone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/check_cinza"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayoutTelefone"
-        app:layout_constraintTop_toTopOf="@id/textInputLayoutTelefone" />
-
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -224,7 +270,7 @@
         android:layout_marginTop="24dp"
         android:text="Aceitar os termos de contrato"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelefone" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmarSenha" />
 
     <Button
         android:id="@+id/buttonCriarConta"
@@ -243,4 +289,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox"
         android:layout_marginTop="16dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

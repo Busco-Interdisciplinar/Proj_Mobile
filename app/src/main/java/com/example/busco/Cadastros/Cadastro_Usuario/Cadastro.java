@@ -8,13 +8,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.view.Window;
 import android.widget.CheckBox;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.busco.Api.ApiResponse;
 //import com.example.busco.Api.ApiService;
+import com.example.busco.Login;
 import com.example.busco.R;
+import com.example.busco.Redefinir_Senha;
 
 import javax.security.auth.callback.Callback;
 
@@ -262,5 +266,10 @@ public class Cadastro extends AppCompatActivity {
                senhaValida(senha) &&
                confirmacaoSenha(confirmarSenha, senha) &&
                telefoneValido(telefone);
+    }
+
+    public void voltarTelaLogin(View view) {
+        startActivity( new Intent(this, Login.class));
+        finish();
     }
 }

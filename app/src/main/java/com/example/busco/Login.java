@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
+import com.example.busco.Fragments.inflate;
 
 public class Login extends AppCompatActivity {
     @Override
@@ -75,7 +76,14 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
-        startActivity( new Intent(this, Erro.class));
-//        startActivity(intent);
+        startActivity( new Intent(this, Redefinir_Senha.class));
+    }
+
+    public void fazerLogin(View view) {
+        startActivity( new Intent(this, inflate.class));
+        finish();
     }
 }
+
+
+//Usar finish para não sobrepor

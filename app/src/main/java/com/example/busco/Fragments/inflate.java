@@ -6,15 +6,20 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.busco.NavigationManager.NavigationManager;
 import com.example.busco.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class inflate extends AppCompatActivity {
 
+    NavigationManager navigationManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_navigation);
+
+        navigationManager = new NavigationManager(getSupportFragmentManager());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -23,30 +28,18 @@ public class inflate extends AppCompatActivity {
                 // Lide com os eventos de clique aqui
                 switch (item.getItemId()) {
                     case R.id.menu_item1:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new principal_fragment())
-                                .commit();
+                        navigationManager.abrirTela(new principal_fragment());
                         return true;
                     case R.id.produto:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new produtos_fragment())
-                                .commit();
+                        navigationManager.abrirTela(new produtos_fragment());
                         return true;
                     case R.id.carrinho:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new carrinho_fragment())
-                                .commit();
+                        navigationManager.abrirTela(new carrinho_fragment());
                         return true;
                     case R.id.promocao:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, new promocao_fragment())
-                                .commit();
+                        navigationManager.abrirTela(new promocao_fragment());
                         return true;
-//                    case R.id.perfil:
-//                        getSupportFragmentManager().beginTransaction()
-//                                .replace(R.id.fragment_container, new perfil_fragment())
-//                                .commit();
-//                        return true;
+                    // Adicione mais casos conforme necessário
                 }
                 return false;
             }
