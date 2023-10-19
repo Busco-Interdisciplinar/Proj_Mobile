@@ -1,5 +1,6 @@
 package com.example.busco;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,12 +8,12 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
+import com.example.busco.Fragments.inflate;
 
 public class Login extends AppCompatActivity {
     @Override
@@ -23,37 +24,37 @@ public class Login extends AppCompatActivity {
         ImageView googleImageView = findViewById(R.id.google);
         ImageView facebookImageView = findViewById(R.id.facebook);
         ImageView instagramImageView = findViewById(R.id.instagram);
+
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.google.com.br/");
-                } else {
-                    Intent intent = new Intent(Login.this, Erro.class);
-                    startActivity(intent);
-                }
+                openWebView("https://www.google.com.br");
             }
         });
+
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.facebook.com/");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
-                }
+                openWebView("https://www.facebook.com");
             }
         });
+
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.instagram.com/");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
-                }
+                openWebView("https://www.instagram.com");
             }
         });
+    }
+
+    private void openWebView(String url) {
+        if (isNetworkAvailable()) {
+            Intent intent = new Intent(this, WebViewActivity.class);
+            intent.putExtra("URL", url);
+            startActivity(intent);
+        } else {
+            showNoInternetConnectionMessage();
+        }
     }
 
     private boolean isNetworkAvailable() {
@@ -64,17 +65,25 @@ public class Login extends AppCompatActivity {
         }
         return false;
     }
-    private void abrirWebView(String url) {
-        Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra("URL", url);
-        startActivity(intent);
+
+    private void showNoInternetConnectionMessage() {
+        Toast.makeText(this, "Sem conexão à internet", Toast.LENGTH_SHORT).show();
     }
+
     public void criarConta(View view) {
         Intent intent = new Intent(this, Cadastro.class);
         startActivity(intent);
     }
+
     public void redefinirSenha(View view) {
-        Intent intent = new Intent(this, RedefinirSenha.class);
-        startActivity(intent);
+        startActivity( new Intent(this, Redefinir_Senha.class));
+    }
+
+    public void fazerLogin(View view) {
+        startActivity( new Intent(this, inflate.class));
+        finish();
     }
 }
+
+
+//Usar finish para não sobrepor
