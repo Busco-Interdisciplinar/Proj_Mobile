@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     public void comecar(View view) {
         Intent login = new Intent(this, Login.class);
         startActivity(login);
-
     }
 
     private boolean doubleBackToExitPressedOnce = false;

@@ -35,9 +35,9 @@
         <activity
             android:name=".Doacao.Doacao"
             android:exported="false" />
-        <activity
-            android:name=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Erro"
             android:exported="false" />
@@ -53,14 +53,14 @@
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".Cadastros.Cadastro_Usuario.Cadastro"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Cadastros.Cadastro_Usuario.Cadastro"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Fragments.inflate"
+            android:name=".Cadastros.Cadastro_Usuario.Cadastro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
