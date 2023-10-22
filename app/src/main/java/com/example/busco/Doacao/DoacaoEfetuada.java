@@ -1,10 +1,13 @@
-package com.example.busco;
+package com.example.busco.Doacao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.busco.Doacao.Doacao;
+import com.example.busco.R;
 
 public class DoacaoEfetuada extends AppCompatActivity {
 

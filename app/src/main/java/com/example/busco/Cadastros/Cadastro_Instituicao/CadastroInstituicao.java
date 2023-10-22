@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Cadastros.Cadastro_Instituicao;
 
 import androidx.appcompat.app.AppCompatActivity;
 

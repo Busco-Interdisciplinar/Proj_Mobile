@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Cadastros.Cadastro_Usuario;
 
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -14,15 +14,17 @@ import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.busco.Api.ApiResponse;
-import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Usuarios;
+import com.example.busco.R;
+import com.google.gson.Gson;
 
 import java.util.Random;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+//import javax.security.auth.callback.Callback;
 
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
 public class Cadastro extends AppCompatActivity {
 
     private EditText nomeEditText, emailEditText, idadeEditText, senhaEditText, confirmarSenhaEditText, telefoneEditText;
@@ -47,7 +49,7 @@ public class Cadastro extends AppCompatActivity {
         checkIconEmail = findViewById(R.id.checkIconEmail);
         checkIconIdade = findViewById(R.id.checkIconIdade);
         checkIconSenha = findViewById(R.id.checkIconSenha);
-        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmacaoSenha);
+        checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmarSenha);
 
         nomeEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -216,7 +218,6 @@ public class Cadastro extends AppCompatActivity {
     private boolean confirmacaoSenha(String confirmarSenha, String senha) {
         return confirmarSenha.equals(senha);
     }
-
     public void criarConta(View view) {
         if (!camposValidos()) {
             Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
@@ -231,24 +232,32 @@ public class Cadastro extends AppCompatActivity {
         if(camposValidos() && checkBox.isChecked()){
 
             String numero = "+55" + telefoneEditText.getText().toString();
+            String nome =  nomeEditText.getText().toString();
+            String email = emailEditText.getText().toString();
+            String senha = senhaEditText.getText().toString();
+
+            Usuarios usuario = new Usuarios(email, senha, "05186-190", nome, "48558381879", numero);
+
             Random random = new Random();
             int codigo = random.nextInt(10000);
             String codigoFormatado = String.format("%04d", codigo);
             String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
+            setIntent(new Intent());
 
+            Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
             Bundle bundle = new Bundle();
+            Gson gson = new Gson();
+            String usuarioJson = gson.toJson(usuario);
             bundle.putString("codigoFormatado", codigoFormatado);
-            Intent in = new Intent(Cadastro.this, ConfirmaCadastro.class);
-            in.putExtras(bundle);
+            bundle.putString("usuario", usuarioJson);
+            intentSMS.putExtras(bundle);
 
-            Intent intentSMS = new Intent(Cadastro.this,ConfirmaCadastro.class);
-            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
             SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(numero, null, mensagem, pi,null);
-
+            setIntent(new Intent());
         }
     }
-
     private boolean camposValidos() {
         String nome = nomeEditText.getText().toString();
         String email = emailEditText.getText().toString();

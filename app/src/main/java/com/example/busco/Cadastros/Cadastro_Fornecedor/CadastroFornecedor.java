@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Cadastros.Cadastro_Fornecedor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,13 +22,13 @@ public class CadastroFornecedor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_fornecedor);
 
-        produto = findViewById(R.id.produto);
+//        produto = findViewById(R.id.produto);
         cnpj = findViewById(R.id.editTextTextCNPJ);
 
-        checkIconProduto = findViewById(R.id.checkIconProduto);
-        checkIconCNPJ = findViewById(R.id.checkIconCNPJ);
-
-        checkBox = findViewById(R.id.checkBox);
+//        checkIconProduto = findViewById(R.id.checkIconProduto);
+//        checkIconCNPJ = findViewById(R.id.checkIconCNPJ);
+//
+//        checkBox = findViewById(R.id.checkBox);
 
         cnpj.addTextChangedListener(new TextWatcher() {
             @Override

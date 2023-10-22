@@ -2,6 +2,8 @@ package com.example.busco.Api;
 
 import com.squareup.moshi.Json;
 
+import java.util.List;
+
 public class ApiResponse {
     @Json(name="responseSucessfull")
     private final boolean responseSucessfull;
@@ -10,7 +12,7 @@ public class ApiResponse {
     private final String description;
 
     @Json(name="object")
-    private final Object object;
+    private final List<Object> object;
 
     @Json(name="aditionalInformation")
     private final Object aditionalInformation;
@@ -23,7 +25,7 @@ public class ApiResponse {
         return description;
     }
 
-    public Object getObject() {
+    public List<Object> getObject() {
         return object;
     }
 
@@ -31,7 +33,7 @@ public class ApiResponse {
         return aditionalInformation;
     }
 
-    public ApiResponse(boolean responseSucessfull, String description, Object object, Object aditionalInformation) {
+    public ApiResponse(boolean responseSucessfull, String description, List<Object> object, Object aditionalInformation) {
         this.responseSucessfull = responseSucessfull;
         this.description = description;
         this.object = object;

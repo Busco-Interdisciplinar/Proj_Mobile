@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.busco"
-        minSdk 27
-        targetSdk 33
+        minSdk 30
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -26,6 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    buildToolsVersion '34.0.0'
 }
 
 dependencies {
@@ -34,6 +35,8 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation "org.projectlombok:lombok:1.18.30"
+    implementation 'com.google.code.gson:gson:2.8.7'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     runtimeOnly 'com.google.android.material:material:1.11.0-alpha03'

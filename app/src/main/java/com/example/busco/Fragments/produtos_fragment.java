@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 
 import com.example.busco.R;
 
-public class promocao_fragment extends Fragment {
+public class produtos_fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.promocao_fragment, container, false);
+        View view = inflater.inflate(R.layout.produtos_fragment, container, false);
         // Aqui você pode inicializar elementos de UI ou realizar outras ações necessárias
         return view;
     }

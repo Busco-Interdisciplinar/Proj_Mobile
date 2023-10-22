@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Doacao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.busco.R;
 
 public class Doacao extends AppCompatActivity {
 

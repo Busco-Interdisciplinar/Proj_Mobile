@@ -1,4 +1,4 @@
-package com.example.busco;
+package com.example.busco.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

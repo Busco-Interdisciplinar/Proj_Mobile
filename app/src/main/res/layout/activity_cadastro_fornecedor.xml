@@ -4,110 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroFornecedor">
+    tools:context=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor">
 
+    <!-- Título "Cadastro" -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
-        android:text="Cadastro Fornecedor"
+        android:text="Cadastrar fornecedor"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCNPJ"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="24dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="DuplicateIds">
+        android:layout_marginTop="16dp" />
 
-        <EditText
-            android:id="@+id/editTextTextCNPJ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="CNPJ"
-            android:inputType="text" />
-
-        <ImageView
-            android:id="@+id/checkIconCNPJ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza"
-            tools:ignore="DuplicateIds" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
+    <!-- Campo de CNPJ -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutProduto"
+        android:id="@+id/editTextTextCNPJ"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
 
         <EditText
-            android:id="@+id/produto"
+            android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="O que irá fornecer"
-            android:inputType="text"
-            />
-
-        <ImageView
-            android:id="@+id/checkIconProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
+            android:hint="Insira o CNPJ"
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/checkBox"
+    <!-- Ícone de verificação para o campo de Nome -->
+    <ImageView
+        android:id="@+id/checkIconNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Aceito e concordo com os termos de contrato."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProduto" />
-
-    <Button
-        android:id="@+id/buttonCadastrar"
-        android:layout_width="370dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:height="65dp"
-        android:backgroundTint="#5BE53E"
-        android:textStyle="bold"
-        android:text="Cadastrar-se"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/editTextTextCNPJ"
+        app:layout_constraintTop_toTopOf="@id/editTextTextCNPJ" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
