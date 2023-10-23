@@ -16,89 +16,68 @@
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Campo de Email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress" />
-
-        <ImageView
-            android:id="@+id/checkIconEmail"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
+            android:hint="E-mail"
+            android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Campo de Nova senha -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNovaSenha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail">
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/editTextTextSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nova senha"
-            android:inputType="textPassword"
-            />
-
-        <ImageView
-            android:id="@+id/checkIconSenha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonContinuar"
-        android:layout_width="370dp"
+        android:id="@+id/buttonCriarConta"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:height="65dp"
         android:backgroundTint="#5BE53E"
-        android:onClick="continuar"
-        android:text="continuar"
-        android:textSize="12dp"
+        android:onClick="criarConta"
+        android:text="Continuar"
         android:textStyle="bold"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNovaSenha"
-        app:layout_constraintVertical_bias="0.145" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNovaSenha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

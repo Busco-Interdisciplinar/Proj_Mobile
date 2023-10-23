@@ -7,7 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Usuarios;
@@ -38,6 +41,8 @@ public class ConfirmaCadastro extends AppCompatActivity {
         usuario = gson.fromJson(usuarioJson, Usuarios.class);
         String telefoneUsuario = usuario.getTelefone();
         usuario.setTelefone(telefoneUsuario.replace("+55", ""));
+        ImageView imageView = (ImageView) findViewById(R.id.gif);
+        Glide.with(this).load(R.raw.codigo_sms).into(imageView);
         setIntent(new Intent());
     }
 
@@ -65,13 +70,14 @@ public class ConfirmaCadastro extends AppCompatActivity {
                             in.putExtra("email", usuarioCadastrado.getEmail());
                             in.putExtra("senha", usuarioCadastrado.getSenha());
                             startActivity(in);
+                            finish();
                             Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
                         }
                     }else{
                         if (response.errorBody() != null){
                             Intent intent = new Intent(getApplicationContext(), Login.class);
-                            finish();
                             startActivity(intent);
+                            finish();
                             try {
                                 String apiResponseString = response.errorBody().string();
                                 ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);

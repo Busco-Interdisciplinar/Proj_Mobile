@@ -1,6 +1,7 @@
 
 package com.example.busco;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,13 +17,12 @@ import android.widget.Toast;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
-import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro;
 import com.example.busco.Doacao.Doacao;
+import com.example.busco.Fragments.inflate;
 import com.google.gson.Gson;
 
-import java.util.List;
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,37 +51,37 @@ public class Login extends AppCompatActivity {
         ImageView googleImageView = findViewById(R.id.google);
         ImageView facebookImageView = findViewById(R.id.facebook);
         ImageView instagramImageView = findViewById(R.id.instagram);
+
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.google.com.br/");
-                } else {
-                    Intent intent = new Intent(Login.this, Erro.class);
-                    startActivity(intent);
-                }
+                openWebView("https://www.google.com.br");
             }
         });
+
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.facebook.com/");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
-                }
+                openWebView("https://www.facebook.com");
             }
         });
+
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNetworkAvailable()) {
-                    abrirWebView("https://www.instagram.com/");
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sem conexão à internet", Toast.LENGTH_SHORT).show();
-                }
+                openWebView("https://www.instagram.com");
             }
         });
+    }
+
+    private void openWebView(String url) {
+        if (isNetworkAvailable()) {
+            Intent intent = new Intent(this, WebViewActivity.class);
+            intent.putExtra("URL", url);
+            startActivity(intent);
+        } else {
+            showNoInternetConnectionMessage();
+        }
     }
 
     private boolean isNetworkAvailable() {
@@ -92,21 +92,21 @@ public class Login extends AppCompatActivity {
         }
         return false;
     }
-    private void abrirWebView(String url) {
-        Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra("URL", url);
-        startActivity(intent);
+
+    private void showNoInternetConnectionMessage() {
+        Toast.makeText(this, "Sem conexão à internet", Toast.LENGTH_SHORT).show();
     }
+
     public void criarConta(View view) {
         Intent intent = new Intent(this, Cadastro.class);
         startActivity(intent);
     }
+
     public void redefinirSenha(View view) {
-        Intent intent = new Intent(this, RedefinirSenha.class);
-        startActivity(intent);
+        startActivity( new Intent(this, Redefinir_Senha.class));
     }
 
-    public void logar(View view) {
+    public void fazerLogin(View view) {
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
         String email = emailEditText.getText().toString();
@@ -123,8 +123,20 @@ public class Login extends AppCompatActivity {
                                 Intent in = new Intent(Login.this, Doacao.class);
                                 startActivity(in);
                                 Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
-                            }else{
-                                Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+                                finish();
+                            }
+                        }else {
+                            if (response.errorBody() != null) {
+                                Intent intent = new Intent(getApplicationContext(), Login.class);
+                                startActivity(intent);
+                                finish();
+                                try {
+                                    String apiResponseString = response.errorBody().string();
+                                    ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
+                                    Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
                         }
                     }
