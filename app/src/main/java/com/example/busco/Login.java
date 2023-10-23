@@ -1,8 +1,5 @@
 package com.example.busco;
 
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -11,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 import com.example.busco.Fragments.inflate;
@@ -71,8 +70,8 @@ public class Login extends AppCompatActivity {
     }
 
     public void criarConta(View view) {
-        Intent intent = new Intent(this, Cadastro.class);
-        startActivity(intent);
+
+        startActivity( new Intent(this, Cadastro.class));
     }
 
     public void redefinirSenha(View view) {

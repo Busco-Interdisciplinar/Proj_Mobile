@@ -137,7 +137,7 @@
 
     <!-- Ícone de verificação para o campo de Idade -->
     <ImageView
-        android:id="@+id/checkIconIdade"
+        android:id="@+id/checkIconCpf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
