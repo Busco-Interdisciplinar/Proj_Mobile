@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="foto" type="id">profileImageView</item>
+    <item name="nome" type="id">nome</item>
+    <item name="menu" type="id">menu</item>
+    <item name="editarPerfil" type="id">editarPerfil</item>
+    <item name="editPerfil" type="id">editPerfil</item>
+    <item name="instituicao" type="id">instituicao</item>
+    <item name="tornarInstituicao" type="id">tornarInstituicao</item>
+    <item name="fornecedor" type="id">fornecedor</item>
+    <item name="tornarFornecedor" type="id">tornarFornecedor</item>
+    <item name="doacao" type="id">doacao</item>
+    <item name="fazerDoacao" type="id">fazerDoacao</item>
+    <item name="verLocalizacao" type="id">verLocalizacao</item>
+    <item name="localizacao" type="id">localizacao</item>
+    <item name="sobreNos" type="id">sobreNos</item>
+    <item name="sobre" type="id">sobre</item>
+    <item name="sair" type="id">sair</item>
+    <item name="exit" type="id">exit</item>
+</resources>
