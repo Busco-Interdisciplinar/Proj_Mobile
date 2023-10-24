@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="profileImageView" type="id">profileImageView</item>
+    <item name="foto" type="id">profileImageView</item>
     <item name="nome" type="id">nome</item>
     <item name="menu" type="id">menu</item>
     <item name="editarPerfil" type="id">editarPerfil</item>

@@ -1,17 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.Busco" parent="Theme.Material3.Light.NoActionBar">\
-        <item name="android:forceDarkAllowed">false</item>
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Busco" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/verde_claro</item>
+        <item name="colorPrimaryDark">@color/verde_claro</item>
+        <item name="colorPrimaryVariant">@color/verde_claro</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/verde_claro</item>
+        <item name="colorSecondaryVariant">@color/verde_claro</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/verde_claro</item>
         <item name="statusBarBackground">@color/verde_claro</item>
         <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
     </style>
 
-    <style name="Base.Theme.Busco" parent="Theme.Material3.Light.NoActionBar">\
-        <item name="android:forceDarkAllowed">false</item>
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-    </style>
 </resources>

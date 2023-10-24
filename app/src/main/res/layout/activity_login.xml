@@ -1,188 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Login">
 
-    <Button
-        android:id="@+id/login"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:height="65dp"
-        android:backgroundTint="#5BE53E"
-        android:text="Login"
-        android:onClick="fazerLogin"
-        android:textStyle="bold"
-        app:cornerRadius="50dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:fontFamily="@font/outfit_bold" />
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/outfit_bold"
-        android:text="Log in"
-        android:textColor="#191818"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        app:fontFamily="@font/outfit_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <EditText
-            android:id="@+id/email"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
-            android:inputType="textEmailAddress"
-            app:fontFamily="@font/outfit_regular" />
+            android:layout_marginBottom="0dp"
+            app:layout_constraintHeight_default="wrap">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:height="65dp"
+                android:backgroundTint="#5BE53E"
+                android:onClick="fazerLogin"
+                android:text="Login"
+                android:textStyle="bold"
+                app:cornerRadius="50dp"
+                app:fontFamily="@font/outfit_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutSenha"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/outfit_bold"
+                android:text="Log in"
+                android:textColor="#191818"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                app:fontFamily="@font/outfit_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/senha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Senha"
-            android:inputType="textPassword"
-            app:fontFamily="@font/outfit_regular" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:boxStrokeColor="@color/orangeBusco"
+                app:hintTextColor="@color/orangeBusco"
+                app:prefixTextColor="@color/verde_claro"
+                app:suffixTextColor="@color/verde_claro"
+                >
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="E-mail"
+                    android:inputType="textEmailSubject"
+                    app:fontFamily="@font/outfit_regular" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:minHeight="48dp"
-        android:onClick="redefinirSenha"
-        android:text="Esqueceu sua senha?"
-        android:textColor="#175C4C"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha"
-        app:fontFamily="@font/outfit_regular" />
-        />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="OU"
-        android:textAlignment="center"
-        android:textColor="#191818"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login"
-        app:fontFamily="@font/outfit_regular" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutSenha"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:boxStrokeColor="@color/orangeBusco"
+                app:hintTextColor="@color/orangeBusco"
+                >
+
+                <EditText
+                    android:id="@+id/senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Senha"
+                    android:inputType="textPassword"
+                    app:fontFamily="@font/outfit_regular" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:minHeight="48dp"
+                android:onClick="redefinirSenha"
+                android:text="Esqueceu sua senha?"
+                android:textColor="#175C4C"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha"
+                app:fontFamily="@font/outfit_regular" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:text="OU"
+                android:textAlignment="center"
+                android:textColor="#191818"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login"
+                app:fontFamily="@font/outfit_regular" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp">
+
+                <ImageView
+                    android:id="@+id/google"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/sombra_redes_sociais"
+                    android:elevation="4dp"
+                    app:srcCompat="@drawable/google" />
+
+                <ImageView
+                    android:id="@+id/facebook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/sombra_redes_sociais"
+                    android:elevation="4dp"
+                    app:srcCompat="@drawable/facebook" />
+
+                <ImageView
+                    android:id="@+id/instagram"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/sombra_redes_sociais"
+                    android:elevation="4dp"
+                    app:srcCompat="@drawable/instagram" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/google"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/sombra_redes_sociais"
-            android:elevation="4dp"
-            app:srcCompat="@drawable/google" />
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:text="Não possui conta? "
+            android:textColor="#1C1A1A"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/outfit_regular" />
 
-        <ImageView
-            android:id="@+id/facebook"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/sombra_redes_sociais"
-            android:elevation="4dp"
-            app:srcCompat="@drawable/facebook" />
-
-        <ImageView
-            android:id="@+id/instagram"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/sombra_redes_sociais"
-            android:elevation="4dp"
-            app:srcCompat="@drawable/instagram" />
-
+        <TextView
+            android:id="@+id/criarConta"
+            android:layout_width="105dp"
+            android:layout_height="39dp"
+            android:minHeight="48dp"
+            android:onClick="criarConta"
+            android:text="Crie uma aqui!"
+            android:textColor="#175C4C"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/outfit_regular"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:text="Não possui conta? "
-        android:textColor="#1C1A1A"
-        android:layout_marginBottom="10dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/outfit_regular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/criarConta"
-        android:layout_marginBottom="10dp"
-        android:layout_width="105dp"
-        android:layout_height="39dp"
-        android:minHeight="48dp"
-        android:onClick="criarConta"
-        android:text="Crie uma aqui!"
-        android:textColor="#175C4C"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:fontFamily="@font/outfit_regular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -35,9 +37,9 @@
         <activity
             android:name=".Doacao.Doacao"
             android:exported="false" />
-        <activity
-            android:name=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Erro"
             android:exported="false" />
@@ -53,14 +55,14 @@
         <activity
             android:name=".WebViewActivity"
             android:exported="false" />
-        <activity
-            android:name=".Cadastros.Cadastro_Usuario.Cadastro"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".Cadastros.Cadastro_Usuario.Cadastro"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Fragments.inflate"
+            android:name=".Cadastros.Cadastro_Usuario.Cadastro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

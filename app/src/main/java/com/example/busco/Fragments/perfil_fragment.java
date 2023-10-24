@@ -38,85 +38,83 @@
         private static final int CAMERA_REQUEST_CODE = 101;
         private ImageView profileImageView;
 
-        private AlertDialog alertDialog;
-
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.perfil_fragment, container, false);
 
-//            profileImageView = view.findViewById(R.id.profileImageView);
-//            profileImageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    showImageSourceDialog();
-//                }
-//            });
+            profileImageView = view.findViewById(R.id.foto);
+            profileImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showImageSourceDialog();
+                }
+            });
 
             return view;
         }
 
-//        private void showImageSourceDialog() {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-//            builder.setTitle("Foto do perfil");
-//            builder.setItems(new CharSequence[]{"Galeria", "Câmera"}, new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                    switch (which) {
-//                        case 0:
-//                            Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                            startActivityForResult(galleryIntent, PICK_IMAGE);
-//                            break;
-//                        case 1:
-//                            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-//                                    != PackageManager.PERMISSION_GRANTED) {
-//                                requestCameraPermission();
-//                            } else {
-//                                openCamera();
-//                            }
-//                            break;
-//                    }
-//                }
-//            });
-//            builder.show();
-//        }
-//
-//        private void requestCameraPermission() {
-//            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA},
-//                    CAMERA_PERMISSION_CODE);
-//        }
-//
-//        @Override
-//        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//            if (requestCode == CAMERA_PERMISSION_CODE) {
-//                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    openCamera();
-//                } else {
-//                    Toast.makeText(requireContext(), "A permissão da câmera é necessária para tirar fotos.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        }
-//
-//        @Override
-//        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//
-//            if (resultCode == RESULT_OK) {
-//                if (requestCode == PICK_IMAGE) {
-//                    Uri selectedImageUri = data.getData();
-//                    profileImageView.setImageURI(selectedImageUri);
-//                } else if (requestCode == CAMERA_REQUEST_CODE) {
-//                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//                    if (bitmap != null) {
-//                        profileImageView.setImageBitmap(bitmap);
-//                    }
-//                }
-//            }
-//        }
-//
-//        private void openCamera() {
-//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//            startActivityForResult(intent, CAMERA_REQUEST_CODE);
-//        }
+        private void showImageSourceDialog() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setTitle("Foto do perfil");
+            builder.setItems(new CharSequence[]{"Galeria", "Câmera"}, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case 0:
+                            Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(galleryIntent, PICK_IMAGE);
+                            break;
+                        case 1:
+                            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                                    != PackageManager.PERMISSION_GRANTED) {
+                                requestCameraPermission();
+                            } else {
+                                openCamera();
+                            }
+                            break;
+                    }
+                }
+            });
+            builder.show();
+        }
+
+        private void requestCameraPermission() {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA},
+                    CAMERA_PERMISSION_CODE);
+        }
+
+        @Override
+        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+            if (requestCode == CAMERA_PERMISSION_CODE) {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    openCamera();
+                } else {
+                    Toast.makeText(requireContext(), "A permissão da câmera é necessária para tirar fotos.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
+        @Override
+        public void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+
+            if (resultCode == RESULT_OK) {
+                if (requestCode == PICK_IMAGE) {
+                    Uri selectedImageUri = data.getData();
+                    profileImageView.setImageURI(selectedImageUri);
+                } else if (requestCode == CAMERA_REQUEST_CODE) {
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                    if (bitmap != null) {
+                        profileImageView.setImageBitmap(bitmap);
+                    }
+                }
+            }
+        }
+
+        private void openCamera() {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, CAMERA_REQUEST_CODE);
+        }
 
         @NonNull
         @Override

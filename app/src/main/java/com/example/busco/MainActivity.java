@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public void comecar(View view) {
         Intent login = new Intent(this, Login.class);
         startActivity(login);
-
+        finish();
     }
 
     private boolean doubleBackToExitPressedOnce = false;
