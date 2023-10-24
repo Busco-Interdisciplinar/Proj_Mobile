@@ -101,6 +101,7 @@ public class Cadastro extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                oldText = s.toString();
             }
 
             @Override
@@ -114,6 +115,7 @@ public class Cadastro extends AppCompatActivity {
                     return;
                 }
 
+                Boolean isDeleting = false;
                 String newText = s.toString();
                 String unmaskedText = newText.replaceAll("[^0-9]", "");
                 String maskedText = "";
@@ -125,7 +127,12 @@ public class Cadastro extends AppCompatActivity {
                             // Evitar a sobreposição de caracteres não correspondentes
                             maskedText += unmaskedText.charAt(index);
                             index++;
-                        } else {
+                        }
+                        else if (oldText.length() > newText.length()) {
+                            isDeleting = true;
+                            break;
+                        }
+                        else {
                             maskedText += m;
                         }
                         continue;
@@ -137,6 +144,14 @@ public class Cadastro extends AppCompatActivity {
                     } catch (Exception e) {
                         break;
                     }
+                }
+
+                if(isDeleting){
+                    editText.removeTextChangedListener(this);
+                    editText.setText(newText);
+                    editText.addTextChangedListener(this);
+                    editText.setSelection(newText.length());
+                    return;
                 }
 
                 isUpdating = true;
