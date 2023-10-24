@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:right="5dp" android:left="5dp" android:top="5dp" android:bottom="5dp">
+            <shape android:shape="rectangle">
+                <solid android:color="#191818" /> <!-- Cor da sombra (preto com transparência) -->
+                <corners android:radius="25dp" /> <!-- Raio do canto para a sombra -->
+            </shape>
+        </item>
+    </layer-list>
+
+</selector>
