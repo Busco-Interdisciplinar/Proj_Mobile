@@ -26,12 +26,17 @@ public class Erro extends AppCompatActivity {
     public void tentarNovamente(View view) {
         if (isNetworkAvailable()) {
             Intent intent = new Intent(this, WebViewActivity.class);
+            String url = getIntent().getStringExtra("URL");
+            if (url != null) {
+                intent.putExtra("URL", url);
+            }
             startActivity(intent);
             finish();
         } else {
             Toast.makeText(this, "Falha ao reconectar. Verifique sua conexão com a internet.", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

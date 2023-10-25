@@ -54,6 +54,7 @@ public class Login extends AppCompatActivity {
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mostrarTelaDeErro();
                 openWebView("https://www.google.com.br");
             }
         });
@@ -61,6 +62,7 @@ public class Login extends AppCompatActivity {
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mostrarTelaDeErro();
                 openWebView("https://www.facebook.com");
             }
         });
@@ -68,18 +70,27 @@ public class Login extends AppCompatActivity {
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mostrarTelaDeErro();
                 openWebView("https://www.instagram.com");
             }
         });
     }
 
     private void openWebView(String url) {
+        mostrarTelaDeErro();
+
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("URL", url);
+        startActivity(intent);
+    }
+
+    private void mostrarTelaDeErro() {
         if (isNetworkAvailable()) {
-            Intent intent = new Intent(this, WebViewActivity.class);
-            intent.putExtra("URL", url);
-            startActivity(intent);
+            Toast.makeText(this, "Conexão com a Internet restaurada.", Toast.LENGTH_SHORT).show();
         } else {
-            showNoInternetConnectionMessage();
+            Intent intent = new Intent(this, Erro.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -90,10 +101,6 @@ public class Login extends AppCompatActivity {
             return activeNetworkInfo != null && activeNetworkInfo.isConnected();
         }
         return false;
-    }
-
-    private void showNoInternetConnectionMessage() {
-        Toast.makeText(this, "Sem conexão à internet", Toast.LENGTH_SHORT).show();
     }
 
     public void criarConta(View view) {
