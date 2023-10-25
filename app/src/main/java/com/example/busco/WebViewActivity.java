@@ -66,6 +66,7 @@ public class WebViewActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
     public void voltar(View view) {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);

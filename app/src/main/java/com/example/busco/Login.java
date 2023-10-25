@@ -114,45 +114,46 @@ public class Login extends AppCompatActivity {
     }
 
     public void fazerLogin(View view) {
+        if (isNetworkAvailable()) {
+            EditText emailEditText = findViewById(R.id.email);
+            EditText senhaEditText = findViewById(R.id.senha);
+            String email = emailEditText.getText().toString();
+            String senha = senhaEditText.getText().toString();
 
-        EditText emailEditText = findViewById(R.id.email);
-        EditText senhaEditText = findViewById(R.id.senha);
-        String email = emailEditText.getText().toString();
-        String senha = senhaEditText.getText().toString();
-                ApiService.getInstance().logarUsuario(email, senha).enqueue(new Callback<ApiResponse>() {
-                    @Override
-                    public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                        if (response.isSuccessful()){
-                            if (response.body() != null && response.body().isResponseSucessfull()){
-//                                List<Object> usuarioObject = response.body().getObject();
-//                                String objetoJson = gson.toJson(usuarioObject.get(0));
-//                                objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
-//                                Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
-                                Intent in = new Intent(Login.this, Doacao.class);
-                                startActivity(in);
-                                Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                        }else {
-                            if (response.errorBody() != null) {
-                                Intent intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(intent);
-                                finish();
-                                try {
-                                    String apiResponseString = response.errorBody().string();
-                                    ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
-                                    Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
+            ApiService.getInstance().logarUsuario(email, senha).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body() != null && response.body().isResponseSucessfull()) {
+                            Intent in = new Intent(Login.this, Doacao.class);
+                            startActivity(in);
+                            Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    } else {
+                        if (response.errorBody() != null) {
+                            Intent intent = new Intent(getApplicationContext(), Erro.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
+                }
 
-                    @Override
-                    public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    if (!isNetworkAvailable()) {
+                        Intent intent = new Intent(getApplicationContext(), Erro.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
                         Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
                     }
-                });
+                }
+            });
+        } else {
+            Intent intent = new Intent(this, Erro.class);
+            startActivity(intent);
+            //finish();
+        }
     }
 }
