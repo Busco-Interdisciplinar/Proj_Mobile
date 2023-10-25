@@ -19,6 +19,7 @@ import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 import com.example.busco.Doacao.Doacao;
+import com.example.busco.Fragments.inflate;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -102,10 +103,11 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
-        startActivity( new Intent(this, Redefinir_Senha.class));
+        startActivity( new Intent(this, inflate.class));
     }
 
     public void fazerLogin(View view) {
+
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
         String email = emailEditText.getText().toString();

@@ -111,7 +111,7 @@
             app:layout_constraintEnd_toEndOf="@id/textInputLayoutEmail"
             app:layout_constraintTop_toTopOf="@id/textInputLayoutEmail" />
 
-        <!-- Campo de Idade -->
+        <!-- Campo de CPF -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCpf"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
