@@ -17,12 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Doacao.Doacao;
 import com.example.busco.Fragments.inflate;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -124,11 +125,11 @@ public class Login extends AppCompatActivity {
                     public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body() != null && response.body().isResponseSucessfull()){
-//                                List<Object> usuarioObject = response.body().getObject();
-//                                String objetoJson = gson.toJson(usuarioObject.get(0));
-//                                objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
-//                                Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
-                                Intent in = new Intent(Login.this, Doacao.class);
+                                List<Object> usuarioObject = response.body().getObject();
+                                String objetoJson = gson.toJson(usuarioObject.get(0));
+                                objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
+                                Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
+                                Intent in = new Intent(Login.this, inflate.class);
                                 startActivity(in);
                                 Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
                                 finish();

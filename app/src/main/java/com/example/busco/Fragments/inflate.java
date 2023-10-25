@@ -38,6 +38,9 @@ public class inflate extends AppCompatActivity {
                     case R.id.promocao:
                         navigationManager.abrirTela(new promocao_fragment());
                         return true;
+                    case R.id.perfil:
+                        navigationManager.abrirTela(new perfil_fragment());
+                        return true;
                 }
                 return false;
             }
