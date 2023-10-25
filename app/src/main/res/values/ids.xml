@@ -10,11 +10,11 @@
     <item name="fornecedor" type="id"></item>
     <item name="tornarFornecedor" type="id"></item>
     <item name="doacao" type="id"></item>
-    <item name="fazerDoacao" type="id">fazerDoacao</item>
-    <item name="verLocalizacao" type="id">verLocalizacao</item>
-    <item name="localizacao" type="id">localizacao</item>
-    <item name="sobreNos" type="id">sobreNos</item>
-    <item name="sobre" type="id">sobre</item>
-    <item name="sair" type="id">sair</item>
-    <item name="exit" type="id">exit</item>
+    <item name="fazerDoacao" type="id"></item>
+    <item name="verLocalizacao" type="id"></item>
+    <item name="localizacao" type="id"></item>
+    <item name="sobreNos" type="id"></item>
+    <item name="sobre" type="id"></item>
+    <item name="sair" type="id"></item>
+    <item name="exit" type="id"></item>
 </resources>

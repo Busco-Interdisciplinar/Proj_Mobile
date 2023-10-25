@@ -2,9 +2,6 @@
 package com.example.busco;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -15,11 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 import com.example.busco.Doacao.Doacao;
-import com.example.busco.Fragments.inflate;
 import com.google.gson.Gson;
 
 import java.io.IOException;
