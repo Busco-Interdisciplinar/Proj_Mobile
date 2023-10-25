@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.text.TextWatcher;
 
 import com.bumptech.glide.Glide;
 import com.example.busco.Api.ApiResponse;
@@ -46,13 +48,12 @@ public class ConfirmaCadastro extends AppCompatActivity {
         setIntent(new Intent());
     }
 
-    public void confirmar(View view) {
+    public void confirmar(View view){
         EditText digito1, digito2, digito3, digito4;
         digito1 = findViewById(R.id.editTextCodigo1);
         digito2 = findViewById(R.id.editTextCodigo2);
         digito3 = findViewById(R.id.editTextCodigo3);
         digito4 = findViewById(R.id.editTextCodigo4);
-
 
         String codigoCompleto = (digito1.getText().toString() + digito2.getText().toString() + digito3.getText().toString() + digito4.getText().toString());
 

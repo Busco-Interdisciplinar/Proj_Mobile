@@ -16,4 +16,7 @@ public interface EndpointsMap {
 
     @GET("/api/usuarios/login/{email}/{senha}")
     Call<ApiResponse> logarUsuario(@Path("email") String email, @Path("senha") String senha);
+
+    @GET("/api/usuarios/buscarEmail/{email}")
+    Call<ApiResponse> buscarEmail(@Path("email") String email);
 }

@@ -13,12 +13,27 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Login;
 import com.example.busco.R;
 import com.google.gson.Gson;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -250,27 +265,87 @@ public class Cadastro extends AppCompatActivity {
             String senha = senhaEditText.getText().toString();
             String cep =  cepEditText.getText().toString();
             String cpf = CpfEditText.getText().toString();
-
-            Usuarios usuario = new Usuarios(email, senha, cep, nome, "48558381879", numero);
-
-            Random random = new Random();
-            int codigo = random.nextInt(10000);
-            String codigoFormatado = String.format("%04d", codigo);
-            String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
-            setIntent(new Intent());
-
-            Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
-            Bundle bundle = new Bundle();
             Gson gson = new Gson();
-            String usuarioJson = gson.toJson(usuario);
-            bundle.putString("codigoFormatado", codigoFormatado);
-            bundle.putString("usuario", usuarioJson);
-            intentSMS.putExtras(bundle);
 
-            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
-            SmsManager sms = SmsManager.getDefault();
-            sms.sendTextMessage(numero, null, mensagem, pi,null);
-            setIntent(new Intent());
+            ApiService.getInstance().buscarEmail(email).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
+//                            List<Object> usuarioObject = response.body().getObject();
+//                            String objetoJson = gson.toJson(usuarioObject.get(0));
+//                            objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
+//                            Usuarios usuarioExistente = gson.fromJson(objetoJson, Usuarios.class);
+                            try {
+                                JSONParser parser = new JSONParser();
+                                JSONObject json;
+                                json = (JSONObject) parser.parse(response.body().getAditionalInformation());
+                                if (json != null){
+                                    // Acessando os valores dos atributos
+                                    Boolean cpfValue = (Boolean) json.get("cpf");
+                                    boolean cpf = cpfValue != null ? cpfValue : false;
+                                    Boolean emailValue = (Boolean) json.get("email");
+                                    boolean email = cpfValue != null ? emailValue : false;
+                                    Boolean telefoneValue = (Boolean) json.get("telefone");
+                                    boolean telefone = cpfValue != null ? telefoneValue : false;
+
+                                    int focus = 0;
+                                    String mensagem = "";
+                                    if (cpf){
+                                        mensagem += "CPF já cadastrado no banco.";
+                                        focus = 2;
+                                    }
+                                    if (email && focus == 0){
+                                        mensagem += "Email já cadastrado no banco.";
+                                        focus = 1;
+                                    }
+
+                                    if (telefone && focus != 0){
+                                        mensagem += "Telefone já cadastrado no banco.";
+                                        focus = 3;
+                                    }
+
+                                    if (focus == 1){
+                                        emailEditText.requestFocus();
+                                    } else if (focus == 2) {
+                                        CpfEditText.requestFocus();
+                                    }else{
+                                        telefoneEditText.requestFocus();
+                                    }
+                                    if (!mensagem.equals("")){
+                                        Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n" + mensagem, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }else{
+                            Random random = new Random();
+                            int codigo = random.nextInt(10000);
+                            String codigoFormatado = String.format("%04d", codigo);
+                            String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
+                            Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numero);
+                            Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
+                            Bundle bundle = new Bundle();
+                            Gson gson = new Gson();
+                            String usuarioJson = gson.toJson(usuario);
+                            bundle.putString("codigoFormatado", codigoFormatado);
+                            bundle.putString("usuario", usuarioJson);
+                            intentSMS.putExtras(bundle);
+
+                            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+                            SmsManager sms = SmsManager.getDefault();
+                            sms.sendTextMessage(numero, null, mensagem, pi,null);
+                            setIntent(new Intent());
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
     private boolean camposValidos() {
