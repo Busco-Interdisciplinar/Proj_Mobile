@@ -307,6 +307,7 @@ public class Cadastro extends AppCompatActivity {
             SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(numero, null, mensagem, pi, null);
         }
+
     }
 
     public void voltarTelaLogin(View view) {

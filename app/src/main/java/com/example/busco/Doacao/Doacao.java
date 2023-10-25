@@ -9,16 +9,25 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.busco.R;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.text.format.DateFormat;
+import android.widget.DatePicker;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
+import java.util.Calendar;
 
 public class Doacao extends AppCompatActivity {
 
     private EditText produtoDoacao, quantidadeKilos, dataDoacao;
-    private ImageView checkIconProdutoDoacao, checkIconQuantidadeKilos, checkIconDataDoacao;
+    private ImageView checkIconProdutoDoacao, checkIconQuantidadeKilos;
     private CheckBox checkBoxAceite;
+    private EditText editTextDataDoacao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +40,9 @@ public class Doacao extends AppCompatActivity {
 
         checkIconProdutoDoacao = findViewById(R.id.checkIconProdutoDoacao);
         checkIconQuantidadeKilos = findViewById(R.id.checkIconQuantidadeKilos);
-        checkIconDataDoacao = findViewById(R.id.checkIconDataDoacao);
-
         checkBoxAceite = findViewById(R.id.checkBoxAceite);
+
+        editTextDataDoacao = findViewById(R.id.editTextDataDoacao);
 
         produtoDoacao.addTextChangedListener(new TextWatcher() {
             @Override
@@ -97,7 +106,7 @@ public class Doacao extends AppCompatActivity {
     }
 
     private boolean produtoValido(String nome) {
-        return !nome.isEmpty() && nome.matches("[a-zA-Z ]+");
+        return !nome.isEmpty() && nome.matches("[a-zA-ZÀ-ÖØ-öø-ÿ ]+");
     }
 
     public void criarDoacao(View view) {
@@ -123,5 +132,40 @@ public class Doacao extends AppCompatActivity {
 
         return produtoValido(produto) &&
                 quantidadeValida(kg);
+    }
+
+    public void selecionarData(View view) {
+        mostrarData();
+    }
+
+    private void mostrarData() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, dayOfMonth);
+                long selectedTime = calendar.getTimeInMillis();
+
+                Calendar umaSemana = Calendar.getInstance();
+                umaSemana.add(Calendar.DATE, 7);
+                long oneWeekLaterTime = umaSemana.getTimeInMillis();
+
+                if (selectedTime > System.currentTimeMillis() && selectedTime <= oneWeekLaterTime) {
+                    editTextDataDoacao.setText(DateFormat.format("dd/MM/yyyy", calendar));
+                } else {
+                    Toast.makeText(Doacao.this, "Selecione uma data dentro de uma semana a partir de hoje.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, dateSetListener, year, month, day);
+        datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + (7 * 24 * 60 * 60 * 1000)); // Uma semana em milissegundos
+        datePickerDialog.show();
     }
 }

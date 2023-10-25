@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Doacao.Doacao">
 
-    <!-- Ícone de seta -->
     <ImageView
         android:id="@+id/setaIcon"
         android:layout_width="30dp"
@@ -18,23 +17,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp" />
 
-    <!-- Título "Doação" -->
     <TextView
         android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
         android:text="Doação"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/setaIcon"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setaIcon"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo "Produto que irá doar" -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutProdutoDoacao"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -53,20 +51,20 @@
             android:id="@+id/editTextProdutoDoacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Produto que irá doar"
+            android:hint="Produto "
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Ícone de verificação para o campo "Produto que irá doar" -->
     <ImageView
         android:id="@+id/checkIconProdutoDoacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/check_cinza"
         app:layout_constraintEnd_toEndOf="@id/textInputLayoutProdutoDoacao"
         app:layout_constraintTop_toTopOf="@id/textInputLayoutProdutoDoacao" />
 
-    <!-- Campo "Informe a quantidade em quilos" -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutQuantidadeKilos"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -85,20 +83,20 @@
             android:id="@+id/editTextQuantidadeKilos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Informe a quantidade em quilos"
+            android:hint="Quantidade (Kg)"
             android:inputType="textEmailSubject" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Ícone de verificação para o campo "Informe a quantidade em quilos" -->
     <ImageView
         android:id="@+id/checkIconQuantidadeKilos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/check_cinza"
         app:layout_constraintEnd_toEndOf="@id/textInputLayoutQuantidadeKilos"
         app:layout_constraintTop_toTopOf="@id/textInputLayoutQuantidadeKilos" />
 
-    <!-- Campo "Data da Doação" -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutDataDoacao"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -117,16 +115,21 @@
             android:id="@+id/editTextDataDoacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data da Doação"
-            android:inputType="date" />
+            android:hint="Data "
+            android:inputType="none"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Ícone de verificação para o campo "Data da Doação" -->
     <ImageView
         android:id="@+id/checkIconDataDoacao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/check_cinza"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="selecionarData"
+        android:src="@drawable/seta_data"
         app:layout_constraintEnd_toEndOf="@id/textInputLayoutDataDoacao"
         app:layout_constraintTop_toTopOf="@id/textInputLayoutDataDoacao" />
 
