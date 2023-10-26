@@ -5,243 +5,243 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_constraintHorizontal_bias="0.498"-->
-<!--        android:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:ignore="MissingConstraints"-->
-<!--        android:text="Meu perfil"-->
-<!--        android:textColor="#FF9800"-->
-<!--        android:textSize="20sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="0.498"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_constraintStart_toStartOf="parent"
+        android:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:ignore="MissingConstraints"
+        android:text="Meu perfil"
+        android:textColor="#FF9800"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/profileImageView"-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="130dp"-->
-<!--        android:layout_marginTop="32dp"-->
-<!--        android:clickable="true"-->
-<!--        android:focusable="true"-->
-<!--        android:scaleType="centerCrop"-->
-<!--        android:src="@drawable/perfil"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
-<!--        tools:ignore="MissingConstraints"-->
-<!--        tools:layout_editor_absoluteX="145dp" />-->
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/perfil"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="145dp" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/nome"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_constraintHorizontal_bias="0.498"-->
-<!--        android:layout_constraintVertical_bias="0.0"-->
-<!--        android:layout_constraintTop_toBottomOf="@+id/profileImageView"-->
-<!--        android:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:text="Nome de usuário"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.498"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />-->
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="0.498"
+        android:layout_constraintVertical_bias="0.0"
+        android:layout_constraintTop_toBottomOf="@+id/profileImageView"
+        android:layout_constraintBottom_toBottomOf="parent"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:text="Nome de usuário"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/email"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_constraintHorizontal_bias="0.498"-->
-<!--        android:layout_constraintVertical_bias="0.0"-->
-<!--        android:layout_constraintTop_toBottomOf="@+id/nome"-->
-<!--        android:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_constraintStart_toStartOf="parent"-->
-<!--        android:text="E-mail de usuário"-->
-<!--        android:textSize="16dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/nome" />-->
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="0.498"
+        android:layout_constraintVertical_bias="0.0"
+        android:layout_constraintTop_toBottomOf="@+id/nome"
+        android:layout_constraintBottom_toBottomOf="parent"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_constraintStart_toStartOf="parent"
+        android:text="E-mail de usuário"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome" />
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/menu"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_constraintHorizontal_bias="0.194"-->
-<!--        android:layout_constraintVertical_bias="0.725"-->
-<!--        android:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_constraintEnd_toEndOf="parent"-->
-<!--        android:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_constraintTop_toTopOf="parent"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.152"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/email"-->
-<!--        app:layout_constraintVertical_bias="0.422">-->
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_constraintHorizontal_bias="0.194"
+        android:layout_constraintVertical_bias="0.725"
+        android:layout_constraintBottom_toBottomOf="parent"
+        android:layout_constraintEnd_toEndOf="parent"
+        android:layout_constraintStart_toStartOf="parent"
+        android:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.422">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/editarPerfil"-->
-<!--                android:layout_width="25dp"-->
-<!--                android:layout_height="22dp"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/editar" />-->
+            <ImageView
+                android:id="@+id/editarPerfil"
+                android:layout_width="25dp"
+                android:layout_height="22dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/editar" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/editPerfil"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Editar perfil" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/editPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Editar perfil" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/instituicao"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/instituicao" />-->
+            <ImageView
+                android:id="@+id/instituicao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/instituicao" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/tornarInstituicao"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Seja uma instituição" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/tornarInstituicao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Seja uma instituição" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/fornecedor"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/fornecedor" />-->
+            <ImageView
+                android:id="@+id/fornecedor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/fornecedor" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/tornarFornecedor"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Seja um fornecedor" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/tornarFornecedor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Seja um fornecedor" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/doacao"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/doacao" />-->
+            <ImageView
+                android:id="@+id/doacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/doacao" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/fazerDoacao"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Fazer doação" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/fazerDoacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Fazer doação" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/verLocalizacao"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/localizacao" />-->
+            <ImageView
+                android:id="@+id/verLocalizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/localizacao" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/localizacao"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Localização" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/localizacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Localização" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/sobreNos"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/sobre" />-->
+            <ImageView
+                android:id="@+id/sobreNos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/sobre" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/sobre"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Sobre nós" />-->
-<!--        </LinearLayout>-->
+            <TextView
+                android:id="@+id/sobre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Sobre nós" />
+        </LinearLayout>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="horizontal">-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/sair"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                app:srcCompat="@drawable/desconectar" />-->
+            <ImageView
+                android:id="@+id/sair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/desconectar" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/exit"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="30dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Sair" />-->
-<!--        </LinearLayout>-->
-<!--    </LinearLayout>-->
+            <TextView
+                android:id="@+id/exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1"
+                android:text="Sair" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
