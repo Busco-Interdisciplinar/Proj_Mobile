@@ -44,12 +44,12 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText = findViewById(R.id.editTextTelefone);
         cepEditText = findViewById(R.id.editTextCep);
         checkBox = findViewById(R.id.checkBox);
-        buttonCriarConta = findViewById(R.id.buttonCriarConta);
+        buttonCriarConta = findViewById(R.id.buttonContinuar);
 
         checkIconTelefone = findViewById(R.id.checkIconTelefone);
         checkIconNome = findViewById(R.id.checkIconNome);
         checkIconEmail = findViewById(R.id.checkIconEmail);
-        checkIconCpf = findViewById(R.id.checkIconIdade); // Corrigido para o ID correto
+        checkIconCpf = findViewById(R.id.checkIconIdade);
         checkIconSenha = findViewById(R.id.checkIconSenha);
         checkIconCep = findViewById(R.id.checkIconCep);
         checkIconConfirmarSenha = findViewById(R.id.checkIconConfirmarSenha);
@@ -124,7 +124,6 @@ public class Cadastro extends AppCompatActivity {
                 for (char m : mask.toCharArray()) {
                     if (m != '#') {
                         if (index < unmaskedText.length() && unmaskedText.charAt(index) == m) {
-                            // Evitar a sobreposição de caracteres não correspondentes
                             maskedText += unmaskedText.charAt(index);
                             index++;
                         }
@@ -137,7 +136,6 @@ public class Cadastro extends AppCompatActivity {
                         }
                         continue;
                     }
-
                     try {
                         maskedText += unmaskedText.charAt(index);
                         index++;
@@ -145,7 +143,6 @@ public class Cadastro extends AppCompatActivity {
                         break;
                     }
                 }
-
                 if(isDeleting){
                     editText.removeTextChangedListener(this);
                     editText.setText(newText);
@@ -160,7 +157,6 @@ public class Cadastro extends AppCompatActivity {
             }
         };
     }
-
 
     private void verificarEstadoBotao() {
         boolean camposNaoVazios = camposNaoVazios();
@@ -211,7 +207,19 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private boolean senhaValida(String senha) {
-        return senha.length() >= 6;
+        if (!senha.matches(".*[A-Z].*")) {
+            return false;
+        }
+        if (!senha.matches(".*[a-z].*")) {
+            return false;
+        }
+        if (!senha.matches(".*\\d.*")) {
+            return false;
+        }
+        if (senha.length() < 8) {
+            return false;
+        }
+        return true;
     }
 
     private boolean confirmacaoSenha(String confirmarSenha, String senha) {
@@ -307,7 +315,6 @@ public class Cadastro extends AppCompatActivity {
             SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(numero, null, mensagem, pi, null);
         }
-
     }
 
     public void voltarTelaLogin(View view) {

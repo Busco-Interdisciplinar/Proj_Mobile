@@ -6,21 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Redefinir_Senha">
 
+    <ImageView
+        android:id="@+id/setaIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/seta_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
         android:text="Redefinir senha"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setaIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo de Email -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -41,7 +52,16 @@
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Campo de Nova senha -->
+    <ImageView
+        android:id="@+id/checkIconEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutEmail"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutEmail" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNovaSenha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -62,8 +82,18 @@
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/checkIconSenhaNova"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutNovaSenha"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutNovaSenha" />
+
     <Button
-        android:id="@+id/buttonCriarConta"
+        android:id="@+id/buttonContinuar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

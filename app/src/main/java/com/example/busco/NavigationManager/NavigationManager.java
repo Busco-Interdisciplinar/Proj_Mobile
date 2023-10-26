@@ -21,6 +21,8 @@ public class NavigationManager {
     }
 
     public void voltar() {
-        fragmentManager.popBackStack();
+        if (fragmentManager.getBackStackEntryCount() > 0) {
+            fragmentManager.popBackStack();
+        }
     }
 }
