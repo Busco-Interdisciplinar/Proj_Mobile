@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.text.TextWatcher;
 
 import com.bumptech.glide.Glide;
 import com.example.busco.Api.ApiResponse;
@@ -46,6 +44,22 @@ public class ConfirmaCadastro extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.gif);
         Glide.with(this).load(R.raw.codigo_sms).into(imageView);
         setIntent(new Intent());
+
+        EditText digito1, digito2, digito3, digito4;
+        digito1 = findViewById(R.id.editTextCodigo1);
+        digito2 = findViewById(R.id.editTextCodigo2);
+        digito3 = findViewById(R.id.editTextCodigo3);
+        digito4 = findViewById(R.id.editTextCodigo4);
+
+        String digitoRecebido1 = codigo.substring(0, 1);
+        String digitoRecebido2 = codigo.substring(1, 2);
+        String digitoRecebido3 = codigo.substring(2, 3);
+        String digitoRecebido4 = codigo.substring(3, 4);
+
+        digito1.setText(digitoRecebido1);
+        digito2.setText(digitoRecebido2);
+        digito3.setText(digitoRecebido3);
+        digito4.setText(digitoRecebido4);
     }
 
     public void confirmar(View view){

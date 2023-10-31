@@ -109,8 +109,8 @@ public class Login extends AppCompatActivity {
     public void fazerLogin(View view) {
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
-        String email = emailEditText.getText().toString();
-        String senha = senhaEditText.getText().toString();
+        String email = emailEditText.getText().toString().trim();
+        String senha = senhaEditText.getText().toString().trim();
                 ApiService.getInstance().logarUsuario(email, senha).enqueue(new Callback<ApiResponse>() {
                     @Override
                     public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {

@@ -1,9 +1,13 @@
 package com.example.busco.Cadastros.Cadastro_Usuario;
 
+import android.Manifest;
 import android.app.PendingIntent;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
@@ -24,11 +30,9 @@ import com.example.busco.Login;
 import com.example.busco.R;
 import com.google.gson.Gson;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-import java.util.List;
 import java.util.Random;
 
 import retrofit2.Call;
@@ -71,6 +75,8 @@ public class Cadastro extends AppCompatActivity {
         verificarEstadoBotao();
     }
 
+
+
     private void setupTextWatchers() {
         nomeEditText.addTextChangedListener(createTextWatcher(checkIconNome, this::nomeValido));
         emailEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::emailValido));
@@ -80,7 +86,7 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText.addTextChangedListener(createTextWatcher(checkIconTelefone, this::telefoneValido));
         cepEditText.addTextChangedListener(createTextWatcher(checkIconCep, this::cepValido));
 
-        // Adicione um listener ao CheckBox para acompanhar as mudanças
+        // Adicione um lisztener ao CheckBox para acompanhar as mudanças
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             verificarEstadoBotao();
         });
@@ -259,15 +265,15 @@ public class Cadastro extends AppCompatActivity {
 
         if(camposValidos() && checkBox.isChecked()){
 
-            String numero = "+55" + telefoneEditText.getText().toString();
-            String nome =  nomeEditText.getText().toString();
-            String email = emailEditText.getText().toString();
-            String senha = senhaEditText.getText().toString();
-            String cep =  cepEditText.getText().toString();
-            String cpf = CpfEditText.getText().toString();
-            Gson gson = new Gson();
+            String numero = "+55" + telefoneEditText.getText().toString().trim();
+            String nome =  nomeEditText.getText().toString().trim();
+            String email = emailEditText.getText().toString().trim();
+            String senha = senhaEditText.getText().toString().trim();
+            String cep =  cepEditText.getText().toString().trim();
+            String cpf = CpfEditText.getText().toString().trim();
+            String numeroSemCodigo = numero.replace("+55", "");
 
-            ApiService.getInstance().buscarEmail(email).enqueue(new Callback<ApiResponse>() {
+            ApiService.getInstance().buscarCpfEmailTelefone(cpf, email, numeroSemCodigo).enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                     if (response.isSuccessful()){
@@ -277,67 +283,70 @@ public class Cadastro extends AppCompatActivity {
 //                            objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
 //                            Usuarios usuarioExistente = gson.fromJson(objetoJson, Usuarios.class);
                             try {
-                                JSONParser parser = new JSONParser();
-                                JSONObject json;
-                                json = (JSONObject) parser.parse(response.body().getAditionalInformation());
-                                if (json != null){
-                                    // Acessando os valores dos atributos
-                                    Boolean cpfValue = (Boolean) json.get("cpf");
-                                    boolean cpf = cpfValue != null ? cpfValue : false;
-                                    Boolean emailValue = (Boolean) json.get("email");
-                                    boolean email = cpfValue != null ? emailValue : false;
-                                    Boolean telefoneValue = (Boolean) json.get("telefone");
-                                    boolean telefone = cpfValue != null ? telefoneValue : false;
+                                JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
+                                Boolean cpf= (Boolean) jsonString.get("cpf");
+                                Boolean email = (Boolean) jsonString .get("email");
+                                Boolean telefone = (Boolean) jsonString .get("telefone");
 
-                                    int focus = 0;
-                                    String mensagem = "";
-                                    if (cpf){
-                                        mensagem += "CPF já cadastrado no banco.";
-                                        focus = 2;
-                                    }
-                                    if (email && focus == 0){
-                                        mensagem += "Email já cadastrado no banco.";
+                                int focus = 0;
+                                String mensagem = "";
+                                if (cpf){
+                                    mensagem += "\n \r CPF já cadastrado no banco.";
+                                    focus = 2;
+                                }
+                                if (email){
+                                    mensagem += "\n \r Email já cadastrado no banco.";
+                                    if(focus == 0){
                                         focus = 1;
                                     }
+                                }
 
-                                    if (telefone && focus != 0){
-                                        mensagem += "Telefone já cadastrado no banco.";
+                                if (telefone){
+                                    mensagem += "\n \r Telefone já cadastrado no banco.";
+                                    if(focus != 2 && focus != 1){
                                         focus = 3;
                                     }
-
-                                    if (focus == 1){
-                                        emailEditText.requestFocus();
-                                    } else if (focus == 2) {
-                                        CpfEditText.requestFocus();
-                                    }else{
-                                        telefoneEditText.requestFocus();
-                                    }
-                                    if (!mensagem.equals("")){
-                                        Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n" + mensagem, Toast.LENGTH_LONG).show();
-                                    }
                                 }
-                            } catch (ParseException e) {
+
+                                if (focus == 1){
+                                    emailEditText.requestFocus();
+                                } else if (focus == 2) {
+                                    CpfEditText.requestFocus();
+                                }else{
+                                    telefoneEditText.requestFocus();
+                                }
+                                if (!mensagem.equals("")){
+                                    Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n \r" + mensagem, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
                                 throw new RuntimeException(e);
                             }
-                        }else{
-                            Random random = new Random();
-                            int codigo = random.nextInt(10000);
-                            String codigoFormatado = String.format("%04d", codigo);
-                            String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
-                            Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numero);
-                            Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
-                            Bundle bundle = new Bundle();
-                            Gson gson = new Gson();
-                            String usuarioJson = gson.toJson(usuario);
-                            bundle.putString("codigoFormatado", codigoFormatado);
-                            bundle.putString("usuario", usuarioJson);
-                            intentSMS.putExtras(bundle);
-
-                            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
-                            SmsManager sms = SmsManager.getDefault();
-                            sms.sendTextMessage(numero, null, mensagem, pi,null);
-                            setIntent(new Intent());
                         }
+                    }else{
+                        Random random = new Random();
+                        int codigo = random.nextInt(10000);
+                        String codigoFormatado = String.format("%04d", codigo);
+                        String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
+                        mensagem = "Verificação Busco: " + codigoFormatado;
+                        Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numero);
+                        Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
+                        Bundle bundle = new Bundle();
+                        Gson gson = new Gson();
+                        String usuarioJson = gson.toJson(usuario);
+                        bundle.putString("codigoFormatado", codigoFormatado);
+                        bundle.putString("usuario", usuarioJson);
+                        intentSMS.putExtras(bundle);
+
+                        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+                        SmsManager sms = SmsManager.getDefault();
+                        sms.sendTextMessage(numero, null, mensagem, pi,null);
+                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                finish();
+                            }
+                        }, 3000);
+                        setIntent(new Intent());
                     }
                 }
 
