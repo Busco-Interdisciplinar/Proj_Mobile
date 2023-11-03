@@ -138,4 +138,8 @@ public class CadastroInstituicao extends AppCompatActivity {
     private boolean emailValido(String email) {
         return email.contains("@gmail") && email.contains(".com");
     }
+
+    public void voltarTelaLogin(View view) {
+
+    }
 }

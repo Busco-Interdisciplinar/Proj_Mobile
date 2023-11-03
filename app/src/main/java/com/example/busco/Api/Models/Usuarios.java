@@ -1,6 +1,8 @@
 package com.example.busco.Api.Models;
 
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -13,9 +15,9 @@ public class Usuarios {
     private String cep;
     private String nome;
     private String cpf;
+    private Date data_cadastro;
     private int qnt_doacao;
     private String telefone;
-
 
     public int getId() {
         return id;
@@ -65,6 +67,14 @@ public class Usuarios {
         this.cpf = cpf;
     }
 
+    public Date getData_cadastro() {
+        return data_cadastro;
+    }
+
+    public void setData_cadastro(Date data_cadastro) {
+        this.data_cadastro = data_cadastro;
+    }
+
     public int getQnt_doacao() {
         return qnt_doacao;
     }
@@ -81,7 +91,7 @@ public class Usuarios {
         this.telefone = telefone;
     }
 
-    public Usuarios(String email, String senha, String cep, String nome, String cpf,  String telefone) {
+    public Usuarios(String email, String senha, String cep, String nome, String cpf, String telefone) {
         this.email = email;
         this.senha = senha;
         this.cep = cep;
@@ -99,6 +109,7 @@ public class Usuarios {
                 ", cep='" + cep + '\'' +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
+                ", data_cadastro=" + data_cadastro +
                 ", qnt_doacao=" + qnt_doacao +
                 ", telefone='" + telefone + '\'' +
                 '}';

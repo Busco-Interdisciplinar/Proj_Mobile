@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="foto" type="id"></item>
+    <item name="nome_produto" type="id"></item>
+    <item name="menu" type="id"></item>
+    <item name="editarPerfil" type="id"></item>
+    <item name="editPerfil" type="id"></item>
+    <item name="instituicao" type="id"></item>
+    <item name="tornarInstituicao" type="id"></item>
+    <item name="fornecedor" type="id"></item>
+    <item name="tornarFornecedor" type="id"></item>
+    <item name="doacao" type="id"></item>
+    <item name="fazerDoacao" type="id"></item>
+    <item name="verLocalizacao" type="id"></item>
+    <item name="localizacao" type="id"></item>
+    <item name="sobreNos" type="id"></item>
+    <item name="sobre" type="id"></item>
+    <item name="sair" type="id"></item>
+    <item name="exit" type="id"></item>
+</resources>

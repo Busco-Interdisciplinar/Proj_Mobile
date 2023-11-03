@@ -20,6 +20,7 @@ import com.example.busco.Api.ApiService;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 import com.example.busco.Doacao.Doacao;
 import com.example.busco.Fragments.inflate;
+import com.example.busco.Fragments.principal_fragment;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -111,40 +112,42 @@ public class Login extends AppCompatActivity {
         EditText senhaEditText = findViewById(R.id.senha);
         String email = emailEditText.getText().toString().trim();
         String senha = senhaEditText.getText().toString().trim();
-                ApiService.getInstance().logarUsuario(email, senha).enqueue(new Callback<ApiResponse>() {
-                    @Override
-                    public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                        if (response.isSuccessful()){
-                            if (response.body() != null && response.body().isResponseSucessfull()){
+        if (email.equals("") || senha.equals("")){
+            Toast.makeText(getApplicationContext(), "Email ou senha vazios", Toast.LENGTH_LONG).show();
+        }else{
+            ApiService.getInstance().logarUsuario(email.trim(), senha.trim()).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
 //                                List<Object> usuarioObject = response.body().getObject();
 //                                String objetoJson = gson.toJson(usuarioObject.get(0));
 //                                objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
 //                                Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
-                                Intent in = new Intent(Login.this, Doacao.class);
-                                startActivity(in);
-                                Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                        }else {
-                            if (response.errorBody() != null) {
-                                Intent intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(intent);
-                                finish();
-                                try {
-                                    String apiResponseString = response.errorBody().string();
-                                    ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
-                                    Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
+                            Intent in = new Intent(Login.this, inflate.class);
+                            startActivity(in);
+                            Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    }else {
+                        if (response.errorBody() != null) {
+                            try {
+                                String apiResponseString = response.errorBody().string();
+                                ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
+                                Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
                             }
                         }
                     }
+                }
 
-                    @Override
-                    public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
-                        Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
     }
 }

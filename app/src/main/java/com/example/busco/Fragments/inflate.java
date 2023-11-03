@@ -25,7 +25,6 @@ public class inflate extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                // Lide com os eventos de clique aqui
                 switch (item.getItemId()) {
                     case R.id.menu_item1:
                         navigationManager.abrirTela(new principal_fragment());
@@ -39,7 +38,9 @@ public class inflate extends AppCompatActivity {
                     case R.id.promocao:
                         navigationManager.abrirTela(new promocao_fragment());
                         return true;
-                    // Adicione mais casos conforme necessário
+                    case R.id.perfil:
+                        navigationManager.abrirTela(new perfil_fragment());
+                        return true;
                 }
                 return false;
             }

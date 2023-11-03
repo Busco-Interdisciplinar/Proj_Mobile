@@ -18,16 +18,14 @@ public class Erro extends AppCompatActivity {
     }
 
     public void sair(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
-        finish();
+        finishAffinity();
     }
 
     public void tentarNovamente(View view) {
         if (isNetworkAvailable()) {
-            Intent intent = new Intent(this, WebViewActivity.class);
+            Intent intent = new Intent(this, Login.class);
             startActivity(intent);
-            finish();
+            //finish();
         } else {
             Toast.makeText(this, "Falha ao reconectar. Verifique sua conexão com a internet.", Toast.LENGTH_SHORT).show();
         }
