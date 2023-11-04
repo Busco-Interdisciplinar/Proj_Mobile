@@ -48,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="30dp"
             app:boxStrokeColor="@color/orangeBusco"
             app:hintTextColor="@color/orangeBusco"
             >
@@ -84,14 +84,13 @@
             android:layout_marginEnd="16dp"
             android:layout_marginTop="16dp"
             app:boxStrokeColor="@color/orangeBusco"
-            app:hintTextColor="@color/orangeBusco"
-            >
+            app:hintTextColor="@color/orangeBusco" >
 
             <EditText
                 android:id="@+id/editTextTextEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="E-mail"
                 android:inputType="textEmailSubject" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -150,8 +149,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCpf"
             app:boxStrokeColor="@color/orangeBusco"
-            app:hintTextColor="@color/orangeBusco"
-            >
+            app:hintTextColor="@color/orangeBusco" >
 
             <EditText
                 android:id="@+id/editTextTelefone"
@@ -277,28 +275,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Aceitar os termos de contrato"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmarSenha" />
 
         <Button
-            android:id="@+id/buttonContinuar"
+            android:id="@+id/btnConfirmar"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="65dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:height="65dp"
-            android:onClick="criarConta"
+            android:backgroundTint="#5BE53E"
+            android:onClick="confirmar"
             android:text="Continuar"
             android:textStyle="bold"
             app:cornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox"
-            android:layout_marginTop="16dp"
-            android:background="@color/verde_claro"/>
+            app:layout_constraintTop_toBottomOf="@id/checkBox"
+            app:layout_constraintVertical_bias="0.24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

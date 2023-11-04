@@ -112,16 +112,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:minHeight="48dp"
                 android:onClick="redefinirSenha"
-                android:text="Esqueceu sua senha?"
+                android:text="Esqueci minha senha"
                 android:textColor="#175C4C"
-                app:layout_constraintStart_toStartOf="parent"
+                app:fontFamily="@font/outfit_regular"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha"
-                app:fontFamily="@font/outfit_regular" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSenha" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -196,6 +196,7 @@
             android:id="@+id/criarConta"
             android:layout_width="105dp"
             android:layout_height="39dp"
+            android:layout_marginLeft="5dp"
             android:minHeight="48dp"
             android:onClick="criarConta"
             android:text="Crie uma aqui!"

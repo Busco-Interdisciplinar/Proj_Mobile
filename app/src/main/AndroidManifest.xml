@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -25,6 +27,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Busco"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+                android:value="AIzaSyASjpgEiB37zP3fPsqG9lOnZOvhhi8FXaQ"></meta-data>
+        <activity
+            android:name=".SobreNos"
+            android:exported="false" />
+        <activity
+            android:name=".Localizacao"
+            android:exported="false" />
         <activity
             android:name=".ProdutoAdapter"
             android:exported="false" />
@@ -60,8 +71,7 @@
             android:exported="true" />
         <activity
             android:name=".Cadastros.Cadastro_Usuario.Cadastro"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".Fragments.inflate"
             android:exported="true" />

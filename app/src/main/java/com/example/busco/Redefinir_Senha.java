@@ -1,7 +1,7 @@
 package com.example.busco;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-
-import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
 
 public class Redefinir_Senha extends AppCompatActivity {
 
@@ -99,6 +97,11 @@ public class Redefinir_Senha extends AppCompatActivity {
 
     private boolean emailValido(String email) {
         return email.contains("@gmail") && email.contains(".com");
+    }
+
+    public void voltar(View view) {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
     }
 
     interface TextValidator {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.busco.Doacao.Doacao;
+import com.example.busco.Fragments.principal_fragment;
 import com.example.busco.R;
 
 public class DoacaoEfetuada extends AppCompatActivity {
@@ -19,6 +20,11 @@ public class DoacaoEfetuada extends AppCompatActivity {
 
     public void outraDoacao(View view) {
         Intent intent = new Intent(this, Doacao.class);
+        startActivity(intent);
+    }
+
+    public void voltar(View view) {
+        Intent intent = new Intent(this, principal_fragment.class);
         startActivity(intent);
     }
 }
