@@ -2,9 +2,7 @@ package com.example.busco.Cadastros.Cadastro_Usuario;
 
 import android.app.PendingIntent;
 import android.annotation.SuppressLint;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,8 +18,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
@@ -321,15 +317,16 @@ public class Cadastro extends AppCompatActivity {
                         Random random = new Random();
                         int codigo = random.nextInt(10000);
                         String codigoFormatado = String.format("%04d", codigo);
-                        String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
-                        mensagem = "Verificação Busco: " + codigoFormatado;
-                        Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numero);
-                        Intent intentSMS = new Intent(getApplicationContext(),ConfirmaCadastro.class);
+                        String mensagem = "Verificação Busco: " + codigoFormatado;
+                        Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numeroSemCodigo);
+
+                        Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
                         Bundle bundle = new Bundle();
                         Gson gson = new Gson();
                         String usuarioJson = gson.toJson(usuario);
                         bundle.putString("codigoFormatado", codigoFormatado);
                         bundle.putString("usuario", usuarioJson);
+                        bundle.putString("action", "cadastro");
                         intentSMS.putExtras(bundle);
 
                         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
@@ -338,6 +335,7 @@ public class Cadastro extends AppCompatActivity {
                             sms.sendTextMessage(numero, null, mensagem, pi,null);
                         }catch (Exception e){
                             Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
+                            startActivity(intentSMS);
                         }
                         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                             @Override

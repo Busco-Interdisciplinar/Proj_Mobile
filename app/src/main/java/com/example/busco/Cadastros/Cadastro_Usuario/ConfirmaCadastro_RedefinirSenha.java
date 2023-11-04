@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,30 +24,47 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ConfirmaCadastro extends AppCompatActivity {
+public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
     private String codigo;
     private Usuarios usuario;
     private final Gson gson = new Gson();
+    private Bundle bundle;
+    String emailRecebido;
+    String novaSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirma_cadastro);
-        Bundle bundle = getIntent().getExtras();
-        String usuarioJson;
-        codigo = bundle.getString("codigoFormatado");
-        usuarioJson = bundle.getString("usuario");
-        usuario = gson.fromJson(usuarioJson, Usuarios.class);
-        String telefoneUsuario = usuario.getTelefone();
-        telefoneUsuario = telefoneUsuario.replace("(", "");
-        telefoneUsuario = telefoneUsuario.replace(")", "");
-        telefoneUsuario = telefoneUsuario.replace(" ", "");
-        usuario.setTelefone(telefoneUsuario.replace("+55", ""));
+        setContentView(R.layout.activity_confirma_cadastro_redefinir_senha);
+        bundle = getIntent().getExtras();
+        if (bundle != null){
+            if (Objects.equals(bundle.getString("action"), "senha")){
+                emailRecebido = bundle.getString("email");
+                novaSenha = bundle.getString("senha");
+                codigo = bundle.getString("codigoFormatado");
+                Button botao = findViewById(R.id.btnConfirmar);
+                botao.setText("REDEFINIR SENHA");
+                TextView tituloTela = findViewById(R.id.tituloCadastro_Senha);
+                tituloTela.setText("Confirmar redefinição de senha");
+            }else{
+                String usuarioJson;
+                codigo = bundle.getString("codigoFormatado");
+                usuarioJson = bundle.getString("usuario");
+                usuario = gson.fromJson(usuarioJson, Usuarios.class);
+                String telefoneUsuario = usuario.getTelefone();
+                telefoneUsuario = telefoneUsuario.replace("(", "");
+                telefoneUsuario = telefoneUsuario.replace(")", "");
+                telefoneUsuario = telefoneUsuario.replace(" ", "");
+                usuario.setTelefone(telefoneUsuario.replace("+55", ""));
+            }
+        }
+
         ImageView imageView = findViewById(R.id.gif);
         Glide.with(this).load(R.raw.codigo_sms).into(imageView);
         setIntent(new Intent());
@@ -115,25 +134,72 @@ public class ConfirmaCadastro extends AppCompatActivity {
         digito4 = findViewById(R.id.editTextCodigo4);
 
         String codigoCompleto = (digito1.getText().toString() + digito2.getText().toString() + digito3.getText().toString() + digito4.getText().toString());
+        if(bundle != null){
+            if (Objects.equals(bundle.getString("action"), "senha")){
+                resetarSenha(emailRecebido, novaSenha, codigoCompleto);
+            }else{
+                if (codigoCompleto.equals(codigo)){
+                    ApiService.getInstance().cadastrarUsuario(usuario).enqueue(new Callback<ApiResponse>() {
+                        @Override
+                        public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                            if (response.isSuccessful()){
+                                if (response.body() != null && response.body().isResponseSucessfull()){
+                                    List<Object> usuarioObject = response.body().getObject();
+                                    String objetoJson = gson.toJson(usuarioObject.get(0));
+                                    Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
+                                    Intent in = new Intent(ConfirmaCadastro_RedefinirSenha.this, Login.class);
+                                    in.putExtra("email", usuarioCadastrado.getEmail());
+                                    in.putExtra("senha", usuarioCadastrado.getSenha());
+                                    startActivity(in);
+                                    finish();
+                                    Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                if (response.errorBody() != null) {
+                                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                                    startActivity(intent);
+                                    finish();
+                                    try {
+                                        String apiResponseString = response.errorBody().string();
+                                        ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
+                                        Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                            Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    finish();
+                    Toast.makeText(getApplicationContext(), "O código inserido é inválido", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+
+    }
+
+    public void resetarSenha(String email, String novaSenha, String codigoCompleto){
         if (codigoCompleto.equals(codigo)){
-            ApiService.getInstance().cadastrarUsuario(usuario).enqueue(new Callback<ApiResponse>() {
+            ApiService.getInstance().resetSenha(email, novaSenha).enqueue(new Callback<ApiResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                     if (response.isSuccessful()){
                         if (response.body() != null && response.body().isResponseSucessfull()){
-                            List<Object> usuarioObject = response.body().getObject();
-                            String objetoJson = gson.toJson(usuarioObject.get(0));
-                            objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
-                            Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
-                            Intent in = new Intent(ConfirmaCadastro.this, Login.class);
-                            in.putExtra("email", usuarioCadastrado.getEmail());
-                            in.putExtra("senha", usuarioCadastrado.getSenha());
+                            Intent in = new Intent(ConfirmaCadastro_RedefinirSenha.this, Login.class);
+                            in.putExtra("email", email);
+                            in.putExtra("senha", novaSenha);
                             startActivity(in);
                             finish();
                             Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
                         }
-                    } else {
+                    }else{
                         if (response.errorBody() != null) {
                             Intent intent = new Intent(getApplicationContext(), Login.class);
                             startActivity(intent);
@@ -152,9 +218,10 @@ public class ConfirmaCadastro extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
                     Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+
                 }
             });
-        } else {
+        }else{
             finish();
             Toast.makeText(getApplicationContext(), "O código inserido é inválido", Toast.LENGTH_LONG).show();
         }
