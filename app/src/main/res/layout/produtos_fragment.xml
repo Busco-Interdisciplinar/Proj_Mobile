@@ -14,11 +14,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="30dp"
             android:layout_marginBottom="16dp"
             android:text="Produtos"
+            android:textColor="#FBAB4D"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#FBAB4D"/>
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pesquisar produtos"
+            android:layout_margin="16dp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/noProductTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="Nenhum produto encontrado"
+            android:textColor="#FF0000" />
+
+
 
         <ListView
             android:id="@+id/listProdutos"

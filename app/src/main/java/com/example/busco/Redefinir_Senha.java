@@ -125,6 +125,10 @@ public class Redefinir_Senha extends AppCompatActivity {
         return true;
     }
 
+    public void voltar(View view) {
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
+    }
     interface TextValidator {
         boolean isValid(String text);
     }

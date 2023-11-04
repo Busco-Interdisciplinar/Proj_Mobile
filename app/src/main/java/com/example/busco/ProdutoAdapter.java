@@ -38,7 +38,6 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                 .load(produto.getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(foto);
-
         return convertView;
     }
 }

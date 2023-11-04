@@ -54,7 +54,7 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText = findViewById(R.id.editTextTelefone);
         cepEditText = findViewById(R.id.editTextCep);
         checkBox = findViewById(R.id.checkBox);
-        buttonCriarConta = findViewById(R.id.buttonContinuar);
+        buttonCriarConta = findViewById(R.id.btnConfirmar);
 
         checkIconTelefone = findViewById(R.id.checkIconTelefone);
         checkIconNome = findViewById(R.id.checkIconNome);

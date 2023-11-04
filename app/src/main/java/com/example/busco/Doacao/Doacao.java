@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.busco.Fragments.perfil_fragment;
 import com.example.busco.R;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -167,5 +169,15 @@ public class Doacao extends AppCompatActivity {
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + (7 * 24 * 60 * 60 * 1000)); // Uma semana em milissegundos
         datePickerDialog.show();
+    }
+
+    public void confirmar(View view) {
+        Intent intent = new Intent(this, DoacaoEfetuada.class);
+        startActivity(intent);
+    }
+
+    public void voltar(View view) {
+        Intent intent = new Intent(this, perfil_fragment.class);
+        startActivity(intent);
     }
 }

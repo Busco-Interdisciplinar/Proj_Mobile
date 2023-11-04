@@ -6,21 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor">
 
-    <!-- Título "Cadastro" -->
+    <ImageView
+        android:onClick="voltar"
+        android:id="@+id/seta"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/seta_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp" />
+
     <TextView
         android:id="@+id/tituloCadastro_Senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastrar fornecedor"
+        android:text="Cadastro Fornecedor"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/seta"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"/>
 
-    <!-- Campo de CNPJ -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/editTextTextCNPJ"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -29,19 +41,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tituloCadastro_Senha"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="30dp">
 
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira o CNPJ"
+            android:hint="CNPJ"
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Ícone de verificação para o campo de CNPJ -->
     <ImageView
         android:id="@+id/checkIconCNPJ"
         android:layout_width="wrap_content"
@@ -52,7 +63,6 @@
         app:layout_constraintEnd_toEndOf="@id/editTextTextCNPJ"
         app:layout_constraintTop_toTopOf="@id/editTextTextCNPJ" />
 
-    <!-- Spinner dentro do TextInputLayout -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/spinnerLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -70,5 +80,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Aceito e concordo com os termos de contrato."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLayout" />
+
+
+    <Button
+        android:id="@+id/buttonCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:height="65dp"
+        android:backgroundTint="#5BE53E"
+        android:text="Cadastrar-se"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        android:layout_marginTop="16dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

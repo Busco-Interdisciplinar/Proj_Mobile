@@ -1,10 +1,14 @@
 package com.example.busco.Fragments;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,12 +35,17 @@ import retrofit2.Response;
 public class produtos_fragment extends Fragment {
 
     private ListView listView;
-    private List<Produto> produtos;
+    private List<Produto> produtos = new ArrayList<>();
     private ProdutoAdapter produtoAdapter;
+    private EditText searchEditText;
+    private TextView naoExiste;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.produtos_fragment, container, false);
         listView = view.findViewById(R.id.listProdutos);
+        searchEditText = view.findViewById(R.id.searchEditText);
+        naoExiste = view.findViewById(R.id.noProductTextView);
+
 
         ApiService.getInstance().listarProdutos().enqueue(new Callback<ApiResponse>() {
             @Override
@@ -44,7 +53,6 @@ public class produtos_fragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().isResponseSucessfull()) {
                         List<Object> objectList1 = response.body().getObject();
-                        List<Produto> produtos = new ArrayList<>();
                         Gson gson = new Gson();
                         for (Object object : objectList1) {
                                 String produtoString = gson.toJson(object);
@@ -63,7 +71,42 @@ public class produtos_fragment extends Fragment {
             }
         });
 
+        searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterProducts(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
         return view;
+    }
+
+    private void filterProducts(String searchText) {
+        List<Produto> filtro = new ArrayList<>();
+        for (Produto produto : produtos) {
+            if (produto.getNome().toLowerCase().contains(searchText.toLowerCase())) {
+                filtro.add(produto);
+            }
+        }
+
+        if (filtro.isEmpty()) {
+            naoExiste.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+        } else {
+            naoExiste.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+
+            produtoAdapter = new ProdutoAdapter(getActivity(), filtro);
+            listView.setAdapter(produtoAdapter);
+        }
     }
 
     @NonNull
