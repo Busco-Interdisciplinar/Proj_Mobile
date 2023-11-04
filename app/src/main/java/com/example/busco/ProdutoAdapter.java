@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.busco.Api.Models.Produto;
 
 public class ProdutoAdapter extends ArrayAdapter<Produto> {
 
@@ -37,7 +38,6 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                 .load(produto.getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(foto);
-
         return convertView;
     }
 }

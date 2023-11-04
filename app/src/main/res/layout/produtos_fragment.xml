@@ -21,6 +21,25 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pesquisar produtos"
+            android:layout_margin="16dp"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/noProductTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="Nenhum produto encontrado"
+            android:textColor="#FF0000" />
+
+
+
         <ListView
             android:id="@+id/listProdutos"
             android:layout_width="match_parent"
