@@ -43,7 +43,7 @@ import com.google.firebase.storage.UploadTask;
 public class produtos_fragment extends Fragment {
 
     private ListView listView;
-    private List<Produto> produtos;
+    private List<Produto> produtos = new ArrayList<>();
     private ProdutoAdapter produtoAdapter;
     private EditText searchEditText;
     private TextView naoExiste;
@@ -60,7 +60,6 @@ public class produtos_fragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null && response.body().isResponseSucessfull()) {
                         List<Object> objectList1 = response.body().getObject();
-                        List<Produto> produtos = new ArrayList<>();
                         Gson gson = new Gson();
                         for (Object object : objectList1) {
                             String produtoString = gson.toJson(object);

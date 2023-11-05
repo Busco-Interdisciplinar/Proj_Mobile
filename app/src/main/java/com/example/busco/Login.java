@@ -123,6 +123,14 @@ public class Login extends AppCompatActivity {
                     public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body() != null && response.body().isResponseSucessfull()){
+//                                List<Object> usuarioObject = response.body().getObject();
+//                                String objetoJson = gson.toJson(usuarioObject.get(0));
+//                                objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
+//                                Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
+                                Intent in = new Intent(Login.this, inflate.class);
+                                startActivity(in);
+                                Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+                                finish();
                             }
                         }else {
                             if (response.errorBody() != null) {

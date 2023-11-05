@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro;
+import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro_RedefinirSenha;
 import com.example.busco.Doacao.Doacao;
 import com.example.busco.Fragments.perfil_fragment;
 import com.example.busco.R;

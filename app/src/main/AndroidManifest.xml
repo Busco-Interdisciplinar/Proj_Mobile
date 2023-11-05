@@ -41,7 +41,7 @@
             android:name=".Redefinir_Senha"
             android:exported="false" />
         <activity
-            android:name=".Cadastros.Cadastro_Usuario.ConfirmaCadastro"
+            android:name=".Cadastros.Cadastro_Usuario.ConfirmaCadastro_RedefinirSenha"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
