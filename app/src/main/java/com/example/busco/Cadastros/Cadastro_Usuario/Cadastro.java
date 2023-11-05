@@ -58,7 +58,7 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText = findViewById(R.id.editTextTelefone);
         cepEditText = findViewById(R.id.editTextCep);
         checkBox = findViewById(R.id.checkBox);
-        buttonCriarConta = findViewById(R.id.buttonContinuar);
+        buttonCriarConta = findViewById(R.id.btnConfirmar);
 
         checkIconTelefone = findViewById(R.id.checkIconTelefone);
         checkIconNome = findViewById(R.id.checkIconNome);
@@ -71,8 +71,6 @@ public class Cadastro extends AppCompatActivity {
         setupTextWatchers();
         verificarEstadoBotao();
     }
-
-
 
     private void setupTextWatchers() {
         nomeEditText.addTextChangedListener(createTextWatcher(checkIconNome, this::nomeValido));

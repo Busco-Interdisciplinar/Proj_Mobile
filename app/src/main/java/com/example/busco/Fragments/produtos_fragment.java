@@ -1,5 +1,6 @@
 package com.example.busco.Fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import com.example.busco.Api.EndpointsMap;
 import com.example.busco.Api.Models.Produto;
 import com.example.busco.ProdutoAdapter;
 import com.example.busco.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -30,6 +32,12 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 
 public class produtos_fragment extends Fragment {
@@ -46,7 +54,6 @@ public class produtos_fragment extends Fragment {
         searchEditText = view.findViewById(R.id.searchEditText);
         naoExiste = view.findViewById(R.id.noProductTextView);
 
-
         ApiService.getInstance().listarProdutos().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
@@ -56,16 +63,23 @@ public class produtos_fragment extends Fragment {
                         List<Produto> produtos = new ArrayList<>();
                         Gson gson = new Gson();
                         for (Object object : objectList1) {
-                                String produtoString = gson.toJson(object);
-                                Produto produto = gson.fromJson(produtoString, Produto.class);
-                                produtos.add(produto);
+                            String produtoString = gson.toJson(object);
+                            Produto produto = gson.fromJson(produtoString, Produto.class);
+
+                            String produtoId = String.valueOf(produto.getId());
+                            String imageUrl = buscarUrlDaImagemNoFirebase(produtoId);
+
+                            if (imageUrl != null) {
+                                produto.setFoto(imageUrl);
+                            }
+
+                            produtos.add(produto);
                         }
                         produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
                         listView.setAdapter(produtoAdapter);
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
                 // Lidar com erros de solicitação
@@ -88,6 +102,30 @@ public class produtos_fragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void buscarUrlDaImagemNoFirebase(String produtoId) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+
+        String caminhoImagem = "produtos_imagens/" + produtoId;
+        StorageReference imagemRef = storageRef.child(caminhoImagem);
+
+        imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String imageUrl = uri.toString();
+                // Você pode usar imageUrl aqui
+                if (produtoAdapter != null) {
+                    produtoAdapter.notifyDataSetChanged(); // Notifica o adaptador após carregar a imagem
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Lidar com erros ao buscar a URL da imagem
+            }
+        });
     }
 
     private void filterProducts(String searchText) {

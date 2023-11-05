@@ -30,6 +30,7 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
         TextView nome = convertView.findViewById(R.id.nome_produto);
         TextView preco = convertView.findViewById(R.id.preco);
         ImageView foto = convertView.findViewById(R.id.foto_produto);
+        ImageView carrinho = convertView.findViewById(R.id.carrinho);
 
         nome.setText(produto.getNome());
         preco.setText("R$ " + produto.getPreco());
@@ -38,6 +39,14 @@ public class ProdutoAdapter extends ArrayAdapter<Produto> {
                 .load(produto.getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(foto);
+
+        carrinho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lide com o clique no carrinho aqui
+                // Você pode adicionar o produto correspondente à tela de carrinho
+            }
+        });
         return convertView;
     }
 }

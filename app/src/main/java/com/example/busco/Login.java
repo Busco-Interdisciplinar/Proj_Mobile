@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
-        startActivity( new Intent(this, Redefinir_Senha.class));
+        startActivity( new Intent(this, principal_fragment.class));
     }
 
     public void fazerLogin(View view) {
@@ -147,7 +147,6 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
                 }
             }
-
         });
         }
     }
