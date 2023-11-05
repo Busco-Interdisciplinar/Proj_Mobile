@@ -1,5 +1,6 @@
 package com.example.busco.Cadastros.Cadastro_Usuario;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,11 +19,16 @@ import com.bumptech.glide.Glide;
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Usuarios;
+import com.example.busco.Firebase.Connection;
+import com.example.busco.Firebase.Log;
 import com.example.busco.Login;
 import com.example.busco.R;
+import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -153,6 +159,18 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
                                     startActivity(in);
                                     finish();
                                     Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+
+                                    //adicionando Log no firebase
+                                    Connection connection = Connection.getInstance();
+                                    DatabaseReference databaseReference = connection.getDatabaseReference();
+
+                                    //Formatando data
+                                    Date currentDate = new Date();
+                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                    String formattedDateTime = dateFormat.format(currentDate);
+
+                                    Log log = new Log("Cadastro", formattedDateTime, "Novo usuário cadastrado no aplicativo", usuarioCadastrado.getId(), usuarioCadastrado.getNome());
+                                    databaseReference.child("log").push().setValue(log);
                                 }
                             } else {
                                 if (response.errorBody() != null) {
@@ -198,6 +216,23 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
                             startActivity(in);
                             finish();
                             Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+
+                            //adicionando Log no firebase
+                            Connection connection = Connection.getInstance();
+                            DatabaseReference databaseReference = connection.getDatabaseReference();
+
+                            //Pegando o usuário de retorno do banco
+                            List<Object> usuarioObject = response.body().getObject();
+                            String objetoJson = gson.toJson(usuarioObject.get(0));
+                            Usuarios usuarioAlterado = gson.fromJson(objetoJson, Usuarios.class);
+
+                            //Formatando data
+                            Date currentDate = new Date();
+                            @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            String formattedDateTime = dateFormat.format(currentDate);
+
+                            Log log = new Log("Senha", formattedDateTime, "Usuário alterou a senha", usuarioAlterado.getId(), usuarioAlterado.getNome());
+                            databaseReference.child("log").push().setValue(log);
                         }
                     }else{
                         if (response.errorBody() != null) {

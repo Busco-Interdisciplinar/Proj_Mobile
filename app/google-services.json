@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "189017806072",
+    "firebase_url": "https://busco-35f56-default-rtdb.firebaseio.com",
+    "project_id": "busco-35f56",
+    "storage_bucket": "busco-35f56.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189017806072:android:27e47366ab07d231d9970d",
+        "android_client_info": {
+          "package_name": "com.example.busco"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL2rbQ6IDKGDUJ_M6fYE_nHwqKKnCmaeo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

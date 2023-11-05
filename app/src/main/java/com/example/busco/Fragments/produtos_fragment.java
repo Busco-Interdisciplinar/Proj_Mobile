@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -67,7 +68,7 @@ public class produtos_fragment extends Fragment {
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Lidar com erros de solicitação
+                Toast.makeText(requireContext().getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
