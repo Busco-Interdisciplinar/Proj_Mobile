@@ -18,26 +18,21 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
-import com.example.busco.Api.EndpointsMap;
 import com.example.busco.Api.Models.Produto;
 import com.example.busco.ProdutoAdapter;
 import com.example.busco.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import com.google.android.gms.tasks.OnCompleteListener;
+
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 
 public class produtos_fragment extends Fragment {
@@ -103,7 +98,7 @@ public class produtos_fragment extends Fragment {
         return view;
     }
 
-    private void buscarUrlDaImagemNoFirebase(String produtoId) {
+    private String buscarUrlDaImagemNoFirebase(String produtoId) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
@@ -114,9 +109,8 @@ public class produtos_fragment extends Fragment {
             @Override
             public void onSuccess(Uri uri) {
                 String imageUrl = uri.toString();
-                // Você pode usar imageUrl aqui
                 if (produtoAdapter != null) {
-                    produtoAdapter.notifyDataSetChanged(); // Notifica o adaptador após carregar a imagem
+                    produtoAdapter.notifyDataSetChanged();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -125,6 +119,8 @@ public class produtos_fragment extends Fragment {
                 // Lidar com erros ao buscar a URL da imagem
             }
         });
+
+        return caminhoImagem;
     }
 
     private void filterProducts(String searchText) {
