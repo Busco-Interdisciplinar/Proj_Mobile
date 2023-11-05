@@ -68,8 +68,6 @@ public class Cadastro extends AppCompatActivity {
         verificarEstadoBotao();
     }
 
-
-
     private void setupTextWatchers() {
         nomeEditText.addTextChangedListener(createTextWatcher(checkIconNome, this::nomeValido));
         emailEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::emailValido));

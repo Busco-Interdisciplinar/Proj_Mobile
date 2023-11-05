@@ -83,6 +83,7 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/carrinho"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="right"
@@ -94,6 +95,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
