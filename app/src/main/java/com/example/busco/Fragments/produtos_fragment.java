@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +20,18 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Produto;
+import com.example.busco.Firebase.Connection;
 import com.example.busco.ProdutoAdapter;
 import com.example.busco.R;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,14 +68,30 @@ public class produtos_fragment extends Fragment {
                             Produto produto = gson.fromJson(produtoString, Produto.class);
 
                             String produtoId = String.valueOf(produto.getId());
-                            String imageUrl = buscarUrlDaImagemNoFirebase(produtoId);
 
-                            if (imageUrl != null) {
-                                produto.setFoto(imageUrl);
-                            }
+                            //Buscando a imagem do produto no firebase
+                            Connection connection = Connection.getInstance();
+                            DatabaseReference databaseReference = connection.getDatabaseReference();
+                            DatabaseReference imagemRef = databaseReference.child("produtos_images").child(produtoId);
+
+                            imagemRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String url = snapshot.child("url").getValue(String.class);
+                                    if (url != null){
+                                        produto.setFoto(url);
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                                }
+                            });
 
                             produtos.add(produto);
                         }
+
+                        produtos.sort(Comparator.comparing(Produto::getNome));
                         produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
                         listView.setAdapter(produtoAdapter);
                     }
@@ -76,7 +99,7 @@ public class produtos_fragment extends Fragment {
             }
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                // Lidar com erros de solicitação
+                Toast.makeText(requireContext().getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -102,7 +125,7 @@ public class produtos_fragment extends Fragment {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
 
-        String caminhoImagem = "produtos_imagens/" + produtoId;
+        String caminhoImagem = "produtos_images/" + produtoId;
         StorageReference imagemRef = storageRef.child(caminhoImagem);
 
         imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -116,7 +139,7 @@ public class produtos_fragment extends Fragment {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                // Lidar com erros ao buscar a URL da imagem
+                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
             }
         });
 

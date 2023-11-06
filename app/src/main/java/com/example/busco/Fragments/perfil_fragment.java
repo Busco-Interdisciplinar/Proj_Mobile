@@ -1,7 +1,10 @@
     package com.example.busco.Fragments;
 
+    import android.content.Context;
     import android.content.DialogInterface;
     import androidx.constraintlayout.widget.ConstraintLayout;
+
+    import android.content.SharedPreferences;
     import android.os.Bundle;
     import android.view.LayoutInflater;
     import android.view.View;
@@ -29,13 +32,18 @@
     import static android.app.Activity.RESULT_OK;
 
     //import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
+    import com.example.busco.Api.Models.Usuarios;
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
     import com.example.busco.R;
     import com.example.busco.SobreNos;
+    import com.example.busco.Usuario;
+    import com.google.gson.Gson;
 
     import org.w3c.dom.Text;
+
+    import java.util.Objects;
 
     public class perfil_fragment extends Fragment {
         private static final int PICK_IMAGE = 1;
@@ -49,9 +57,21 @@
         private TextView editarPerfil;
         private TextView local;
         private TextView sobre;
+        Gson gson = new Gson();
 
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.perfil_fragment, container, false);
+
+            //Setando as informações do usuário com base nas informações do usuario logado
+
+            TextView nomeText = view.findViewById(R.id.nomeUsuario);
+            TextView emailText = view.findViewById(R.id.emailUsuario);
+
+            SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            String json = sharedPreferences.getString("user", "");
+            Usuarios usuario = gson.fromJson(json, Usuarios.class);
+            nomeText.setText(usuario.getNome());
+            emailText.setText(usuario.getEmail());
 
             profileImageView = view.findViewById(R.id.foto);
             sair = view.findViewById(R.id.exit);
