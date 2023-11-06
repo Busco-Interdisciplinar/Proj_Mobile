@@ -71,15 +71,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
         app:layout_constraintVertical_bias="0.044"
-        tools:layout_editor_absoluteX="0dp"
-
-        >
+        tools:layout_editor_absoluteX="0dp" >
 
         <LinearLayout
             android:id="@+id/promocoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -288,183 +285,358 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="220dp"
+                android:layout_width="163dp"
+                android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
                 android:background="@drawable/rounded_orange"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
 
                 <ImageView
-                    android:id="@+id/pao"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/brocolis" />
-
-                <TextView
-                    android:id="@+id/promocaoPao"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1Kg de Brócolis"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/preco"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="R$ 5,90"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/usarpromocao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:id="@+id/imageView12"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="Usar promoção"
-                    android:textSize="11sp"
-                    app:cornerRadius="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="220dp"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imageView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/morango" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="500g de Morango"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="R$ 10,90"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Usar promoção"
-                    android:textSize="11sp"
-                    app:cornerRadius="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="220dp"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/morango"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/cenoura" />
-
-                <TextView
-                    android:id="@+id/promocaoCenoura"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1kg de Cenoura"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/precoCenoura"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="R$ 2,99"
-                    android:textColor="#FFFFFF" />
-
-                <Button
-                    android:id="@+id/usarpromocaoCenoura"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="Usar promoção"
-                    android:textSize="11sp"
-                    app:cornerRadius="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/tomate"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/tomate" />
 
                 <TextView
-                    android:id="@+id/promocaotomate"
+                    android:id="@+id/nome_produto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="1,5Kg de Tomate"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/precotomate"
-                    android:layout_width="match_parent"
+                    android:id="@+id/preco_produto"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="R$ 4,90"
-                    android:textColor="#FFFFFF" />
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
 
                 <Button
-                    android:id="@+id/usarpromocaoTomate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:id="@+id/button3"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="11sp"
-                    app:cornerRadius="20dp" />
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="163dp"
+                android:layout_height="207dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/rounded_orange"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
+
+                <ImageView
+                    android:id="@+id/imageViewproduto"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/morango" />
+
+                <TextView
+                    android:id="@+id/nome_produtoMorango"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/preco_produtoMorango"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
+
+                <Button
+                    android:id="@+id/usar_promocaoMorango"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="163dp"
+                android:layout_height="207dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/rounded_orange"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
+
+                <ImageView
+                    android:id="@+id/imageViewprodutoCenoura"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cenoura" />
+
+                <TextView
+                    android:id="@+id/nome_produtoCenoura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/preco_produtoCenoura"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
+
+                <Button
+                    android:id="@+id/usar_promocaoCenoura"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="163dp"
+                android:layout_height="207dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/rounded_orange"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
+
+                <ImageView
+                    android:id="@+id/imageViewprodutoBatata"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/batata" />
+
+                <TextView
+                    android:id="@+id/nome_produtoBatata"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/preco_produtoBatata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
+
+                <Button
+                    android:id="@+id/usar_promocaoBatata"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="163dp"
+                android:layout_height="207dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/rounded_orange"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
+
+                <ImageView
+                    android:id="@+id/imageViewprodutoBrocolis"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/brocolis" />
+
+                <TextView
+                    android:id="@+id/nome_produtoBrocolis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/preco_produtoBrocolis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
+
+                <Button
+                    android:id="@+id/usar_promocaoBrocolis"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="163dp"
+                android:layout_height="207dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/rounded_orange"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.064"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.057">
+
+                <ImageView
+                    android:id="@+id/imageViewprodutoAbacaxi"
+                    android:layout_width="146dp"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fundo_branco"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/abacaxi" />
+
+                <TextView
+                    android:id="@+id/nome_produtoAbacaxi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:gravity="center"
+                    android:text="1kg de Kiwi"
+                    android:textColor="#FDFCFC"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/preco_produtoAbacaxi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="De 19,90 por 15,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11dp" />
+
+                <Button
+                    android:id="@+id/usar_promocaoAbacaxi"
+                    android:layout_width="140dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="8sp"
+                    app:cornerRadius="50sp" />
             </LinearLayout>
 
         </LinearLayout>
