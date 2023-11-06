@@ -1,9 +1,11 @@
 package com.example.busco.Cadastros.Cadastro_Usuario;
 
-import android.annotation.SuppressLint;
 import android.app.PendingIntent;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,14 +16,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Login;
 import com.example.busco.R;
 import com.google.gson.Gson;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Cadastro extends AppCompatActivity {
 
@@ -44,7 +54,7 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText = findViewById(R.id.editTextTelefone);
         cepEditText = findViewById(R.id.editTextCep);
         checkBox = findViewById(R.id.checkBox);
-        buttonCriarConta = findViewById(R.id.buttonContinuar);
+        buttonCriarConta = findViewById(R.id.btnConfirmar);
 
         checkIconTelefone = findViewById(R.id.checkIconTelefone);
         checkIconNome = findViewById(R.id.checkIconNome);
@@ -71,7 +81,6 @@ public class Cadastro extends AppCompatActivity {
         telefoneEditText.addTextChangedListener(createTextWatcher(checkIconTelefone, this::telefoneValido));
         senhaEditText.addTextChangedListener(createTextWatcher(checkIconSenha, this::senhaValida));
         confirmarSenhaEditText.addTextChangedListener(createTextWatcher(checkIconConfirmarSenha, text -> confirmacaoSenha(text, senhaEditText.getText().toString())));
-
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> verificarEstadoBotao());
     }
 
@@ -199,17 +208,14 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private boolean nomeValido(String nome) {
-        return nome.matches("^[a-zA-ZÀ-ÖØ-öø-ÿĀ-ž]+$");
+        return nome.trim().matches("^[a-zA-ZÀ-ÖØ-öø-ÿĀ-ž]+$");
     }
 
     private boolean emailValido(String email) {
-        return email != null && email.matches("^[A-Za-z0-9+_.-]+@[gmail|outlook|hotmail|germinare|org]+\\.(com|com.br|org|org.br)$");
+        return email != null && email.trim().matches("^[A-Za-z0-9+_.-]+@[gmail|outlook|hotmail|germinare|org]+\\.(com|com.br|org|org.br)$");
     }
 
     private boolean senhaValida(String senha) {
-        if (!senha.matches(".*[A-Z].*")) {
-            return false;
-        }
         if (!senha.matches(".*[a-z].*")) {
             return false;
         }
@@ -226,6 +232,121 @@ public class Cadastro extends AppCompatActivity {
         return confirmarSenha.equals(senha);
     }
 
+    private boolean telefoneValido(String telefone) {
+        telefone = telefone.replaceAll("[^0-9]", "");
+        return telefone.length() >= 10;
+    }
+
+    private boolean cepValido(String cep) {
+        cep = cep.replaceAll("[^0-9]", "");
+        return cep.length() == 8;
+    }
+    public void criarConta(View view) {
+        if (!camposValidos()) {
+            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!checkBox.isChecked()) {
+            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(camposValidos() && checkBox.isChecked()){
+
+            String numero = "+55" + telefoneEditText.getText().toString();
+            String nome =  nomeEditText.getText().toString().trim();
+            String email = emailEditText.getText().toString().trim();
+            String senha = senhaEditText.getText().toString().trim();
+            String cep =  cepEditText.getText().toString().trim().replace("-", "");
+            String cpf = cpfEditText.getText().toString().trim().replace(".", "").replace("-", "");
+            String numeroSemCodigo = numero.replace("+55", "").replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
+
+            ApiService.getInstance().buscarCpfEmailTelefone(cpf, email, numeroSemCodigo).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
+                            try {
+                                JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
+                                Boolean cpf = (Boolean) jsonString.get("cpf");
+                                Boolean email = (Boolean) jsonString.get("email");
+                                Boolean telefone = (Boolean) jsonString.get("telefone");
+
+                                int focus = 0;
+                                String mensagem = "";
+                                if (cpf){
+                                    mensagem += "\n \r CPF já cadastrado no banco.";
+                                    focus = 2;
+                                }
+                                if (email){
+                                    mensagem += "\n \r Email já cadastrado no banco.";
+                                    if(focus == 0){
+                                        focus = 1;
+                                    }
+                                }
+
+                                if (telefone){
+                                    mensagem += "\n \r Telefone já cadastrado no banco.";
+                                    if(focus != 2 && focus != 1){
+                                        focus = 3;
+                                    }
+                                }
+
+                                if (focus == 1){
+                                    emailEditText.requestFocus();
+                                } else if (focus == 2) {
+                                    cpfEditText.requestFocus();
+                                }else{
+                                    telefoneEditText.requestFocus();
+                                }
+                                if (!mensagem.equals("")){
+                                    Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n \r" + mensagem, Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }else{
+                        Random random = new Random();
+                        int codigo = random.nextInt(10000);
+                        String codigoFormatado = String.format("%04d", codigo);
+                        String mensagem = "Verificação Busco: " + codigoFormatado;
+                        Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numeroSemCodigo);
+
+                        Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
+                        Bundle bundle = new Bundle();
+                        Gson gson = new Gson();
+                        String usuarioJson = gson.toJson(usuario);
+                        bundle.putString("codigoFormatado", codigoFormatado);
+                        bundle.putString("usuario", usuarioJson);
+                        bundle.putString("action", "cadastro");
+                        intentSMS.putExtras(bundle);
+
+                        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+                        SmsManager sms = SmsManager.getDefault();
+                        try {
+                            sms.sendTextMessage(numero, null, mensagem, pi,null);
+                        }catch (Exception e){
+                            Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
+                            startActivity(intentSMS);
+                        }
+                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                finish();
+                            }
+                        }, 3000);
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
     private boolean camposValidos() {
         String nome = nomeEditText.getText().toString();
         String email = emailEditText.getText().toString();
@@ -266,55 +387,6 @@ public class Cadastro extends AppCompatActivity {
         resto = soma % 11;
         int digitoVerificador2 = (resto < 2) ? 0 : (11 - resto);
         return digitos[9] == digitoVerificador1 && digitos[10] == digitoVerificador2;
-    }
-
-    private boolean telefoneValido(String telefone) {
-        telefone = telefone.replaceAll("[^0-9]", "");
-        return telefone.length() >= 10;
-    }
-
-    private boolean cepValido(String cep) {
-        cep = cep.replaceAll("[^0-9]", "");
-        return cep.length() == 8;
-    }
-
-    public void criarConta(View view) {
-        if (!camposValidos()) {
-            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (!checkBox.isChecked()) {
-            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (camposValidos() && checkBox.isChecked()) {
-            String numero = "+55" + telefoneEditText.getText().toString();
-            String nome = nomeEditText.getText().toString();
-            String email = emailEditText.getText().toString();
-            String senha = senhaEditText.getText().toString();
-            String cep = cepEditText.getText().toString();
-            String cpf = cpfEditText.getText().toString();
-
-            Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numero);
-
-            Random random = new Random();
-            int codigo = random.nextInt(10000);
-            String codigoFormatado = String.format("%04d", codigo);
-            String mensagem = "Seu código de verificação da Busco é " + codigoFormatado;
-
-            Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro.class);
-            Bundle bundle = new Bundle();
-            Gson gson = new Gson();
-            String usuarioJson = gson.toJson(usuario);
-            bundle.putString("codigoFormatado", codigoFormatado);
-            bundle.putString("usuario", usuarioJson);
-            intentSMS.putExtras(bundle);
-
-            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS, PendingIntent.FLAG_IMMUTABLE);
-            SmsManager sms = SmsManager.getDefault();
-            sms.sendTextMessage(numero, null, mensagem, pi, null);
-        }
     }
 
     public void voltarTelaLogin(View view) {
