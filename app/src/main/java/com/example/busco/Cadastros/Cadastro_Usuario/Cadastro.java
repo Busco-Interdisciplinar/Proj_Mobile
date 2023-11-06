@@ -267,10 +267,6 @@ public class Cadastro extends AppCompatActivity {
                 public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                     if (response.isSuccessful()){
                         if (response.body() != null && response.body().isResponseSucessfull()){
-//                            List<Object> usuarioObject = response.body().getObject();
-//                            String objetoJson = gson.toJson(usuarioObject.get(0));
-//                            objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
-//                            Usuarios usuarioExistente = gson.fromJson(objetoJson, Usuarios.class);
                             try {
                                 JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
                                 Boolean cpf = (Boolean) jsonString.get("cpf");
