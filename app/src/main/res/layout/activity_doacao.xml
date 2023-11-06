@@ -1,112 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Doacao.Doacao">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fazer Doação"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+    <ImageView
+        android:id="@+id/setaIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/seta_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutProduto"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
-        android:onClick="fazerDoacao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <EditText
-            android:id="@+id/produto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Produto que irá doar"
-            android:inputType="text" />
-
-        <ImageView
-            android:id="@+id/checkIconProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutKG"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProduto">
-
-        <EditText
-            android:id="@+id/quantidade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Informe a quantidade em Kg"
-            android:inputType="number" />
-
-        <ImageView
-            android:id="@+id/checkIconKG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <CheckBox
-        android:id="@+id/checkBox"
+    <TextView
+        android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:text="Doação"
+        android:textColor="#191818"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/setaIcon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutProdutoDoacao"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:boxStrokeColor="@color/orangeBusco"
+        app:hintTextColor="@color/orangeBusco">
+
+        <EditText
+            android:id="@+id/editTextProdutoDoacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Produto "
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/checkIconProdutoDoacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutProdutoDoacao"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutProdutoDoacao" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutQuantidadeKilos"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProdutoDoacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:boxStrokeColor="@color/orangeBusco"
+        app:hintTextColor="@color/orangeBusco">
+
+        <EditText
+            android:id="@+id/editTextQuantidadeKilos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quantidade (Kg)"
+            android:inputType="textEmailSubject" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/checkIconQuantidadeKilos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutQuantidadeKilos"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutQuantidadeKilos" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutDataDoacao"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutQuantidadeKilos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:boxStrokeColor="@color/orangeBusco"
+        app:hintTextColor="@color/orangeBusco">
+
+        <EditText
+            android:id="@+id/editTextDataDoacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Data "
+            android:inputType="none"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:clickable="true"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/checkIconDataDoacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="selecionarData"
+        android:src="@drawable/seta_data"
+        app:layout_constraintEnd_toEndOf="@id/textInputLayoutDataDoacao"
+        app:layout_constraintTop_toTopOf="@id/textInputLayoutDataDoacao" />
+
+    <CheckBox
+        android:id="@+id/checkBoxAceite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutKG" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDataDoacao" />
 
     <Button
         android:id="@+id/buttonFazerDoacao"
-        android:layout_width="370dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:height="65dp"
-        android:backgroundTint="#5BE53E"
-        android:onClick="fazerDoacao"
-        android:text="Fazer doação"
+        android:onClick="criarDoacao"
+        android:text="Continuar"
         android:textStyle="bold"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxAceite"
+        android:layout_marginTop="16dp"
+        android:background="@color/verde_claro" />
 </androidx.constraintlayout.widget.ConstraintLayout>

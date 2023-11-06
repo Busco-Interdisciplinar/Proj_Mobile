@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/profileImageView"
         android:layout_width="130dp"
@@ -55,6 +56,39 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImageView" />
+=======
+<!--    <ImageView-->
+<!--        android:id="@+id/foto"-->
+<!--        android:layout_width="130dp"-->
+<!--        android:layout_height="130dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:clickable="true"-->
+<!--        android:focusable="true"-->
+<!--        android:scaleType="centerCrop"-->
+<!--        android:src="@drawable/perfil"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--        tools:ignore="MissingConstraints"-->
+<!--        tools:layout_editor_absoluteX="145dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/nome"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_constraintHorizontal_bias="0.498"-->
+<!--        android:layout_constraintVertical_bias="0.0"-->
+<!--        android:layout_constraintTop_toBottomOf="@+id/foto"-->
+<!--        android:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="Nome de usuário"-->
+<!--        android:textSize="18dp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/foto" />-->
+>>>>>>> b0082e9aa7a4f6a88ad841b451c2bf6cef534e56
 
     <TextView
         android:id="@+id/email"

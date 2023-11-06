@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    android:layout_margin="0dp"
+    android:layout_marginLeft="10dp"
+    android:background="#FFFFFF"
+    android:clipToPadding="false">
+
+
+        <LinearLayout
+            android:layout_width="388dp"
+            android:layout_height="120dp"
+            android:background="@drawable/fundo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.695"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.458">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="127dp"
+                android:layout_height="91dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/fundo1"
+
+                android:padding="10dp"
+                android:src="@drawable/abacaxi" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/fundo"
+                android:orientation="vertical"
+                tools:layout_editor_absoluteX="123dp"
+                tools:layout_editor_absoluteY="411dp">
+
+                <TextView
+                    android:id="@+id/txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_medium"
+                        android:text="1kg De Abacaxi"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/font_outfit"
+                    android:text="EMBALAGEM"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="102dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="0.3dp"
+                    android:layout_marginRight="75dp"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="R$9,90"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/botao"
+                    android:layout_width="141dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-38dp"
+                    android:layout_marginRight="10dp"
+                    android:fontFamily="@font/outfit_semi_bold"
+                    android:text="Usar promoção"
+                    android:textSize="9dp"
+                    app:cornerRadius="20dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="163dp"
+        android:layout_height="207dp"
+        android:background="@drawable/fundo"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057">
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="146dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fundo1"
+            android:padding="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fruta" />
+
+        <TextView
+            android:id="@+id/nome_ticket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/outfit_semi_bold"
+            android:gravity="center"
+            android:text="1kg de Kiwi"
+            android:textColor="#FDFCFC"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/preco_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/font_outfit"
+            android:text="De 19,90 por 15,90"
+            android:textColor="#FFFFFF"
+            android:textSize="11dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="140dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/outfit_semi_bold"
+            android:text="Usar promoção"
+            android:textSize="8sp"
+            app:cornerRadius="50sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
