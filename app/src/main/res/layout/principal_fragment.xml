@@ -316,7 +316,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="1,5kg de Tomate"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -327,7 +327,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 13,90 por 7,90"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -339,7 +339,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -375,7 +375,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="500g de Morango"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -386,7 +386,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 9,90 por 5,90"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -398,7 +398,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -434,7 +434,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="1kg de Cenoura"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -445,7 +445,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 7,90 por 3,80"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -457,7 +457,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -493,7 +493,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="1kg de Batata"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -504,7 +504,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 12,70 por 7,30"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -516,7 +516,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -552,7 +552,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="600g de Brócolis"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -563,7 +563,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 9,90 por 6,00"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -575,7 +575,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -612,7 +612,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Kiwi"
+                    android:text="1kg de Abacaxi"
                     android:textColor="#FDFCFC"
                     android:textSize="14dp" />
 
@@ -623,7 +623,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 19,90 por 15,90"
+                    android:text="De 8,90 por 4,50"
                     android:textColor="#FFFFFF"
                     android:textSize="11dp" />
 
@@ -635,7 +635,7 @@
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
-                    android:textSize="8sp"
+                    android:textSize="10sp"
                     app:cornerRadius="50sp" />
             </LinearLayout>
 
@@ -688,6 +688,5 @@
             android:textSize="17sp"
             android:textStyle="bold" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
