@@ -2,10 +2,8 @@ package com.example.busco.Cadastros.Cadastro_Instituicao;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,15 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.busco.Api.Models.Usuarios;
-import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro_RedefinirSenha;
-import com.example.busco.Doacao.Doacao;
 import com.example.busco.Fragments.perfil_fragment;
 import com.example.busco.R;
-import com.google.gson.Gson;
-
-import java.util.Random;
 
 public class CadastroInstituicao extends AppCompatActivity {
 
@@ -37,9 +28,9 @@ public class CadastroInstituicao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_instituicao);
 
-        nomeEditText = findViewById(R.id.editTextTextPersonName);
+        nomeEditText = findViewById(R.id.cnpj);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
-        CNPJEditText = findViewById(R.id.textInputLayoutCNPJ);
+        CNPJEditText = findViewById(R.id.editTextCNPJ);
 
         checkIconNome = findViewById(R.id.checkIconNome);
         checkIconEmail = findViewById(R.id.checkIconEmail);
@@ -244,6 +235,7 @@ public class CadastroInstituicao extends AppCompatActivity {
             String nome = nomeEditText.getText().toString();
             String email = emailEditText.getText().toString();
             String cnpj = CNPJEditText.getText().toString();
+
 
             //fazer a parte da api
         }

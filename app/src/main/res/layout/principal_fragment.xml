@@ -8,7 +8,7 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:background="#5BE53E"
         android:orientation="vertical">
 
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:text="Olá, Nome Usuário"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -32,7 +32,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:layout_weight="1"
                 android:src="@drawable/busquinho" />
         </LinearLayout>
@@ -187,8 +187,8 @@
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="120dp"
+                    android:layout_width="130dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/vegetais" />
@@ -198,6 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_background"
                 android:orientation="horizontal"
@@ -245,8 +246,8 @@
 
                 <ImageView
                     android:id="@+id/legumes"
-                    android:layout_width="200dp"
-                    android:layout_height="170dp"
+                    android:layout_width="150dp"
+                    android:layout_height="260dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/legumes" />
@@ -268,7 +269,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView2"
@@ -430,7 +431,6 @@
                     android:id="@+id/nome_produtoCenoura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
@@ -644,49 +644,69 @@
     </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_width="180dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="88dp"
         android:background="@drawable/rounded_orange"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/linearLayout6">
 
         <TextView
             android:id="@+id/textView19"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="Quem somos e o que fazemos?"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="180dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/rounded_orange"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.077"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout6">
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Ações socias e doações"
+            android:layout_marginLeft="35dp"
+            android:text="Ações socias "
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/seta_promocao" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/rounded_orange"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout6">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="35dp"
+            android:text="Quem somos?"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView21"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:src="@drawable/seta_promocao" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -111,23 +111,6 @@ public class Doacao extends AppCompatActivity {
         return !nome.isEmpty() && nome.matches("[a-zA-ZÀ-ÖØ-öø-ÿ ]+");
     }
 
-    public void criarDoacao(View view) {
-        if (!camposValidos()) {
-            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (!checkBoxAceite.isChecked()) {
-            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if (camposValidos() && checkBoxAceite.isChecked()) {
-            Intent intent = new Intent(this, DoacaoEfetuada.class);
-            startActivity(intent);
-        }
-    }
-
     private boolean camposValidos() {
         String produto = produtoDoacao.getText().toString();
         String kg = quantidadeKilos.getText().toString();
@@ -167,13 +150,25 @@ public class Doacao extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, dateSetListener, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
-        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + (7 * 24 * 60 * 60 * 1000)); // Uma semana em milissegundos
+        datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis() + (7 * 24 * 60 * 60 * 1000));
         datePickerDialog.show();
     }
 
     public void confirmar(View view) {
-        Intent intent = new Intent(this, DoacaoEfetuada.class);
-        startActivity(intent);
+        if (!camposValidos()) {
+            Toast.makeText(this, "Preencha todos os campos corretamente", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!checkBoxAceite.isChecked()) {
+            Toast.makeText(this, "Você deve aceitar os termos de contrato", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (camposValidos() && checkBoxAceite.isChecked()) {
+            Intent intent = new Intent(this, DoacaoEfetuada.class);
+            startActivity(intent);
+        }
     }
 
     public void voltar(View view) {
