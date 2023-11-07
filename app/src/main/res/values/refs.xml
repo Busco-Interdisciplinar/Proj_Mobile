@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <drawable name="rounded_orange" />
-    <drawable name="rounded_orange" />
-    <drawable name="fundo_branco" />
+    <drawable name="rouded_green" />
 </resources>
