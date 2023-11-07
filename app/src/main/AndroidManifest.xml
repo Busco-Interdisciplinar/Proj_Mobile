@@ -24,7 +24,6 @@
         android:required="true" />
 =======
 
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature android:name="android.hardware.telephony" android:required="true" />
@@ -88,6 +87,9 @@
             android:exported="true" />
         <activity
             android:name=".Fragments.inflate"
+            android:exported="false" />
+        <activity
+            android:name=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor"
             android:exported="false" />
     </application>
 </manifest>

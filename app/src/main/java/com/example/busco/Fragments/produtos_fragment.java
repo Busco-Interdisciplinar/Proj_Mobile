@@ -69,7 +69,6 @@ public class produtos_fragment extends Fragment {
 
                             String produtoId = String.valueOf(produto.getId());
 
-                            //Buscando a imagem do produto no firebase
                             Connection connection = Connection.getInstance();
                             DatabaseReference databaseReference = connection.getDatabaseReference();
                             DatabaseReference imagemRef = databaseReference.child("produtos_images").child(produtoId);

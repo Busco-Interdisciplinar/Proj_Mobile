@@ -46,7 +46,7 @@ public class Cadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        nomeEditText = findViewById(R.id.editTextTextPersonName);
+        nomeEditText = findViewById(R.id.cnpj);
         emailEditText = findViewById(R.id.editTextTextEmailAddress);
         cpfEditText = findViewById(R.id.editTextNumber);
         senhaEditText = findViewById(R.id.editTextTextPassword2);
@@ -123,7 +123,6 @@ public class Cadastro extends AppCompatActivity {
                     isUpdating = false;
                     return;
                 }
-
                 Boolean isDeleting = false;
                 String newText = s.toString();
                 String unmaskedText = newText.replaceAll("[^0-9]", "");
@@ -159,7 +158,6 @@ public class Cadastro extends AppCompatActivity {
                     editText.setSelection(newText.length());
                     return;
                 }
-
                 isUpdating = true;
                 editText.setText(maskedText);
                 editText.setSelection(maskedText.length());
@@ -307,7 +305,7 @@ public class Cadastro extends AppCompatActivity {
                                 throw new RuntimeException(e);
                             }
                         }
-                    }else{
+                    } else{
                         Random random = new Random();
                         int codigo = random.nextInt(10000);
                         String codigoFormatado = String.format("%04d", codigo);
