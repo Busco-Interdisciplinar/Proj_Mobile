@@ -4,84 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroFornecedor">
+    tools:context=".Cadastros.Cadastro_Fornecedor.CadastroFornecedor">
+
+    <ImageView
+        android:onClick="voltar"
+        android:id="@+id/seta"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/seta_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tituloCadastro_Senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif"
         android:text="Cadastro Fornecedor"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seta"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="30dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutCNPJ"
+        android:id="@+id/editTextTextCNPJ"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloCadastro_Senha"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:ignore="DuplicateIds">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="30dp">
 
         <EditText
-            android:id="@+id/editTextTextCNPJ"
+            android:id="@+id/cnpj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="CNPJ"
-            android:inputType="text" />
-
-        <ImageView
-            android:id="@+id/checkIconCNPJ"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza"
-            tools:ignore="DuplicateIds" />
-
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageView
+        android:id="@+id/checkIconCNPJ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/check_cinza"
+        app:layout_constraintEnd_toEndOf="@id/editTextTextCNPJ"
+        app:layout_constraintTop_toTopOf="@id/editTextTextCNPJ" />
+
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutProduto"
+        android:id="@+id/spinnerLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCNPJ"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
 
-        <EditText
-            android:id="@+id/produto"
+        <Spinner
+            android:id="@+id/spinnerCategoria"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="O que irá fornecer"
-            android:inputType="text"
-            />
-
-        <ImageView
-            android:id="@+id/checkIconProduto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginTop="-40dp"
-            android:src="@drawable/check_cinza" />
-
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -92,21 +89,23 @@
         android:layout_marginTop="20dp"
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLayout" />
 
     <Button
         android:id="@+id/buttonCadastrar"
-        android:layout_width="370dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:height="65dp"
         android:backgroundTint="#5BE53E"
-        android:textStyle="bold"
+        android:onClick="cadastrar"
         android:text="Cadastrar-se"
+        android:textStyle="bold"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 

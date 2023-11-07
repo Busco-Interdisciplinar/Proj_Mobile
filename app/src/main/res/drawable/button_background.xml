@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado padrão (sem foco, pressionado, etc.) -->
+    <item android:state_pressed="false" android:state_focused="false" android:state_enabled="true">
+        <shape>
+            <solid android:color="#605BE53E"/> <!-- Cor verde com 20% de opacidade -->
+            <corners android:radius="50dp"/> <!-- Raio para cantos arredondados -->
+        </shape>
+    </item>
+
+    <!-- Outros estados, se necessário (por exemplo, pressionado) -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#5BE53E"/> <!-- Cor verde sólida quando pressionado -->
+            <corners android:radius="50dp"/>
+        </shape>
+    </item>
+</selector>

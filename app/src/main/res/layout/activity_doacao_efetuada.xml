@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DoacaoEfetuada">
+    tools:context=".Doacao.DoacaoEfetuada">
 
     <Button
         android:id="@+id/button6"
@@ -42,6 +42,7 @@
         android:width="333dp"
         android:height="53dp"
         android:backgroundTint="#5BE43E"
+        android:onClick="voltar"
         android:text="Voltar para a página inicial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +88,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/email"
+        app:srcCompat="@raw/email"
         tools:layout_editor_absoluteX="-47dp"
         tools:ignore="MissingConstraints" />
 
