@@ -30,4 +30,6 @@ public interface EndpointsMap {
     @GET("/api/produto/listarProdutos")
     Call<ApiResponse> listarProdutos();
 
+    @GET("/api/rota/buscarRota/{rota}")
+    Call<ApiResponse> findRota(@Path("rota") int rota);
 }

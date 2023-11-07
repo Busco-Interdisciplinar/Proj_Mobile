@@ -2,6 +2,7 @@ package com.example.busco;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.busco.Api.ApiResponse;
@@ -48,7 +51,6 @@ public class Login extends AppCompatActivity {
         String senhaCadastrada;
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
-
 
         Bundle bundleInfoCadastrada = getIntent().getExtras();
         if(bundleInfoCadastrada != null){
@@ -112,11 +114,10 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
-        startActivity( new Intent(this, principal_fragment.class));
+        startActivity(new Intent(this, Redefinir_Senha.class));
     }
 
     public void fazerLogin(View view) {
-
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
 
@@ -163,6 +164,11 @@ public class Login extends AppCompatActivity {
                                 editor.putString("user", usuarioJson);
                                 editor.apply();
 
+
+                                SharedPreferences sharedPreferences2 = getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                                editor2.remove("listProducts");
+                                editor2.apply();
                             }
                         }else {
                             if (response.errorBody() != null) {
@@ -176,6 +182,7 @@ public class Login extends AppCompatActivity {
                             }
                         }
                     }
+
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {

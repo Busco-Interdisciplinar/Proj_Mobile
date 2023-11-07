@@ -67,6 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/horariosLocais">
 
         <TextView
+            android:id="@+id/rua1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -75,6 +76,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/hora1"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -95,6 +97,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <TextView
+            android:id="@+id/rua2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -103,6 +106,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/hora2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -122,6 +126,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <TextView
+            android:id="@+id/rua3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -130,6 +135,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/hora3"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -149,6 +155,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
         <TextView
+            android:id="@+id/rua4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -157,6 +164,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/hora4"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:gravity="center"
