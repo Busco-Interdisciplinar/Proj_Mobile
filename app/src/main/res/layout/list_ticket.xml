@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="left|bottom"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="407dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="388dp"
+                android:layout_height="120dp"
+                android:background="@drawable/rounded_green">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="127dp"
+                    android:layout_height="91dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/fundo_branco"
+
+                    android:padding="10dp"
+                    android:src="@drawable/tomate" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_green"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="123dp"
+                    tools:layout_editor_absoluteY="411dp">
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="10% OFF Em morango"
+                        android:textColor="#0E4601"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/botao2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            android:text="Usar cupom"
+                            android:textSize="10sp"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/morango_promocao" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="388dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_green">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_green">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="127dp"
+                        android:layout_height="91dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/fundo_branco"
+
+                        android:padding="10dp"
+                        android:src="@drawable/batata_promocao" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rounded_green"
+                        android:orientation="vertical"
+                        tools:layout_editor_absoluteX="123dp"
+                        tools:layout_editor_absoluteY="411dp">
+
+                        <TextView
+                            android:id="@+id/txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/outfit_medium"
+                            android:text="15% OFF Em batata"
+                            android:textColor="#0E4601"
+                            android:textSize="14dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/botao2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="36dp"
+                                android:layout_marginLeft="14dp"
+                                android:layout_marginTop="25dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/outfit_semi_bold"
+                                android:text="Usar cupom"
+                                android:textSize="10sp"
+                                app:cornerRadius="20dp" />
+
+                            <ImageView
+                                android:id="@+id/imageView7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/batata" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="127dp"
+                    android:layout_height="91dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/fundo_branco"
+
+                    android:padding="10dp"
+                    android:src="@drawable/tomate" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_green"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="123dp"
+                    tools:layout_editor_absoluteY="411dp">
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="10% OFF Em morango"
+                        android:textColor="#0E4601"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/botao2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            android:text="Usar cupom"
+                            android:textSize="10sp"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/morango_promocao" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="388dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_green">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="127dp"
+                    android:layout_height="91dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/fundo_branco"
+
+                    android:padding="10dp"
+                    android:src="@drawable/laranja" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_green"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="123dp"
+                    tools:layout_editor_absoluteY="411dp">
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="10% OFF Em laranja"
+                        android:textColor="#0E4601"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/botao2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            android:text="Usar cupom"
+                            android:textSize="10sp"
+                            app:cornerRadius="20dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="30dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/laranja_promocao" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
