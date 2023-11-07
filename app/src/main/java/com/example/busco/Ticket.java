@@ -1,15 +1,17 @@
 package com.example.busco;
 
 
+import android.widget.ImageView;
+
 public class Ticket {
     private String nome;
-    private double preco;
-    private String fotoUrl;
+    private int fotoResource;
+    private int fotoProdutoPromoResource;
 
-    public Ticket(String nome, double preco, String fotoUrl) {
+    public Ticket(String nome, int fotoResource, int fotoProdutoPromoResource) {
         this.nome = nome;
-        this.preco = preco;
-        this.fotoUrl = fotoUrl;
+        this.fotoResource = fotoResource;
+        this.fotoProdutoPromoResource = fotoProdutoPromoResource;
     }
 
     public String getNome() {
@@ -20,19 +22,11 @@ public class Ticket {
         this.nome = nome;
     }
 
-    public double getPreco() {
-        return preco;
+    public int getFotoResource() {
+        return fotoResource;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
-    public String getFotoUrl() {
-        return fotoUrl;
-    }
-
-    public void setFotoUrl(String fotoUrl) {
-        this.fotoUrl = fotoUrl;
+    public int getFotoProdutoPromoResource() {
+        return fotoProdutoPromoResource;
     }
 }

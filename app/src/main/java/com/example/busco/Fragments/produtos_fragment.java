@@ -120,31 +120,6 @@ public class produtos_fragment extends Fragment {
         return view;
     }
 
-    private String buscarUrlDaImagemNoFirebase(String produtoId) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-
-        String caminhoImagem = "produtos_images/" + produtoId;
-        StorageReference imagemRef = storageRef.child(caminhoImagem);
-
-        imagemRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                String imageUrl = uri.toString();
-                if (produtoAdapter != null) {
-                    produtoAdapter.notifyDataSetChanged();
-                }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getContext(), e.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-        return caminhoImagem;
-    }
-
     private void filterProducts(String searchText) {
         List<Produto> filtro = new ArrayList<>();
         for (Produto produto : produtos) {

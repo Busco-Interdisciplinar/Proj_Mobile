@@ -31,26 +31,29 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_ticket, parent, false);
         }
 
-        TextView nome = convertView.findViewById(R.id.nome_produto);
-        TextView preco = convertView.findViewById(R.id.preco_produto);
-        ImageView foto = convertView.findViewById(R.id.img);
+        ImageView imageViewProduto = convertView.findViewById(R.id.foto_promo);
+        TextView nomeProduto = convertView.findViewById(R.id.oferta_promocao);
+        ImageView imagemPromo = convertView.findViewById(R.id.foto_produto_promo);
+        Button usarPromocao = convertView.findViewById(R.id.botao_usarcupom_morango);
 
-        nome.setText(ticket.getNome());
-        preco.setText("R$ " + ticket.getPreco());
-
-        // Use o Glide ou outra biblioteca para carregar a imagem do ticket
-        // Exemplo com o Glide:
         Glide.with(getContext())
-                .load(ticket.getFotoUrl())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(foto);
+                .load(ticket.getFotoResource())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imageViewProduto);
 
-        // Configurar o clique do botão (ou outros elementos, conforme necessário)
-        Button usarCupom = convertView.findViewById(R.id.botao2);
-        usarCupom.setOnClickListener(new View.OnClickListener() {
+        nomeProduto.setText(ticket.getNome());
+
+        Glide.with(getContext())
+                .load(ticket.getFotoProdutoPromoResource())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .into(imagemPromo);
+
+        usarPromocao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Lide com o clique no botão de uso do cupom aqui
+                // Ação a ser executada ao clicar no botão de usar promoção
             }
         });
 
