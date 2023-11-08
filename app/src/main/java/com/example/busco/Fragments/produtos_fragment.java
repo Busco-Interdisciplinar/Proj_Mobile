@@ -12,9 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,9 +42,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.gson.reflect.TypeToken;
 
 
@@ -78,7 +73,6 @@ public class  produtos_fragment extends Fragment {
                             for (Object object : objectList1) {
                                 String produtoString = gson.toJson(object);
                                 Produto produto = gson.fromJson(produtoString, Produto.class);
-
                                 String idProduto = String.valueOf(produto.getId());
 
                                 //Buscando a imagem do produto no firebase
@@ -92,7 +86,6 @@ public class  produtos_fragment extends Fragment {
                                         String url = snapshot.child("url").getValue(String.class);
                                         if (url != null){
                                             produto.setFoto(url);
-
                                         }
                                     }
                                     @Override
@@ -128,7 +121,7 @@ public class  produtos_fragment extends Fragment {
                                     editor.remove("listProducts");
                                     editor.apply();
                                 }
-                            }, 600000);
+                            }, 1200000);
                         }
                     }
                 }

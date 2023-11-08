@@ -1,11 +1,12 @@
 package com.example.busco.Cadastros.Cadastro_Instituicao;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,15 +16,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Instituicao;
 import com.example.busco.Api.Models.Usuarios;
-import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro_RedefinirSenha;
-import com.example.busco.Doacao.Doacao;
 import com.example.busco.Fragments.perfil_fragment;
 import com.example.busco.R;
 import com.google.gson.Gson;
 
-import java.util.Random;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CadastroInstituicao extends AppCompatActivity {
 
@@ -37,9 +40,9 @@ public class CadastroInstituicao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_instituicao);
 
-        nomeEditText = findViewById(R.id.editTextTextPersonName);
-        emailEditText = findViewById(R.id.editTextTextEmailAddress);
-        CNPJEditText = findViewById(R.id.textInputLayoutCNPJ);
+        nomeEditText = findViewById(R.id.cnpj);
+        emailEditText = findViewById(R.id.editTextCep);
+        CNPJEditText = findViewById(R.id.editTextCNPJ);
 
         checkIconNome = findViewById(R.id.checkIconNome);
         checkIconEmail = findViewById(R.id.checkIconEmail);
@@ -54,9 +57,10 @@ public class CadastroInstituicao extends AppCompatActivity {
     private void setupTextWatchers() {
         nomeEditText.addTextChangedListener(createTextWatcher(checkIconNome, this::nomeValido));
         emailEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::emailValido));
-        CNPJEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::cnpjValido));
+        CNPJEditText.addTextChangedListener(createTextWatcher(checkIconCNPJ, this::cnpjValido));
 
         CNPJEditText.addTextChangedListener(createMask(CNPJEditText, "##.###.###/####-##"));
+        emailEditText.addTextChangedListener(createMask(emailEditText, "#####-###"));
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> verificarEstadoBotao());
     }
 
@@ -213,7 +217,8 @@ public class CadastroInstituicao extends AppCompatActivity {
     }
 
     private boolean emailValido(String email) {
-        return email.contains("@gmail") && email.contains(".com");
+        email = email.replaceAll("[^0-9]", "");
+        return email.length() == 8;
     }
 
     private boolean camposValidos() {
@@ -227,7 +232,7 @@ public class CadastroInstituicao extends AppCompatActivity {
     }
 
     public void voltarTelaLogin(View view) {
-
+        finish();
     }
 
     public void criarConta(View view) {
@@ -242,10 +247,33 @@ public class CadastroInstituicao extends AppCompatActivity {
 
         if (camposValidos() && checkBox.isChecked()) {
             String nome = nomeEditText.getText().toString();
-            String email = emailEditText.getText().toString();
+            String cep = emailEditText.getText().toString();
             String cnpj = CNPJEditText.getText().toString();
+            Gson gson = new Gson();
 
-            //fazer a parte da api
+            SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            String json = sharedPreferences.getString("user", "");
+            Usuarios usuario = gson.fromJson(json, Usuarios.class);
+            Instituicao instituicao = new Instituicao(cnpj, cep, nome, usuario.getTelefone(), usuario.getId());
+
+            ApiService.getInstance().inserirInstituicao(instituicao).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
+                            Toast.makeText(getApplicationContext(), "Você agora é uma instituição, obrigado!", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Falha ao cadastrar instituição", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 

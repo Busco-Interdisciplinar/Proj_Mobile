@@ -33,6 +33,7 @@
 
     //import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Api.Models.Usuarios;
+    import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
@@ -61,8 +62,6 @@
 
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.perfil_fragment, container, false);
-
-            //Setando as informações do usuário com base nas informações do usuario logado
 
             TextView nomeText = view.findViewById(R.id.nomeUsuario);
             TextView emailText = view.findViewById(R.id.emailUsuario);
@@ -195,8 +194,8 @@
         }
 
         private void tornarFornecedor() {
-//            Intent intent = new Intent(requireContext(), CadastroFornecedor.class);
-//            startActivity(intent);
+            Intent intent = new Intent(requireContext(), CadastroFornecedor.class);
+            startActivity(intent);
         }
 
         private void fazerDoacao() {

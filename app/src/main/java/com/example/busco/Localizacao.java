@@ -9,11 +9,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
+
+import android.os.Bundle;
+import android.view.View;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Rota;
 import com.example.busco.Fragments.Map_Fragment;
+import com.example.busco.Fragments.perfil_fragment;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.gson.Gson;
 
@@ -131,5 +137,10 @@ public class Localizacao extends AppCompatActivity {
             hora3EditText.setText(hora3Format);
             hora4EditText.setText(hora4Format);
         }
+    }
+
+    public void voltarTelaLogin(View view) {
+        Intent intent = new Intent(this, perfil_fragment.class);
+        startActivity(intent);
     }
 }

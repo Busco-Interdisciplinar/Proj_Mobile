@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="left|bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.003"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="388dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_green">
+
+                <ImageView
+                    android:id="@+id/foto_promo"
+                    android:layout_width="127dp"
+                    android:layout_height="91dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/fundo_branco"
+
+                    android:padding="10dp"
+                    android:src="@drawable/tomate" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rounded_green"
+                    android:gravity="clip_horizontal|fill_horizontal"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="123dp"
+                    tools:layout_editor_absoluteY="411dp">
+
+                    <TextView
+                        android:id="@+id/oferta_promocao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/outfit_medium"
+                        android:text="10% OFF Em morango"
+                        android:textColor="#0E4601"
+                        android:textSize="14dp"
+                        tools:ignore="TextSizeCheck" />
+
+                    <LinearLayout
+                        android:layout_width="224dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/botao_usarcupom_morango"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="25dp"
+                            android:layout_weight="2"
+                            android:background="@drawable/button_backgroud_on"
+                            android:backgroundTint="#59DF3D"
+                            android:fontFamily="@font/outfit_semi_bold"
+                            android:text="Usar cupom"
+                            android:textColor="#FFFFFF"
+                            android:textSize="10sp" />
+
+                        <ImageView
+                            android:id="@+id/foto_produto_promo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginBottom="3dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/morango_promocao" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -54,7 +54,7 @@
             >
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/cnpj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome"
@@ -87,7 +87,7 @@
             app:hintTextColor="@color/orangeBusco" >
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editTextTextCEP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="E-mail"

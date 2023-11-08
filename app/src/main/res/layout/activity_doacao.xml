@@ -48,23 +48,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
 
-        <EditText
-            android:id="@+id/editTextProdutoDoacao"
+        <Spinner
+            android:id="@+id/produtosSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Produto "
-            android:inputType="textPersonName" />
+            android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <ImageView
-        android:id="@+id/checkIconProdutoDoacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/check_cinza"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayoutProdutoDoacao"
-        app:layout_constraintTop_toTopOf="@id/textInputLayoutProdutoDoacao" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutQuantidadeKilos"
@@ -152,7 +140,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="#5BE53E"
         android:onClick="confirmar"
-        android:text="Continuar"
+        android:text="FAZER DOAÇÃO"
         android:textStyle="bold"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

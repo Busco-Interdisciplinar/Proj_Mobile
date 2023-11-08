@@ -2,7 +2,9 @@ package com.example.busco.Api;
 
 import retrofit2.Call;
 
+import com.example.busco.Api.Models.Doacao;
 import com.example.busco.Api.Models.Fornecedor;
+import com.example.busco.Api.Models.Instituicao;
 import com.example.busco.Api.Models.Usuarios;
 
 import retrofit2.http.Body;
@@ -36,4 +38,13 @@ public interface EndpointsMap {
 
     @POST("/api/fornecedor/inserirFornecedor")
     Call<ApiResponse> inserirFornecedor(@Body Fornecedor fornecedor);
+
+    @POST("/api/instituicao/inserirIntistuicao")
+    Call<ApiResponse> inserirInstituicao(@Body Instituicao instituicao);
+
+    @GET("/api/instituicao/buscarUserId/{id}")
+    Call<ApiResponse> buscarInstituicaoByUserId(@Path("id") int id);
+
+    @POST("/api/doacao/fazerDoacao")
+    Call<ApiResponse>  fazerDoacao(@Body Doacao doacao);
 }

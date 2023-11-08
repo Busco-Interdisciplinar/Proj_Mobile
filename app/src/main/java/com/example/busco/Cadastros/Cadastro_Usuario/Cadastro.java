@@ -46,8 +46,8 @@ public class Cadastro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
-        nomeEditText = findViewById(R.id.editTextTextPersonName);
-        emailEditText = findViewById(R.id.editTextTextEmailAddress);
+        nomeEditText = findViewById(R.id.cnpj);
+        emailEditText = findViewById(R.id.editTextTextCEP);
         cpfEditText = findViewById(R.id.editTextNumber);
         senhaEditText = findViewById(R.id.editTextTextPassword2);
         confirmarSenhaEditText = findViewById(R.id.editTextTextPassword3);
@@ -123,7 +123,6 @@ public class Cadastro extends AppCompatActivity {
                     isUpdating = false;
                     return;
                 }
-
                 Boolean isDeleting = false;
                 String newText = s.toString();
                 String unmaskedText = newText.replaceAll("[^0-9]", "");
@@ -159,7 +158,6 @@ public class Cadastro extends AppCompatActivity {
                     editText.setSelection(newText.length());
                     return;
                 }
-
                 isUpdating = true;
                 editText.setText(maskedText);
                 editText.setSelection(maskedText.length());
@@ -267,10 +265,6 @@ public class Cadastro extends AppCompatActivity {
                 public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                     if (response.isSuccessful()){
                         if (response.body() != null && response.body().isResponseSucessfull()){
-//                            List<Object> usuarioObject = response.body().getObject();
-//                            String objetoJson = gson.toJson(usuarioObject.get(0));
-//                            objetoJson = objetoJson.substring(1, objetoJson.length() - 1);
-//                            Usuarios usuarioExistente = gson.fromJson(objetoJson, Usuarios.class);
                             try {
                                 JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
                                 Boolean cpf = (Boolean) jsonString.get("cpf");
@@ -311,7 +305,7 @@ public class Cadastro extends AppCompatActivity {
                                 throw new RuntimeException(e);
                             }
                         }
-                    }else{
+                    } else{
                         Random random = new Random();
                         int codigo = random.nextInt(10000);
                         String codigoFormatado = String.format("%04d", codigo);

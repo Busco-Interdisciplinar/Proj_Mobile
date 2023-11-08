@@ -17,4 +17,7 @@
     <item name="sobre" type="id"></item>
     <item name="sair" type="id"></item>
     <item name="exit" type="id"></item>
+    <item name="listTicket" type="id"></item>
+    <item name="img" type="id" />
+    <item name="webView" type="id" />
 </resources>

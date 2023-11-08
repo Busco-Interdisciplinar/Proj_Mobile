@@ -8,7 +8,7 @@ public class Doacao {
     private String descricao;
     private int produto_doado;
     private int usuario_doador;
-    private int instituicao_doador;
+    private Integer instituicao_doador;
     private int quantidade;
 
     public int getId() {
@@ -67,7 +67,7 @@ public class Doacao {
         this.quantidade = quantidade;
     }
 
-    public Doacao(int id, Date data_doacao, String descricao, int produto_doado, int usuario_doador, int instituicao_doador, int quantidade) {
+    public Doacao(int id, Date data_doacao, String descricao, int produto_doado, int usuario_doador, Integer instituicao_doador, int quantidade) {
         this.id = id;
         this.data_doacao = data_doacao;
         this.descricao = descricao;
@@ -76,7 +76,7 @@ public class Doacao {
         this.instituicao_doador = instituicao_doador;
         this.quantidade = quantidade;
     }
-    public Doacao(Date data_doacao, String descricao, int produto_doado, int usuario_doador, int instituicao_doador, int quantidade) {
+    public Doacao(Date data_doacao, String descricao, int produto_doado, int usuario_doador, Integer instituicao_doador, int quantidade) {
         this.data_doacao = data_doacao;
         this.descricao = descricao;
         this.produto_doado = produto_doado;
@@ -93,7 +93,7 @@ public class Doacao {
         this.quantidade = quantidade;
     }
 
-    public Doacao(String descricao,Date data_doacao, int produto_doado, int instituicao_doador, int quantidade) {
+    public Doacao(String descricao,Date data_doacao, int produto_doado, Integer instituicao_doador, int quantidade) {
         this.data_doacao = data_doacao;
         this.descricao = descricao;
         this.produto_doado = produto_doado;
