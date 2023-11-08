@@ -11,7 +11,7 @@
     </item>
     <item
         android:id="@+id/produto"
-        android:icon="@drawable/produtos_icon"
+        android:icon="@drawable/produto"
         android:title=""
         app:showAsAction="ifRoom"
         app:itemBackground="@drawable/selected_item_background">

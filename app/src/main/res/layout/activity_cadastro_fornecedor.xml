@@ -39,12 +39,12 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tituloCadastro_Senha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginTop="30dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloCadastro_Senha">
 
         <EditText
             android:id="@+id/cnpj"
@@ -65,36 +65,18 @@
         app:layout_constraintEnd_toEndOf="@id/editTextTextCNPJ"
         app:layout_constraintTop_toTopOf="@id/editTextTextCNPJ" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/spinnerLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextCNPJ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp">
-
-        <Spinner
-            android:id="@+id/spinnerCategoria"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/spiner_border"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
+
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/font_outfit"
+
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextCNPJ" />
 
     <Button
         android:id="@+id/buttonCadastrar"
@@ -104,7 +86,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:height="65dp"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E3641B "
         android:fontFamily="@font/outfit_bold"
         android:onClick="cadastrar"
         android:text="Cadastrar-se"

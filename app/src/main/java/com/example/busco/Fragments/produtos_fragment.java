@@ -1,7 +1,11 @@
 package com.example.busco.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -30,6 +34,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -37,12 +42,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+import com.google.gson.reflect.TypeToken;
 
 
-public class produtos_fragment extends Fragment {
+public class  produtos_fragment extends Fragment {
 
     private ListView listView;
     private List<Produto> produtos = new ArrayList<>();
@@ -59,52 +62,92 @@ public class produtos_fragment extends Fragment {
         View loadingProgressBar = view.findViewById(R.id.loadingProgressBar);
         loadingProgressBar.setVisibility(View.VISIBLE);
 
-        ApiService.getInstance().listarProdutos().enqueue(new Callback<ApiResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                if (response.isSuccessful()) {
-                    if (response.body() != null && response.body().isResponseSucessfull()) {
-                        List<Object> objectList1 = response.body().getObject();
-                        Gson gson = new Gson();
-                        for (Object object : objectList1) {
-                            String produtoString = gson.toJson(object);
-                            Produto produto = gson.fromJson(produtoString, Produto.class);
+        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
+        String listaProdutosJson = sharedPreferences.getString("listProducts", "");
 
-                            String produtoId = String.valueOf(produto.getId());
+        if (listaProdutosJson.equals("")){
+            ApiService.getInstance().listarProdutos().enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body() != null && response.body().isResponseSucessfull()) {
+                            List<Object> objectList1 = response.body().getObject();
+                            Gson gson = new Gson();
+                            for (Object object : objectList1) {
+                                String produtoString = gson.toJson(object);
+                                Produto produto = gson.fromJson(produtoString, Produto.class);
+                                String idProduto = String.valueOf(produto.getId());
 
-                            Connection connection = Connection.getInstance();
-                            DatabaseReference databaseReference = connection.getDatabaseReference();
-                            DatabaseReference imagemRef = databaseReference.child("produtos_images").child(produtoId);
+                                //Buscando a imagem do produto no firebase
+                                Connection connection = Connection.getInstance();
+                                DatabaseReference databaseReference = connection.getDatabaseReference();
+                                DatabaseReference imagemRef = databaseReference.child("produtos_images").child(idProduto);
 
-                            imagemRef.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    String url = snapshot.child("url").getValue(String.class);
-                                    if (url != null){
-                                        produto.setFoto(url);
+                                imagemRef.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        String url = snapshot.child("url").getValue(String.class);
+                                        if (url != null){
+                                            produto.setFoto(url);
+                                        }
                                     }
-                                }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                                produtos.add(produto);
+                            }
+
+                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(getContext(), error.toString(), Toast.LENGTH_LONG).show();
+                                public void run() {
+                                    produtos.sort(Comparator.comparing(Produto::getNome));
+                                    produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
+                                    listView.setAdapter(produtoAdapter);
+                                    produtoAdapter.notifyDataSetChanged();
+
+                                    String listaProdutosJson = gson.toJson(produtos);
+                                    SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("listProducts", listaProdutosJson);
+                                    editor.apply();
                                 }
-                            });
+                            }, 1500);
 
-                            produtos.add(produto);
+
+                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.remove("listProducts");
+                                    editor.apply();
+                                }
+                            }, 1200000);
                         }
-
                         produtos.sort(Comparator.comparing(Produto::getNome));
                         produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
-                        loadingProgressBar.setVisibility(View.GONE);
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
                         listView.setAdapter(produtoAdapter);
                     }
                 }
-            }
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Toast.makeText(requireContext().getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<ApiResponse> call, Throwable t) {
+                    Toast.makeText(requireContext().getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }else{
+            Gson gson = new Gson();
+            Type produtoListType = new TypeToken<List<Produto>>() {}.getType();
+            produtos = gson.fromJson(listaProdutosJson, produtoListType);
+            loadingProgressBar.setVisibility(View.INVISIBLE);
+            produtos.sort(Comparator.comparing(Produto::getNome));
+            produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
+            listView.setAdapter(produtoAdapter);
+        }
+
+
 
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override

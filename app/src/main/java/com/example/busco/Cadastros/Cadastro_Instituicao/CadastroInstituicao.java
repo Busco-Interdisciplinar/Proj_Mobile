@@ -1,8 +1,11 @@
 package com.example.busco.Cadastros.Cadastro_Instituicao;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,8 +16,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Instituicao;
+import com.example.busco.Api.Models.Usuarios;
+import com.example.busco.Fragments.perfil_fragment;
 import com.example.busco.Login;
 import com.example.busco.R;
+import com.google.gson.Gson;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CadastroInstituicao extends AppCompatActivity {
 
@@ -29,6 +43,7 @@ public class CadastroInstituicao extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_instituicao);
 
         nomeEditText = findViewById(R.id.cnpj);
+
         cepEditText = findViewById(R.id.editTextTextCep);
         CNPJEditText = findViewById(R.id.editTextCNPJ);
 
@@ -204,6 +219,7 @@ public class CadastroInstituicao extends AppCompatActivity {
         return !nome.isEmpty() && nome.matches("[a-zA-Z ]+");
     }
 
+
     private boolean cepValido(String cep) {
         cep = cep.replaceAll("[^0-9]", "");
         return cep.length() == 8;
@@ -220,6 +236,7 @@ public class CadastroInstituicao extends AppCompatActivity {
     }
 
     public void voltarTelaLogin(View view) {
+        finish();
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
@@ -238,9 +255,31 @@ public class CadastroInstituicao extends AppCompatActivity {
             String nome = nomeEditText.getText().toString();
             String cep = cepEditText.getText().toString();
             String cnpj = CNPJEditText.getText().toString();
+            Gson gson = new Gson();
 
+            SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            String json = sharedPreferences.getString("user", "");
+            Usuarios usuario = gson.fromJson(json, Usuarios.class);
+            Instituicao instituicao = new Instituicao(cnpj, cep, nome, usuario.getTelefone(), usuario.getId());
 
-            //fazer a parte da api
+            ApiService.getInstance().inserirInstituicao(instituicao).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
+                            Toast.makeText(getApplicationContext(), "Você agora é uma instituição, obrigado!", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Falha ao cadastrar instituição", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 

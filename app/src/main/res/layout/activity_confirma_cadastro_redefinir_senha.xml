@@ -160,7 +160,7 @@
                 android:layout_height="65dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="#5BE53E"
+                android:backgroundTint="#E3641B "
                 android:fontFamily="@font/outfit_bold"
                 android:onClick="confirmar"
                 android:text="Confirmar cadastro"

@@ -38,6 +38,7 @@
     import com.example.busco.Localizacao;
     import com.example.busco.MainActivity;
     import com.example.busco.R;
+    import com.example.busco.SQLite.UsuarioDAO;
     import com.example.busco.SobreNos;
     import com.example.busco.Usuario;
     import com.google.gson.Gson;
@@ -213,6 +214,8 @@
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent(requireContext(), MainActivity.class);
                     startActivity(intent);
+                    UsuarioDAO usuarioDAO = new UsuarioDAO(getActivity());
+                    usuarioDAO.remover();
                     getActivity().finish();
                 }
             });

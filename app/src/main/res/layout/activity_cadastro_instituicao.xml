@@ -135,35 +135,36 @@
             app:layout_constraintEnd_toEndOf="@id/textInputLayoutCNPJ"
             app:layout_constraintTop_toTopOf="@id/textInputLayoutCNPJ" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/font_outfit"
-        android:text="Aceito e concordo com os termos de contrato."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/font_outfit"
+            android:text="Aceito e concordo com os termos de contrato."
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ" />
 
 
-    <Button
-        android:id="@+id/buttonCadastrar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:height="65dp"
-        android:backgroundTint="#5BE53E"
-        android:fontFamily="@font/outfit_bold"
-        android:text="Cadastrar-se"
-        android:textStyle="bold"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        <Button
+            android:id="@+id/buttonCadastrar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:height="65dp"
+            android:onClick="criarConta"
+            android:backgroundTint="#E3641B "
+            android:fontFamily="@font/outfit_bold"
+            android:text="Cadastrar-se"
+            android:textStyle="bold"
+            app:cornerRadius="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

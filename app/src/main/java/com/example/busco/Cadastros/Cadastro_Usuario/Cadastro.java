@@ -49,6 +49,7 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         nomeEditText = findViewById(R.id.cnpj);
+
         emailEditText = findViewById(R.id.editTextTextCep);
         cpfEditText = findViewById(R.id.editTextNumber);
         senhaEditText = findViewById(R.id.editTextTextPassword2);

@@ -2,19 +2,25 @@ package com.example.busco;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.busco.Api.ApiResponse;
@@ -27,10 +33,12 @@ import com.example.busco.Firebase.Connection;
 import com.example.busco.Firebase.Log;
 import com.example.busco.Fragments.inflate;
 import com.example.busco.Fragments.principal_fragment;
+import com.example.busco.SQLite.UsuarioDAO;
 import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -48,11 +56,30 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO(getApplicationContext());
+        try {
+            List<Usuarios> lista = usuarioDAO.listar();
+            if (lista.size() != 0){
+                Usuarios usuario = lista.get(0);
+                Intent in = new Intent(Login.this, inflate.class);
+                startActivity(in);
+                Toast.makeText(getApplicationContext(), "Usuário logado com sucesso", Toast.LENGTH_LONG).show();
+                finish();
+
+                String usuarioJson = gson.toJson(usuario);
+                SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("user", usuarioJson);
+                editor.apply();
+            }
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
         String emailCadastrado;
         String senhaCadastrada;
         EditText emailEditText = findViewById(R.id.email);
         EditText senhaEditText = findViewById(R.id.senha);
-
 
         Bundle bundleInfoCadastrada = getIntent().getExtras();
         if(bundleInfoCadastrada != null){
@@ -116,6 +143,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
+
         startActivity( new Intent(this, Redefinir_Senha.class));
     }
 
@@ -174,6 +202,7 @@ public class Login extends AppCompatActivity {
                                 databaseReference.child("log").push().setValue(log);
 
 
+
                                 //Adicionando o usuário como informação preferencial para todu o aplicativo
 
                                 String usuarioJson = gson.toJson(usuarioLogado);
@@ -183,6 +212,18 @@ public class Login extends AppCompatActivity {
                                 editor.putString("user", usuarioJson);
                                 editor.apply();
 
+
+                                SharedPreferences sharedPreferences2 = getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor2 = sharedPreferences2.edit();
+                                editor2.remove("listProducts");
+                                editor2.apply();
+
+                                //inserindo usuário no SQLite caso ele tenha marcado a caixa
+                                CheckBox checkBox = findViewById(R.id.checkBox);
+                                if (checkBox.isChecked()){
+                                    UsuarioDAO usuarioDAO = new UsuarioDAO(Login.this);
+                                    usuarioDAO.salvar(usuarioLogado);
+                                }
                             }
                         }else {
                             if (response.errorBody() != null) {

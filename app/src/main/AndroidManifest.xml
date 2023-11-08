@@ -54,6 +54,9 @@
             android:name=".Doacao.Doacao"
             android:exported="false" />
         <activity
+            android:name=".Doacao.DoacaoEfetuada"
+            android:exported="true"/>
+        <activity
             android:name=".Erro"
             android:exported="false" />
         <activity
