@@ -86,7 +86,6 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
                 }
             }
         });
-
         return convertView;
     }
 }
