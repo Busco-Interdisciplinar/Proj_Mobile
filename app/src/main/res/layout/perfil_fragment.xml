@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#E3641B"
+        android:orientation="horizontal"></LinearLayout>
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
@@ -12,7 +18,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/outfit_bold"
         android:text="Meu perfil"
-        android:textColor="#FF9800"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +29,7 @@
         android:id="@+id/fotoUsuario"
         android:layout_width="135dp"
         android:layout_height="135dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +56,7 @@
     <TextView
         android:id="@+id/nomeUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/font_outfit"
         android:text="Nome"
@@ -63,7 +69,7 @@
         android:id="@+id/emailUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/font_outfit"
         android:text="E-mail"
         android:textSize="16sp"
@@ -77,10 +83,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailUsuario"
-        app:layout_constraintVertical_bias="0.31">
+        app:layout_constraintVertical_bias="0.243">
 
         <LinearLayout
             android:layout_width="wrap_content"

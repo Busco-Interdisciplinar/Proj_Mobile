@@ -26,7 +26,7 @@
                 android:layout_height="120dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/rounded_green">
+                android:background="@drawable/fundo_branco">
 
                 <ImageView
                     android:id="@+id/foto_promo"
@@ -34,7 +34,6 @@
                     android:layout_height="91dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/fundo_branco"
 
                     android:padding="10dp"
                     android:src="@drawable/tomate" />
@@ -42,7 +41,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_green"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="#FFFFFF"
                     android:gravity="clip_horizontal|fill_horizontal"
                     android:orientation="vertical"
                     tools:layout_editor_absoluteX="123dp"
@@ -57,7 +59,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/outfit_medium"
                         android:text="10% OFF Em morango"
-                        android:textColor="#0E4601"
+                        android:textColor="#943404"
                         android:textSize="14dp"
                         tools:ignore="TextSizeCheck" />
 
@@ -70,23 +72,17 @@
                             android:id="@+id/botao_usarcupom_morango"
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
+                            android:layout_marginStart="2dp"
                             android:layout_marginLeft="14dp"
                             android:layout_marginTop="25dp"
                             android:layout_weight="2"
                             android:background="@drawable/button_backgroud_on"
-                            android:backgroundTint="#59DF3D"
+                            android:backgroundTint="#E3641B"
                             android:fontFamily="@font/outfit_semi_bold"
                             android:text="Usar cupom"
                             android:textColor="#FFFFFF"
                             android:textSize="10sp" />
 
-                        <ImageView
-                            android:id="@+id/foto_produto_promo"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_marginBottom="3dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/morango_promocao" />
                     </LinearLayout>
 
                 </LinearLayout>
