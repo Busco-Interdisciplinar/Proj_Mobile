@@ -25,6 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/outfit_bold"
         android:text="Doação"
         android:textColor="#191818"
         android:textSize="20sp"
@@ -52,6 +53,7 @@
             android:id="@+id/editTextProdutoDoacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Produto "
             android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -84,6 +86,7 @@
             android:id="@+id/editTextQuantidadeKilos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Quantidade (Kg)"
             android:inputType="textEmailSubject" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -116,11 +119,12 @@
             android:id="@+id/editTextDataDoacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data "
-            android:inputType="none"
+            android:clickable="true"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:clickable="true"/>
+            android:fontFamily="@font/font_outfit"
+            android:hint="Data "
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -140,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/font_outfit"
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDataDoacao" />
@@ -151,6 +156,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#5BE53E"
+        android:fontFamily="@font/outfit_bold"
         android:onClick="confirmar"
         android:text="Continuar"
         android:textStyle="bold"

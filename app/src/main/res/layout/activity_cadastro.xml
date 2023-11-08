@@ -26,17 +26,18 @@
             android:id="@+id/tituloCadastro_Senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/outfit_bold"
             android:text="Cadastro"
             android:textColor="#191818"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/seta"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seta"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutNome"
@@ -57,9 +58,9 @@
                 android:id="@+id/cnpj"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="Nome"
-                android:inputType="textPersonName"
-                />
+                android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
@@ -73,7 +74,7 @@
             app:layout_constraintTop_toTopOf="@id/textInputLayoutNome" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutEmail"
+            android:id="@+id/textInputLayoutCepInstituicao"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -87,29 +88,30 @@
             app:hintTextColor="@color/orangeBusco" >
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/editTextTextCep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="E-mail"
                 android:inputType="textEmailSubject" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/checkIconEmail"
+            android:id="@+id/checkIconCepInstituicao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/check_cinza"
-            app:layout_constraintEnd_toEndOf="@id/textInputLayoutEmail"
-            app:layout_constraintTop_toTopOf="@id/textInputLayoutEmail" />
+            app:layout_constraintEnd_toEndOf="@id/textInputLayoutCepInstituicao"
+            app:layout_constraintTop_toTopOf="@id/textInputLayoutCepInstituicao" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCpf"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutEmail"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCepInstituicao"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="16dp"
@@ -123,6 +125,7 @@
                 android:id="@+id/editTextNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="CPF"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -155,6 +158,7 @@
                 android:id="@+id/editTextTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="Telefone"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -188,6 +192,7 @@
                 android:id="@+id/editTextCep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="CEP"
                 android:inputType="phone" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -221,6 +226,7 @@
                 android:id="@+id/editTextTextPassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="Senha"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -254,6 +260,7 @@
                 android:id="@+id/editTextTextPassword3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/font_outfit"
                 android:hint="Confirmação de Senha"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -276,6 +283,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/font_outfit"
             android:text="Aceitar os termos de contrato"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutConfirmarSenha" />
@@ -288,6 +296,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#5BE53E"
+            android:fontFamily="@font/outfit_bold"
             android:onClick="criarConta"
             android:text="Continuar"
             android:textStyle="bold"

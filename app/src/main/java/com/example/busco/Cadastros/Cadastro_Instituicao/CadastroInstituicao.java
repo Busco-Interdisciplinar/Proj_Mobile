@@ -13,13 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.busco.Fragments.perfil_fragment;
+import com.example.busco.Login;
 import com.example.busco.R;
 
 public class CadastroInstituicao extends AppCompatActivity {
 
-    private EditText nomeEditText, emailEditText, CNPJEditText;
-    private ImageView checkIconNome, checkIconEmail, checkIconCNPJ;
+    private EditText nomeEditText, cepEditText, CNPJEditText;
+    private ImageView checkIconNome, cepIcon, checkIconCNPJ;
     private CheckBox checkBox;
     private Button criarConta;
 
@@ -29,11 +29,11 @@ public class CadastroInstituicao extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_instituicao);
 
         nomeEditText = findViewById(R.id.cnpj);
-        emailEditText = findViewById(R.id.editTextTextEmailAddress);
+        cepEditText = findViewById(R.id.editTextTextCep);
         CNPJEditText = findViewById(R.id.editTextCNPJ);
 
         checkIconNome = findViewById(R.id.checkIconNome);
-        checkIconEmail = findViewById(R.id.checkIconEmail);
+        cepIcon = findViewById(R.id.checkIconCepInstituicao);
         checkIconCNPJ = findViewById(R.id.checkIconCNPJ);
         checkBox = findViewById(R.id.checkBox);
         criarConta = findViewById(R.id.buttonCadastrar);
@@ -44,10 +44,11 @@ public class CadastroInstituicao extends AppCompatActivity {
 
     private void setupTextWatchers() {
         nomeEditText.addTextChangedListener(createTextWatcher(checkIconNome, this::nomeValido));
-        emailEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::emailValido));
-        CNPJEditText.addTextChangedListener(createTextWatcher(checkIconEmail, this::cnpjValido));
+        cepEditText.addTextChangedListener(createTextWatcher(cepIcon, this::cepValido));
+        CNPJEditText.addTextChangedListener(createTextWatcher(checkIconCNPJ, this::cnpjValido));
 
         CNPJEditText.addTextChangedListener(createMask(CNPJEditText, "##.###.###/####-##"));
+        cepEditText.addTextChangedListener(createMask(CNPJEditText, "#####-###"));
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> verificarEstadoBotao());
     }
 
@@ -147,10 +148,10 @@ public class CadastroInstituicao extends AppCompatActivity {
 
     private boolean camposNaoVazios() {
         String nome = nomeEditText.getText().toString();
-        String email = emailEditText.getText().toString();
+        String cep = cepEditText.getText().toString();
         String cnpj = CNPJEditText.getText().toString();
 
-        return !nome.isEmpty() && !email.isEmpty() && !cnpj.isEmpty();
+        return !nome.isEmpty() && !cep.isEmpty() && !cnpj.isEmpty();
     }
 
     private void habilitarBotaoVerde() {
@@ -163,7 +164,7 @@ public class CadastroInstituicao extends AppCompatActivity {
 
     private boolean imagensVerdes() {
         return checkIconNome.getTag() != null
-                && checkIconEmail.getTag() != null
+                && cepIcon.getTag() != null
                 && checkIconCNPJ.getTag() != null;
     }
 
@@ -203,22 +204,24 @@ public class CadastroInstituicao extends AppCompatActivity {
         return !nome.isEmpty() && nome.matches("[a-zA-Z ]+");
     }
 
-    private boolean emailValido(String email) {
-        return email.contains("@gmail") && email.contains(".com");
+    private boolean cepValido(String cep) {
+        cep = cep.replaceAll("[^0-9]", "");
+        return cep.length() == 8;
     }
 
     private boolean camposValidos() {
         String nome = nomeEditText.getText().toString();
-        String email = emailEditText.getText().toString();
+        String cep = cepEditText.getText().toString();
         String cnpj = CNPJEditText.getText().toString();
 
         return nomeValido(nome) &&
-                emailValido(email) &&
+                cepValido(cep) &&
                 cnpjValido(cnpj);
     }
 
     public void voltarTelaLogin(View view) {
-
+        Intent intent = new Intent(this, Login.class);
+        startActivity(intent);
     }
 
     public void criarConta(View view) {
@@ -233,7 +236,7 @@ public class CadastroInstituicao extends AppCompatActivity {
 
         if (camposValidos() && checkBox.isChecked()) {
             String nome = nomeEditText.getText().toString();
-            String email = emailEditText.getText().toString();
+            String cep = cepEditText.getText().toString();
             String cnpj = CNPJEditText.getText().toString();
 
 
@@ -242,8 +245,7 @@ public class CadastroInstituicao extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+        finish();
     }
 
     interface TextValidator {
