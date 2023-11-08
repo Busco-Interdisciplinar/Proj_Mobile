@@ -24,6 +24,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/outfit_bold"
         android:text="Redefinir senha"
         android:textColor="#191818"
         android:textSize="20sp"
@@ -50,6 +51,7 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="E-mail"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -80,6 +82,7 @@
             android:id="@+id/editTextTextSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Nova senha"
             android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -103,6 +106,7 @@
         android:layout_marginEnd="16dp"
         android:height="65dp"
         android:backgroundTint="#5BE53E"
+        android:fontFamily="@font/outfit_bold"
         android:onClick="resetarSenha"
         android:text="Continuar"
         android:textStyle="bold"

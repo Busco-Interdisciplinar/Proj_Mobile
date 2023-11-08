@@ -21,17 +21,18 @@
         android:id="@+id/tituloCadastro_Senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/outfit_bold"
         android:text="Cadastro de Instituição"
         android:textColor="#191818"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/seta"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="30dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seta"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutNomeEmpresa"
@@ -49,6 +50,7 @@
             android:id="@+id/cnpj"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Nome da empresa"
             android:inputType="text" />
 
@@ -78,9 +80,9 @@
             android:id="@+id/editTextTextEmailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Email institucional"
-            android:inputType="textEmailAddress"
-            />
+            android:inputType="textEmailAddress" />
 
         <ImageView
             android:id="@+id/checkIconEmail"
@@ -108,9 +110,9 @@
             android:id="@+id/editTextCNPJ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="CNPJ"
-            android:inputType="text"
-            />
+            android:inputType="text" />
 
         <ImageView
             android:id="@+id/checkIconCNPJ"
@@ -129,6 +131,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/font_outfit"
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ" />
@@ -139,16 +142,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:height="65dp"
         android:backgroundTint="#5BE53E"
+        android:fontFamily="@font/outfit_bold"
         android:text="Cadastrar-se"
         android:textStyle="bold"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

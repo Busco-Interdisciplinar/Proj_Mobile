@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <drawable name="rounded_orange" />
     <drawable name="rouded_green" />
+=======
+<!--    <drawable name="rounded_orange" />-->
+<!--    <drawable name="rounded_green" />-->
+<!--    <drawable name="fundo_branco" />-->
+>>>>>>> c505557a7747e8748a3e2c46833803b7260ef744
 </resources>
