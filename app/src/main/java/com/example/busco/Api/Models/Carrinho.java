@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Carrinho {
+    int id;
     String nome;
     int quantidade;
     double preco;
@@ -22,6 +23,23 @@ public class Carrinho {
         this.preco = preco;
         this.foto = foto;
         this.cupom = cupom;
+    }
+
+    public Carrinho(int id, String nome, int quantidade, double preco, String foto, String cupom) {
+        this.id = id;
+        this.nome = nome;
+        this.quantidade = quantidade;
+        this.preco = preco;
+        this.foto = foto;
+        this.cupom = cupom;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -62,5 +80,17 @@ public class Carrinho {
 
     public void setCupom(String cupom) {
         this.cupom = cupom;
+    }
+
+    @Override
+    public String toString() {
+        return "Carrinho{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", quantidade=" + quantidade +
+                ", preco=" + preco +
+                ", foto='" + foto + '\'' +
+                ", cupom='" + cupom + '\'' +
+                '}';
     }
 }

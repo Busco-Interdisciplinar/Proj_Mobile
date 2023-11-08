@@ -99,6 +99,15 @@ public class Usuarios {
         this.cpf = cpf;
         this.telefone = telefone;
     }
+    public Usuarios(int id, String email, String senha, String cep, String nome, String cpf, String telefone) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.cep = cep;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
 
     @Override
     public String toString() {

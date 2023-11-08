@@ -5,24 +5,24 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.busco.Api.Models.Carrinho;
 import com.example.busco.Api.Models.Usuarios;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDAO {
+public class CarrinhoDAO {
     private DatabaseHelper dbHelper;
     private Context context;
     private SQLiteDatabase database;
 
-    public UsuarioDAO(Context c){
+    public CarrinhoDAO(Context c){
         context = c;
     }
 
     //abrir o database
-    public UsuarioDAO oppen(){
+    public CarrinhoDAO oppen(){
         dbHelper = new DatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;
@@ -33,23 +33,19 @@ public class UsuarioDAO {
         database.close();
         dbHelper.close();
     }
-
-    public Usuarios salvar(Usuarios c){
+    public Carrinho salvar(Carrinho c){
         oppen();
         ContentValues info = new ContentValues();
         info.put("id", c.getId());
-        info.put("email", c.getEmail());
-        info.put("senha", c.getSenha());
-        info.put("cep", c.getCep());
         info.put("nome", c.getNome());
-        info.put("cpf", c.getCpf());
-        info.put("telefone", c.getTelefone());
-        info.put("qnt_doacao", c.getQnt_doacao());
+        info.put("quantidade", c.getQuantidade());
+        info.put("preco", c.getPreco());
+        info.put("foto", c.getFoto());
+        info.put("cupom", c.getCupom());
 
-        database.delete("usuario", null, null);
-        long id = database.insert("usuario", null, info);
+        database.delete("carrinho", null, null);
+        long id = database.insert("carrinho", null, info);
         c.setId((int) id);
-
 
         close();
         return c;
@@ -58,7 +54,7 @@ public class UsuarioDAO {
     public List<Usuarios> listar() throws ParseException {
         List<Usuarios> listaCliente = new ArrayList<>();
         oppen();
-        Cursor cursor = database.rawQuery("SELECT * FROM usuario", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM carrinho", null);
         if(cursor.moveToFirst()){
             do{
                 int id = cursor.getInt(0);
@@ -79,11 +75,4 @@ public class UsuarioDAO {
         return listaCliente;
     }
 
-    public void remover(){
-        oppen();
-        database.delete("usuario", null, null);
-        close();
-    }
 }
-
-

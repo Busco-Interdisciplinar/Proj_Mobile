@@ -6,20 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
-        super(context, "dbBusco.db", null, 2);
+        super(context, "dbBusco.db", null, 6);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//        sqLiteDatabase.execSQL("CREATE TABLE carrinho\n" +
-//                "                (id integer primary key autoincrement,\n" +
-//                "                nome text,\n" +
-//                "                quantidade integer,\n" +
-//                "                preco double,\n" +
-//                "                foto text,\n" +
-//                "                cupom text)");
-        sqLiteDatabase.execSQL("CREATE TABLE usuario (id integer primary key autoincrement, email text, senha text, cep text, nome text, cpf text, telefone text, data_cadastro text, qnt_doacao integer)");
-
+        sqLiteDatabase.execSQL("CREATE TABLE usuario (id integer, email text, senha text, cep text, nome text, cpf text, telefone text, data_cadastro text, qnt_doacao integer);");
+        sqLiteDatabase.execSQL("CREATE TABLE carrinho (id integer, nome text, quantidade integer, preco double, foto text, cupom text);");
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,10 +24,12 @@ import androidx.lifecycle.viewmodel.CreationExtras;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Carrinho;
 import com.example.busco.Api.Models.Produto;
 import com.example.busco.Firebase.Connection;
 import com.example.busco.ProdutoAdapter;
 import com.example.busco.R;
+import com.example.busco.SQLite.CarrinhoDAO;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -161,6 +164,19 @@ public class  produtos_fragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Produto produto = produtos.get(position);
+                EditText quantidade = view.findViewById(R.id.quantidade);
+                String quantidadeString = quantidade.getText().toString();
+                int quantidadeInt = Integer.parseInt(quantidadeString);
+                Carrinho carrinho = new Carrinho(produto.getNome(), quantidadeInt, produto.getPreco(), produto.getFoto(), null);
+                CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
+                carrinhoDAO.salvar(carrinho);
             }
         });
 

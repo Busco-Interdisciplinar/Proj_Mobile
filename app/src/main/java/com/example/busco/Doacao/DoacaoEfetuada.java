@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.busco.Fragments.inflate;
 import com.example.busco.Fragments.principal_fragment;
 import com.example.busco.R;
 
@@ -28,7 +29,7 @@ public class DoacaoEfetuada extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, principal_fragment.class);
+        Intent intent = new Intent(getApplicationContext(), inflate.class);
         startActivity(intent);
     }
 
