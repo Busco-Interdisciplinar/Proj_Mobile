@@ -8,7 +8,7 @@
     tools:context=".Localizacao">
 
     <ImageView
-        android:onClick="voltarTelaLogin"
+        android:onClick="fecharTela"
         android:id="@+id/seta"
         android:layout_width="30dp"
         android:layout_height="30dp"

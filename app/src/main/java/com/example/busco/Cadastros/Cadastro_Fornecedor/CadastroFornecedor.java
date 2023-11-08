@@ -197,8 +197,7 @@ public class CadastroFornecedor extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+        finish();
     }
 
     public void cadastrar(View view) {
