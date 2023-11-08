@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#5BE53E"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -678,11 +679,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="35dp"
-<<<<<<< HEAD
             android:fontFamily="@font/outfit_medium"
-=======
             android:gravity="center"
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
             android:text="Ações socias "
             android:textAlignment="center"
             android:textColor="#FFFFFF"

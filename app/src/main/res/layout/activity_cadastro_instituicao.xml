@@ -11,24 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-<<<<<<< HEAD
-    <TextView
-        android:id="@+id/tituloCadastro_Senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/outfit_bold"
-        android:text="Cadastro de Instituição"
-        android:textColor="#191818"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seta"
-        app:layout_constraintTop_toTopOf="parent" />
-=======
         <ImageView
             android:onClick="voltar"
             android:id="@+id/seta"
@@ -39,17 +21,14 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp" />
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
 
         <TextView
             android:id="@+id/tituloCadastro_Senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:fontFamily="@font/font_outfit"
             android:hint="Nome da empresa"
-            android:inputType="text" />
-=======
+            android:inputType="text"
             android:text="Cadastro de Instituição"
             android:textColor="#191818"
             android:textSize="20sp"
@@ -81,7 +60,6 @@
                 android:hint="Nome da empresa"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
 
         <ImageView
             android:id="@+id/checkIconNome"
@@ -98,11 +76,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:fontFamily="@font/font_outfit"
-            android:hint="Email institucional"
-            android:inputType="textEmailAddress" />
-=======
+            android:inputType="textEmailAddress"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -117,7 +92,6 @@
                 android:hint="Email institucional"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
 
         <ImageView
             android:id="@+id/checkIconEmail"
@@ -134,11 +108,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:fontFamily="@font/font_outfit"
-            android:hint="CNPJ"
-            android:inputType="text" />
-=======
+            android:inputType="text"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -153,7 +124,6 @@
                 android:hint="CNPJ"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
 
         <ImageView
             android:id="@+id/checkIconCNPJ"
@@ -164,18 +134,6 @@
             android:src="@drawable/check_cinza"
             app:layout_constraintEnd_toEndOf="@id/textInputLayoutCNPJ"
             app:layout_constraintTop_toTopOf="@id/textInputLayoutCNPJ" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Aceito e concordo com os termos de contrato"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCNPJ" />
-
-<<<<<<< HEAD
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -207,25 +165,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-=======
-        <Button
-            android:id="@+id/buttonCadastrar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:height="65dp"
-            android:backgroundTint="#5BE53E"
-            android:text="Cadastrar-se"
-            android:textStyle="bold"
-            app:cornerRadius="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox"
-            android:layout_marginBottom="16dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
->>>>>>> 554439ee1995563ed06511d51efb76b5e2df69a8
