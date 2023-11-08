@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#5BE53E"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:layout_width="423dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/outfit_medium"
                 android:text="Olá, Nome Usuário"
                 android:textColor="#FFFFFF"
                 android:textSize="24sp" />
@@ -43,17 +45,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="-21dp"
+            android:fontFamily="@font/font_outfit"
             android:text="Busco mais barato"
             android:textColor="#9A000000"
             android:textSize="16sp" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/outfit_bold"
         android:text="Principais promoções"
+        android:textAlignment="center"
         android:textColor="#FF7B00"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -80,9 +84,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
@@ -100,6 +104,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 20% OFF"
                         android:textColor="#219009"
                         android:textSize="20sp"
@@ -111,6 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo frutas vermelhas"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
@@ -123,6 +129,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#FBAB4D"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
@@ -138,9 +145,9 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/rounded_background"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -158,6 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 30% OFF"
                         android:textColor="#219009"
                         android:textSize="20sp"
@@ -169,6 +177,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo vegetais"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
@@ -181,6 +190,7 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#FBAB4D"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
@@ -196,9 +206,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_background"
                 android:orientation="horizontal"
@@ -213,10 +222,11 @@
 
                     <TextView
                         android:id="@+id/promocao15"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 15% OFF"
                         android:textColor="#219009"
                         android:textSize="20sp"
@@ -228,6 +238,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo legumes"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
@@ -240,14 +251,15 @@
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
                         android:backgroundTint="#FBAB4D"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/legumes"
-                    android:layout_width="150dp"
-                    android:layout_height="260dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/legumes" />
@@ -260,6 +272,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/outfit_bold"
         android:text="Produtos mais vendidos"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -301,7 +314,7 @@
                 <ImageView
                     android:id="@+id/imageView12"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -360,7 +373,7 @@
                 <ImageView
                     android:id="@+id/imageViewproduto"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -419,7 +432,7 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoCenoura"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -477,7 +490,7 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoBatata"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -536,7 +549,7 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoBrocolis"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -596,7 +609,7 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoAbacaxi"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/fundo_branco"
@@ -645,71 +658,81 @@
 
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_orange"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout12"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2">
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginLeft="35dp"
+            android:fontFamily="@font/outfit_medium"
+            android:gravity="center"
             android:text="Ações socias "
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
             android:src="@drawable/seta_promocao" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
+        android:id="@+id/linearLayout72"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:layout_goneMarginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_orange"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginLeft="35dp"
-            android:text="Quem somos?"
+            android:gravity="center"
+            android:text="Quem somos? "
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/imageView54"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
             android:src="@drawable/seta_promocao" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

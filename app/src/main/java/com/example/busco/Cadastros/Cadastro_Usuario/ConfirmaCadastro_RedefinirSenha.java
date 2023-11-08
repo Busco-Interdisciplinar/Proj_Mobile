@@ -3,6 +3,8 @@ package com.example.busco.Cadastros.Cadastro_Usuario;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -43,6 +45,7 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
     private Bundle bundle;
     String emailRecebido;
     String novaSenha;
+    private boolean contagem = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,69 +136,80 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
     }
 
     public void confirmar(View view){
-        EditText digito1, digito2, digito3, digito4;
-        digito1 = findViewById(R.id.editTextCodigo1);
-        digito2 = findViewById(R.id.editTextCodigo2);
-        digito3 = findViewById(R.id.editTextCodigo3);
-        digito4 = findViewById(R.id.editTextCodigo4);
+        if (contagem == true){
+            contagem = false;
 
-        String codigoCompleto = (digito1.getText().toString() + digito2.getText().toString() + digito3.getText().toString() + digito4.getText().toString());
-        if(bundle != null){
-            if (Objects.equals(bundle.getString("action"), "senha")){
-                resetarSenha(emailRecebido, novaSenha, codigoCompleto);
-            }else{
-                if (codigoCompleto.equals(codigo)){
-                    ApiService.getInstance().cadastrarUsuario(usuario).enqueue(new Callback<ApiResponse>() {
-                        @Override
-                        public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                            if (response.isSuccessful()){
-                                if (response.body() != null && response.body().isResponseSucessfull()){
-                                    List<Object> usuarioObject = response.body().getObject();
-                                    String objetoJson = gson.toJson(usuarioObject.get(0));
-                                    Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
-                                    Intent in = new Intent(ConfirmaCadastro_RedefinirSenha.this, Login.class);
-                                    in.putExtra("email", usuarioCadastrado.getEmail());
-                                    in.putExtra("senha", usuarioCadastrado.getSenha());
-                                    startActivity(in);
-                                    finish();
-                                    Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    contagem = true;
+                }
+            }, 6000);
 
-                                    //adicionando Log no firebase
-                                    Connection connection = Connection.getInstance();
-                                    DatabaseReference databaseReference = connection.getDatabaseReference();
+            EditText digito1, digito2, digito3, digito4;
+            digito1 = findViewById(R.id.editTextCodigo1);
+            digito2 = findViewById(R.id.editTextCodigo2);
+            digito3 = findViewById(R.id.editTextCodigo3);
+            digito4 = findViewById(R.id.editTextCodigo4);
 
-                                    //Formatando data
-                                    Date currentDate = new Date();
-                                    @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                                    String formattedDateTime = dateFormat.format(currentDate);
+            String codigoCompleto = (digito1.getText().toString() + digito2.getText().toString() + digito3.getText().toString() + digito4.getText().toString());
+            if(bundle != null){
+                if (Objects.equals(bundle.getString("action"), "senha")){
+                    resetarSenha(emailRecebido, novaSenha, codigoCompleto);
+                }else{
+                    if (codigoCompleto.equals(codigo)){
+                        ApiService.getInstance().cadastrarUsuario(usuario).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.isSuccessful()){
+                                    if (response.body() != null && response.body().isResponseSucessfull()){
+                                        List<Object> usuarioObject = response.body().getObject();
+                                        String objetoJson = gson.toJson(usuarioObject.get(0));
+                                        Usuarios usuarioCadastrado = gson.fromJson(objetoJson, Usuarios.class);
+                                        Intent in = new Intent(ConfirmaCadastro_RedefinirSenha.this, Login.class);
+                                        in.putExtra("email", usuarioCadastrado.getEmail());
+                                        in.putExtra("senha", usuarioCadastrado.getSenha());
+                                        startActivity(in);
+                                        finish();
+                                        Toast.makeText(getApplicationContext(), response.body().getDescription(), Toast.LENGTH_LONG).show();
 
-                                    Log log = new Log("Cadastro", formattedDateTime, "Novo usuário cadastrado no aplicativo", usuarioCadastrado.getId(), usuarioCadastrado.getNome());
-                                    databaseReference.child("log").push().setValue(log);
-                                }
-                            } else {
-                                if (response.errorBody() != null) {
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
-                                    try {
-                                        String apiResponseString = response.errorBody().string();
-                                        ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
-                                        Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
-                                    } catch (IOException e) {
-                                        throw new RuntimeException(e);
+                                        //adicionando Log no firebase
+                                        Connection connection = Connection.getInstance();
+                                        DatabaseReference databaseReference = connection.getDatabaseReference();
+
+                                        //Formatando data
+                                        Date currentDate = new Date();
+                                        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                                        String formattedDateTime = dateFormat.format(currentDate);
+
+                                        Log log = new Log("Cadastro", formattedDateTime, "Novo usuário cadastrado no aplicativo", usuarioCadastrado.getId(), usuarioCadastrado.getNome());
+                                        databaseReference.child("log").push().setValue(log);
+                                    }
+                                } else {
+                                    if (response.errorBody() != null) {
+                                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                                        startActivity(intent);
+                                        finish();
+                                        try {
+                                            String apiResponseString = response.errorBody().string();
+                                            ApiResponse apiResponseError = gson.fromJson(apiResponseString, ApiResponse.class);
+                                            Toast.makeText(getApplicationContext(), apiResponseError.getDescription(), Toast.LENGTH_LONG).show();
+                                        } catch (IOException e) {
+                                            throw new RuntimeException(e);
+                                        }
                                     }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
-                            Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
-                } else {
-                    finish();
-                    Toast.makeText(getApplicationContext(), "O código inserido é inválido", Toast.LENGTH_LONG).show();
+                            @Override
+                            public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        finish();
+                        Toast.makeText(getApplicationContext(), "O código inserido é inválido", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         }

@@ -59,6 +59,9 @@ public class  produtos_fragment extends Fragment {
         searchEditText = view.findViewById(R.id.searchEditText);
         naoExiste = view.findViewById(R.id.noProductTextView);
 
+        View loadingProgressBar = view.findViewById(R.id.loadingProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
+
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("ProductsData", Context.MODE_PRIVATE);
         String listaProdutosJson = sharedPreferences.getString("listProducts", "");
 
@@ -123,6 +126,10 @@ public class  produtos_fragment extends Fragment {
                                 }
                             }, 1200000);
                         }
+                        produtos.sort(Comparator.comparing(Produto::getNome));
+                        produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
+                        listView.setAdapter(produtoAdapter);
                     }
                 }
                 @Override
@@ -134,7 +141,7 @@ public class  produtos_fragment extends Fragment {
             Gson gson = new Gson();
             Type produtoListType = new TypeToken<List<Produto>>() {}.getType();
             produtos = gson.fromJson(listaProdutosJson, produtoListType);
-
+            loadingProgressBar.setVisibility(View.INVISIBLE);
             produtos.sort(Comparator.comparing(Produto::getNome));
             produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
             listView.setAdapter(produtoAdapter);

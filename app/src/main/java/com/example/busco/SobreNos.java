@@ -32,7 +32,7 @@ public class SobreNos extends AppCompatActivity {
 
         barra.setVisibility(View.INVISIBLE);
 
-        String url = "www.google.com.br";
+        String url = "https://landpage-w1bj.onrender.com";
         if (isNetworkAvailable()) {
             webView.setWebViewClient(new WebViewClient() {
                 @Override
@@ -78,7 +78,6 @@ public class SobreNos extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+        finish();
     }
 }

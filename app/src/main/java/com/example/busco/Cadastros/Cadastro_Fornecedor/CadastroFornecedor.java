@@ -57,11 +57,6 @@ public class CadastroFornecedor extends AppCompatActivity {
         cnpj.addTextChangedListener(createMask(cnpj, "##.###.###/####-##"));
         cnpj.addTextChangedListener(createTextWatcher(checkIconCNPJ, this::cnpjValido));
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> verificarEstadoBotao());
-
-//        String[] categorias = {"Vegetais", "Frutas", "Legumes", "Todos"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinnerCategoria.setAdapter(adapter);
     }
 
     private TextWatcher createTextWatcher(ImageView checkIcon, CadastroFornecedor.TextValidator validator) {
@@ -170,7 +165,7 @@ public class CadastroFornecedor extends AppCompatActivity {
 
     private void desabilitarBotaoCinza() {
         buttonCriarConta.setBackgroundResource(R.drawable.button_background);
-        buttonCriarConta.setEnabled(false);
+        buttonCriarConta.setEnabled(true);
     }
 
     private boolean imagensVerdes() {
@@ -210,8 +205,7 @@ public class CadastroFornecedor extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+        finish();
     }
 
     public void cadastrar(View view) {

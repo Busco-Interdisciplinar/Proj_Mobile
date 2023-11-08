@@ -41,9 +41,9 @@ public class Redefinir_Senha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_redefinir_senha);
 
-        emailEditText = findViewById(R.id.editTextTextCEP);
+        emailEditText = findViewById(R.id.editTextTextCep);
         novaSenhaEditText = findViewById(R.id.editTextTextSenha);
-        checkIconEmail = findViewById(R.id.checkIconEmail);
+        checkIconEmail = findViewById(R.id.checkIconCepInstituicao);
         checkIconSenhaNova = findViewById(R.id.checkIconSenhaNova);
         buttonContinuar = findViewById(R.id.buttonContinuar);
 
@@ -126,69 +126,80 @@ public class Redefinir_Senha extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+        finish();
     }
     interface TextValidator {
         boolean isValid(String text);
     }
 
+    private boolean contagem = true;
     public void resetarSenha(View view) {
-        String email = emailEditText.getText().toString();
-        String novaSenha = novaSenhaEditText.getText().toString();
+        if (contagem = true){
+            contagem = true;
 
-        if (emailValido(email) && senhaValida(novaSenha)){
-            ApiService.getInstance().findByEmail(email).enqueue(new Callback<ApiResponse>() {
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
-                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                    if (response.isSuccessful()){
-                        if (response.body() != null && response.body().isResponseSucessfull()){
-                            Random random = new Random();
-                            Gson gson = new Gson();
-                            int codigo = random.nextInt(10000);
-                            String codigoFormatado = String.format("%04d", codigo);
-                            String mensagem = "Verificação Busco: " + codigoFormatado;
-                            List<Object> apiResponse = response.body().getObject();
-                            String usuarioEncontradoJson = gson.toJson(apiResponse.get(0));
-                            Usuarios usuarioEncontrado = gson.fromJson(usuarioEncontradoJson, Usuarios.class);
-                            String telefone = usuarioEncontrado.getTelefone();
+                public void run() {
+                    contagem = true;
+                }
+            }, 6000);
 
-                            Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putString("codigoFormatado", codigoFormatado);
-                            bundle.putString("email", email);
-                            bundle.putString("senha", novaSenha);
-                            bundle.putString("action", "senha");
-                            intentSMS.putExtras(bundle);
+            String email = emailEditText.getText().toString();
+            String novaSenha = novaSenhaEditText.getText().toString();
 
-                            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
-                            SmsManager sms = SmsManager.getDefault();
-                            try {
-                                sms.sendTextMessage(telefone, null, mensagem, pi,null);
-                            }catch (Exception e){
-                                Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
-                                startActivity(intentSMS);
-                            }
-                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    finish();
+            if (emailValido(email) && senhaValida(novaSenha)){
+                ApiService.getInstance().findByEmail(email).enqueue(new Callback<ApiResponse>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body() != null && response.body().isResponseSucessfull()){
+                                Random random = new Random();
+                                Gson gson = new Gson();
+                                int codigo = random.nextInt(10000);
+                                String codigoFormatado = String.format("%04d", codigo);
+                                String mensagem = "Verificação Busco: " + codigoFormatado;
+                                List<Object> apiResponse = response.body().getObject();
+                                String usuarioEncontradoJson = gson.toJson(apiResponse.get(0));
+                                Usuarios usuarioEncontrado = gson.fromJson(usuarioEncontradoJson, Usuarios.class);
+                                String telefone = usuarioEncontrado.getTelefone();
+
+                                Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putString("codigoFormatado", codigoFormatado);
+                                bundle.putString("email", email);
+                                bundle.putString("senha", novaSenha);
+                                bundle.putString("action", "senha");
+                                intentSMS.putExtras(bundle);
+
+                                PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+                                SmsManager sms = SmsManager.getDefault();
+                                try {
+                                    sms.sendTextMessage(telefone, null, mensagem, pi,null);
+                                }catch (Exception e){
+                                    Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
+                                    startActivity(intentSMS);
                                 }
-                            }, 3000);
+                                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        finish();
+                                    }
+                                }, 3000);
+                            }
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Usuário não encontrado no banco", Toast.LENGTH_LONG).show();
+                            emailEditText.requestFocus();
                         }
-                    }else{
-                        Toast.makeText(getApplicationContext(),"Usuário não encontrado no banco", Toast.LENGTH_LONG).show();
-                        emailEditText.requestFocus();
                     }
-                }
 
-                @Override
-                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
-                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-                }
-            });
-        }else{
-            Toast.makeText(this, "Email ou senha não segue os padrões", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }else{
+                Toast.makeText(this, "Email ou senha não segue os padrões", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
