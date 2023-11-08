@@ -30,7 +30,7 @@ public class promocao_fragment extends Fragment {
         promocoes.add(new Ticket("500g de Laranja", R.drawable.laranja, R.drawable.laranja_promocao));
         promocoes.add(new Ticket("300g de Mamão", R.drawable.mamao, R.drawable.mamao_promocao));
         promocoes.add(new Ticket("250g de Maracujá", R.drawable.maracuja, R.drawable.maracuja_promocao));
-        promocoes.add(new Ticket("250g de Abacate", R.drawable.abacate, R.drawable.abacate_promocao));
+        promocoes.add(new Ticket("250g de Abacate", R.drawable.abacate, R.drawable.abacate));
 
         TicketAdapter adapter = new TicketAdapter(getActivity(), promocoes);
         listView.setAdapter(adapter);

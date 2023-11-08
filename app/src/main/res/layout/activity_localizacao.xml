@@ -177,15 +177,16 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="517dp"
+        android:layout_height="48dp"
         android:layout_centerInParent="false"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/font_outfit"
         android:gravity="center"
         android:text="Nos dê uma sugestão de local para passarmos"
         android:textColor="#1C9C00"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="-53dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

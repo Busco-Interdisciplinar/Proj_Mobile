@@ -29,7 +29,7 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:height="65dp"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E3641B "
         android:fontFamily="@font/outfit_bold"
         android:onClick="voltar"
         android:text="voltar"
