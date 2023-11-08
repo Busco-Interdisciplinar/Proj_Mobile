@@ -33,7 +33,6 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
 
         ImageView imageViewProduto = convertView.findViewById(R.id.foto_promo);
         TextView nomeProduto = convertView.findViewById(R.id.oferta_promocao);
-        ImageView imagemPromo = convertView.findViewById(R.id.foto_produto_promo);
         Button usarPromocao = convertView.findViewById(R.id.botao_usarcupom_morango);
 
         Glide.with(getContext())
@@ -47,8 +46,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
         Glide.with(getContext())
                 .load(ticket.getFotoProdutoPromoResource())
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
-                .into(imagemPromo);
+                .skipMemoryCache(true);
 
         usarPromocao.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,7 +17,7 @@
         android:layout_marginTop="30dp"
         android:fontFamily="@font/outfit_bold"
         android:text="Tickets de promoção"
-        android:textColor="#FF9800"
+        android:textColor="#E3641B"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +59,8 @@
             <LinearLayout
                 android:layout_width="163dp"
                 android:layout_height="207dp"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,6 @@
                     android:layout_height="90dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/tomate" />
@@ -89,7 +88,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="1,5kg de Tomate"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -100,7 +99,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 13,90 por 7,90"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -109,6 +108,7 @@
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="#E2641B"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
                     android:textSize="10sp"
@@ -119,7 +119,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +134,6 @@
                     android:layout_height="90dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/brocolis" />
@@ -148,7 +147,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="600g de Brócolis"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -159,7 +158,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 9,90 por 6,00"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -168,6 +167,7 @@
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="#E2641B"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
                     android:textSize="10sp"
@@ -178,7 +178,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -188,18 +188,17 @@
                 app:layout_constraintVertical_bias="0.057">
 
                 <ImageView
-                    android:id="@+id/imageViewproduto"
+                    android:id="@+id/morangoCard"
                     android:layout_width="146dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/morango" />
 
                 <TextView
-                    android:id="@+id/nome_produtoMorango"
+                    android:id="@+id/morango_produto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -207,26 +206,27 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="500g de Morango"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/preco_produtoMorango"
+                    android:id="@+id/preco_morango"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 9,90 por 5,90"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
-                    android:id="@+id/usar_promocaoMorango"
+                    android:id="@+id/buttonMorango"
                     android:layout_width="140dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="#E2641B"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
                     android:textSize="10sp"
@@ -236,9 +236,9 @@
             <LinearLayout
                 android:layout_width="163dp"
                 android:layout_height="207dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/rounded_orange"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -248,45 +248,45 @@
                 app:layout_constraintVertical_bias="0.057">
 
                 <ImageView
-                    android:id="@+id/imageViewprodutoAbacaxi"
+                    android:id="@+id/abacaxiCard"
                     android:layout_width="146dp"
                     android:layout_height="90dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/abacaxi" />
 
                 <TextView
-                    android:id="@+id/nome_produtoAbacaxi"
+                    android:id="@+id/abacaxi_produto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
-                    android:text="1kg de Abacaxi"
-                    android:textColor="#FDFCFC"
+                    android:text="1Kg de Abacaxi"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
-                    android:id="@+id/preco_produtoAbacaxi"
+                    android:id="@+id/preco_abacaxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 8,90 por 4,50"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
-                    android:id="@+id/usar_promocaoAbacaxi"
+                    android:id="@+id/buttonAbacaxi"
                     android:layout_width="140dp"
                     android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="#E2641B"
                     android:fontFamily="@font/outfit_semi_bold"
                     android:text="Usar promoção"
                     android:textSize="10sp"

@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bar_nabar"
-        app:itemIconTint="@color/white"
-        app:backgroundTint="@color/verde_claro"
-        app:itemTextColor="@color/black"
         android:layout_gravity="bottom"
+        android:background="@drawable/bar_nabar"
+        app:backgroundTint="#FFFFFF"
+        app:itemIconTint="#E3641B"
+        app:itemTextColor="@color/black"
         app:menu="@menu/bottom_navigation_view" />
 
 </RelativeLayout>

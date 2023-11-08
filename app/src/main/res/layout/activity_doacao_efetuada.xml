@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/email"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Doacao.DoacaoEfetuada">
@@ -10,7 +11,7 @@
         android:id="@+id/button6"
         android:layout_width="372dp"
         android:layout_height="141dp"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E3641B "
         app:cornerRadius="6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
         android:fontFamily="@font/outfit_bold"
         android:onClick="outraDoacao"
         android:text="Fazer outra doação"
-        android:textColor="#5BE43E"
+        android:textColor="#E3641B "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:width="333dp"
         android:height="53dp"
-        android:backgroundTint="#5BE43E"
+        android:backgroundTint="#E3641B "
         android:fontFamily="@font/outfit_bold"
         android:onClick="voltar"
         android:text="Voltar para a página inicial"
@@ -82,18 +83,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/gifemail"
         app:layout_constraintVertical_bias="0.55" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/gifemail"
         android:layout_width="505dp"
         android:layout_height="281dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@raw/email"
-        tools:layout_editor_absoluteX="-47dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-47dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
