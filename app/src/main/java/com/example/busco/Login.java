@@ -155,6 +155,7 @@ public class Login extends AppCompatActivity {
                                 databaseReference.child("log").push().setValue(log);
 
 
+
                                 //Adicionando o usuário como informação preferencial para todu o aplicativo
 
                                 String usuarioJson = gson.toJson(usuarioLogado);

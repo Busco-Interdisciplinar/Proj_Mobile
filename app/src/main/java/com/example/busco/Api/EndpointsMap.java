@@ -2,6 +2,7 @@ package com.example.busco.Api;
 
 import retrofit2.Call;
 
+import com.example.busco.Api.Models.Fornecedor;
 import com.example.busco.Api.Models.Usuarios;
 
 import retrofit2.http.Body;
@@ -32,4 +33,7 @@ public interface EndpointsMap {
 
     @GET("/api/rota/buscarRota/{rota}")
     Call<ApiResponse> findRota(@Path("rota") int rota);
+
+    @POST("/api/fornecedor/inserirFornecedor")
+    Call<ApiResponse> inserirFornecedor(@Body Fornecedor fornecedor);
 }

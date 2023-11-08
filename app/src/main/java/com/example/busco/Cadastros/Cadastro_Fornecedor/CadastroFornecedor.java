@@ -93,4 +93,8 @@ public class CadastroFornecedor extends AppCompatActivity {
 
         return (cnpj.charAt(12) - '0' == digito1) && (cnpj.charAt(13) - '0' == digito2);
     }
+
+    public void confirmar(View view) {
+
+    }
 }
