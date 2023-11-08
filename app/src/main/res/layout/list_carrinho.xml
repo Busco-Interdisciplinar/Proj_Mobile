@@ -76,7 +76,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-            <!-- Adicione isso dentro do layout "produto1" -->
             <LinearLayout
                 android:id="@+id/quantidadeLayout"
                 android:layout_width="wrap_content"

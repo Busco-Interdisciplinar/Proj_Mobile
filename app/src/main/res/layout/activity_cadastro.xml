@@ -295,7 +295,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#E3641B "
+            android:backgroundTint="#E3641B"
             android:fontFamily="@font/outfit_bold"
             android:onClick="criarConta"
             android:text="Continuar"

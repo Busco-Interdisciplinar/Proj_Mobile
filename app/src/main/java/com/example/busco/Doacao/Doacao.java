@@ -78,10 +78,11 @@ public class Doacao extends AppCompatActivity {
                         }
                         Collections.sort(produtosNomes);
                         produtosNames = produtosNomes.toArray(new String[0]);
-                        Spinner produtoDoacao = findViewById(R.id.produtosSpinner);
+                        Spinner produtoDoacao = findViewById(R.id.spinnerCategoria);
                         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, produtosNames);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         produtoDoacao.setAdapter(adapter);
+
                         produtoDoacao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                             @Override
                             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -148,10 +149,6 @@ public class Doacao extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    private boolean produtoValido(String nome) {
-        return !nome.isEmpty() && nome.matches("[a-zA-ZÀ-ÖØ-öø-ÿ ]+");
     }
 
     private boolean camposValidos() {
