@@ -8,15 +8,15 @@
 
     <LinearLayout
         android:id="@+id/editProfileLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_width="405dp"
+        android:layout_height="395dp"
         android:background="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
         <ImageView
@@ -38,8 +38,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray" />
 
         <EditText
             android:id="@+id/editNome"
@@ -61,6 +61,18 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/font_outfit"
             android:hint="Email"
+            android:inputType="textPassword"
+            android:padding="16dp" />
+
+        <EditText
+            android:id="@+id/editEmail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/font_outfit"
+            android:hint="Senha"
             android:padding="16dp" />
 
     </LinearLayout>
