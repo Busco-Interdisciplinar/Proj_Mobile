@@ -40,6 +40,8 @@ public class Cadastro extends AppCompatActivity {
     private CheckBox checkBox;
     private Button buttonCriarConta;
 
+    private boolean contagem = true;
+
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,7 +208,7 @@ public class Cadastro extends AppCompatActivity {
     }
 
     private boolean nomeValido(String nome) {
-        return nome.trim().matches("^[a-zA-ZÀ-ÖØ-öø-ÿĀ-ž]+$");
+        return nome.trim().matches("^[a-zA-ZÀ-ÖØ-öø-ÿĀ-ž ]+$");
     }
 
     private boolean emailValido(String email) {
@@ -251,98 +253,108 @@ public class Cadastro extends AppCompatActivity {
         }
 
         if(camposValidos() && checkBox.isChecked()){
+            if(contagem = true){
+                contagem = false;
 
-            String numero = "+55" + telefoneEditText.getText().toString();
-            String nome =  nomeEditText.getText().toString().trim();
-            String email = emailEditText.getText().toString().trim();
-            String senha = senhaEditText.getText().toString().trim();
-            String cep =  cepEditText.getText().toString().trim().replace("-", "");
-            String cpf = cpfEditText.getText().toString().trim().replace(".", "").replace("-", "");
-            String numeroSemCodigo = numero.replace("+55", "").replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
-
-            ApiService.getInstance().buscarCpfEmailTelefone(cpf, email, numeroSemCodigo).enqueue(new Callback<ApiResponse>() {
-                @Override
-                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
-                    if (response.isSuccessful()){
-                        if (response.body() != null && response.body().isResponseSucessfull()){
-                            try {
-                                JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
-                                Boolean cpf = (Boolean) jsonString.get("cpf");
-                                Boolean email = (Boolean) jsonString.get("email");
-                                Boolean telefone = (Boolean) jsonString.get("telefone");
-
-                                int focus = 0;
-                                String mensagem = "";
-                                if (cpf){
-                                    mensagem += "\n \r CPF já cadastrado no banco.";
-                                    focus = 2;
-                                }
-                                if (email){
-                                    mensagem += "\n \r Email já cadastrado no banco.";
-                                    if(focus == 0){
-                                        focus = 1;
-                                    }
-                                }
-
-                                if (telefone){
-                                    mensagem += "\n \r Telefone já cadastrado no banco.";
-                                    if(focus != 2 && focus != 1){
-                                        focus = 3;
-                                    }
-                                }
-
-                                if (focus == 1){
-                                    emailEditText.requestFocus();
-                                } else if (focus == 2) {
-                                    cpfEditText.requestFocus();
-                                }else{
-                                    telefoneEditText.requestFocus();
-                                }
-                                if (!mensagem.equals("")){
-                                    Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n \r" + mensagem, Toast.LENGTH_LONG).show();
-                                }
-                            } catch (JSONException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }
-                    } else{
-                        Random random = new Random();
-                        int codigo = random.nextInt(10000);
-                        String codigoFormatado = String.format("%04d", codigo);
-                        String mensagem = "Verificação Busco: " + codigoFormatado;
-                        Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numeroSemCodigo);
-
-                        Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
-                        Bundle bundle = new Bundle();
-                        Gson gson = new Gson();
-                        String usuarioJson = gson.toJson(usuario);
-                        bundle.putString("codigoFormatado", codigoFormatado);
-                        bundle.putString("usuario", usuarioJson);
-                        bundle.putString("action", "cadastro");
-                        intentSMS.putExtras(bundle);
-
-                        PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
-                        SmsManager sms = SmsManager.getDefault();
-                        try {
-                            sms.sendTextMessage(numero, null, mensagem, pi,null);
-                        }catch (Exception e){
-                            Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
-                            startActivity(intentSMS);
-                        }
-                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                finish();
-                            }
-                        }, 3000);
+                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        contagem = true;
                     }
-                }
+                }, 6000);
 
-                @Override
-                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
-                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-                }
-            });
+                String numero = "+55" + telefoneEditText.getText().toString();
+                String nome =  nomeEditText.getText().toString().trim();
+                String email = emailEditText.getText().toString().trim();
+                String senha = senhaEditText.getText().toString().trim();
+                String cep =  cepEditText.getText().toString().trim().replace("-", "");
+                String cpf = cpfEditText.getText().toString().trim().replace(".", "").replace("-", "");
+                String numeroSemCodigo = numero.replace("+55", "").replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
+
+                ApiService.getInstance().buscarCpfEmailTelefone(cpf, email, numeroSemCodigo).enqueue(new Callback<ApiResponse>() {
+                    @Override
+                    public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                        if (response.isSuccessful()){
+                            if (response.body() != null && response.body().isResponseSucessfull()){
+                                try {
+                                    JSONObject jsonString = new JSONObject(response.body().getAditionalInformation());
+                                    Boolean cpf = (Boolean) jsonString.get("cpf");
+                                    Boolean email = (Boolean) jsonString.get("email");
+                                    Boolean telefone = (Boolean) jsonString.get("telefone");
+
+                                    int focus = 0;
+                                    String mensagem = "";
+                                    if (cpf){
+                                        mensagem += "\n \r CPF já cadastrado no banco.";
+                                        focus = 2;
+                                    }
+                                    if (email){
+                                        mensagem += "\n \r Email já cadastrado no banco.";
+                                        if(focus == 0){
+                                            focus = 1;
+                                        }
+                                    }
+
+                                    if (telefone){
+                                        mensagem += "\n \r Telefone já cadastrado no banco.";
+                                        if(focus != 2 && focus != 1){
+                                            focus = 3;
+                                        }
+                                    }
+
+                                    if (focus == 1){
+                                        emailEditText.requestFocus();
+                                    } else if (focus == 2) {
+                                        cpfEditText.requestFocus();
+                                    }else{
+                                        telefoneEditText.requestFocus();
+                                    }
+                                    if (!mensagem.equals("")){
+                                        Toast.makeText(getApplicationContext(),"Foram encontrados os seguintes dados já cadastrados no banco: \n \r" + mensagem, Toast.LENGTH_LONG).show();
+                                    }
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        } else{
+                            Random random = new Random();
+                            int codigo = random.nextInt(10000);
+                            String codigoFormatado = String.format("%04d", codigo);
+                            String mensagem = "Verificação Busco: " + codigoFormatado;
+                            Usuarios usuario = new Usuarios(email, senha, cep, nome, cpf, numeroSemCodigo);
+
+                            Intent intentSMS = new Intent(getApplicationContext(), ConfirmaCadastro_RedefinirSenha.class);
+                            Bundle bundle = new Bundle();
+                            Gson gson = new Gson();
+                            String usuarioJson = gson.toJson(usuario);
+                            bundle.putString("codigoFormatado", codigoFormatado);
+                            bundle.putString("usuario", usuarioJson);
+                            bundle.putString("action", "cadastro");
+                            intentSMS.putExtras(bundle);
+
+                            PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 1, intentSMS,PendingIntent.FLAG_IMMUTABLE);
+                            SmsManager sms = SmsManager.getDefault();
+                            try {
+                                sms.sendTextMessage(numero, null, mensagem, pi,null);
+                            }catch (Exception e){
+                                Toast.makeText(getApplicationContext(),"Não foi possível enviar o SMS, verifica a conectividade\n" + e , Toast.LENGTH_LONG).show();
+                                startActivity(intentSMS);
+                            }
+                            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    finish();
+                                }
+                            }, 3000);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                        Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
         }
     }
     private boolean camposValidos() {

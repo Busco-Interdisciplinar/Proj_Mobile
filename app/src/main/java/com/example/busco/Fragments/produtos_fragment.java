@@ -56,6 +56,9 @@ public class produtos_fragment extends Fragment {
         searchEditText = view.findViewById(R.id.searchEditText);
         naoExiste = view.findViewById(R.id.noProductTextView);
 
+        View loadingProgressBar = view.findViewById(R.id.loadingProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
+
         ApiService.getInstance().listarProdutos().enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
@@ -92,6 +95,7 @@ public class produtos_fragment extends Fragment {
 
                         produtos.sort(Comparator.comparing(Produto::getNome));
                         produtoAdapter = new ProdutoAdapter(getActivity(), produtos);
+                        loadingProgressBar.setVisibility(View.GONE);
                         listView.setAdapter(produtoAdapter);
                     }
                 }

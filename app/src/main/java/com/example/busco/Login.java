@@ -10,6 +10,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +42,8 @@ import retrofit2.Response;
 public class Login extends AppCompatActivity {
     private final Gson gson = new Gson();
 
+    public boolean contagem = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,21 +70,21 @@ public class Login extends AppCompatActivity {
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebView("https://www.google.com.br");
+                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
             }
         });
 
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebView("https://www.facebook.com");
+                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
             }
         });
 
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWebView("https://www.instagram.com");
+                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -112,25 +116,41 @@ public class Login extends AppCompatActivity {
     }
 
     public void redefinirSenha(View view) {
-        startActivity( new Intent(this, principal_fragment.class));
+        startActivity( new Intent(this, Redefinir_Senha.class));
     }
 
     public void fazerLogin(View view) {
+        if (contagem == true) {
+            contagem = false;
 
-        EditText emailEditText = findViewById(R.id.email);
-        EditText senhaEditText = findViewById(R.id.senha);
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    contagem = true;
+                }
+            }, 6000);
 
-        String email = emailEditText.getText().toString().trim();
-        String senha = senhaEditText.getText().toString().trim();
+            EditText emailEditText = findViewById(R.id.email);
+            EditText senhaEditText = findViewById(R.id.senha);
 
-        if (email.equals("") || senha.equals("")){
-            Toast.makeText(getApplicationContext(), "Email ou senha vazios", Toast.LENGTH_LONG).show();
-        } else {
-        ApiService.getInstance().logarUsuario(email.trim(), senha.trim()).enqueue(new Callback<ApiResponse>() {
+            String email = emailEditText.getText().toString().trim();
+            String senha = senhaEditText.getText().toString().trim();
+
+            if (email.equals("") || senha.equals("")){
+                Toast.makeText(getApplicationContext(), "Email ou senha vazios", Toast.LENGTH_LONG).show();
+            } else {
+                ApiService.getInstance().logarUsuario(email.trim(), senha.trim()).enqueue(new Callback<ApiResponse>() {
                     @Override
                     public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
                         if (response.isSuccessful()){
                             if (response.body() != null && response.body().isResponseSucessfull()){
+
+                                new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        boolean isLoginInProgress = false;
+                                    }
+                                }, 5000);
 
                                 Intent in = new Intent(Login.this, inflate.class);
                                 startActivity(in);
@@ -177,17 +197,18 @@ public class Login extends AppCompatActivity {
                         }
                     }
 
-            @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
-                if (!isNetworkAvailable()) {
-                    Intent intent = new Intent(getApplicationContext(), Erro.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
-                }
+                    @Override
+                    public void onFailure(Call<ApiResponse> call, Throwable t) {
+                        if (!isNetworkAvailable()) {
+                            Intent intent = new Intent(getApplicationContext(), Erro.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
-        });
         }
     }
 }

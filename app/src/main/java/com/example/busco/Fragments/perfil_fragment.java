@@ -35,8 +35,10 @@
     import com.example.busco.Api.Models.Usuarios;
     import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
+    import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
+    import com.example.busco.MainActivity;
     import com.example.busco.R;
     import com.example.busco.SobreNos;
     import com.example.busco.Usuario;
@@ -210,6 +212,8 @@
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    startActivity(intent);
                     getActivity().finish();
                 }
             });

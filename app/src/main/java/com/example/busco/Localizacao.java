@@ -27,8 +27,7 @@ public class Localizacao extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.map,fragment).commit();
     }
 
-    public void voltarTelaLogin(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+    public void fecharTela(View view) {
+        finish();
     }
 }
