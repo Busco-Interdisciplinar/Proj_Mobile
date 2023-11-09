@@ -37,6 +37,7 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
         TextView nomeProduto = convertView.findViewById(R.id.nome_produto);
         TextView precoProduto = convertView.findViewById(R.id.preco);
         ImageView fotoProduto = convertView.findViewById(R.id.foto_produto);
+        TextView cupom = convertView.findViewById(R.id.cupom);
 
         nomeProduto.setText(carrinhoItem.getNome());
         precoProduto.setText("R$ " + carrinhoItem.getPreco());
@@ -44,6 +45,13 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
                 .load(carrinhoItem.getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(fotoProduto);
+
+        if (carrinhoItem.getCupom() != null) {
+            cupom.setVisibility(View.VISIBLE);
+            cupom.setText("Cupom: " + carrinhoItem.getCupom());
+        } else {
+            cupom.setVisibility(View.GONE);
+        }
 
         TextView quantidadeProduto = convertView.findViewById(R.id.quantidade);
         Button btnDiminuir = convertView.findViewById(R.id.btnDiminuir);
