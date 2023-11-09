@@ -71,6 +71,37 @@ public class CarrinhoDAO {
         return listaCarrinho;
     }
 
+    public Carrinho pesquisar(String nome){
+        oppen();
+        Cursor cursor = database.rawQuery("SELECT * FROM carrinho WHERE nome = ?", new String[]{nome});
+        Carrinho carrinho = null;
+
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            int quantidade = cursor.getInt(2);
+            double preco = cursor.getDouble(3);
+            String foto = cursor.getString(4);
+            String cupom = cursor.getString(5);
+
+            carrinho = new Carrinho(id, nome, quantidade, preco, foto, cupom);
+        }
+
+        close();
+        return carrinho;
+    }
+
+    public void atualizarQuantidadePorNome(String nome, int novaQuantidade) {
+        oppen();
+
+        ContentValues values = new ContentValues();
+        values.put("quantidade", novaQuantidade);
+
+        database.update("carrinho", values, "nome = ?", new String[]{nome});
+
+        close();
+    }
+
+
     public void remover(){
         oppen();
         database.delete("carrinho", null, null);

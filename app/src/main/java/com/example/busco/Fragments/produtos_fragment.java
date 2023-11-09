@@ -176,7 +176,13 @@ public class  produtos_fragment extends Fragment {
 //                int quantidadeInt = Integer.parseInt(quantidadeString);
                 Carrinho carrinho = new Carrinho(produto.getNome(), 1, produto.getPreco(), produto.getFoto(), null);
                 CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
-                carrinhoDAO.salvar(carrinho);
+                Carrinho produtoPesquisado = carrinhoDAO.pesquisar(carrinho.getNome());
+                if (produtoPesquisado == null){
+                    carrinhoDAO.salvar(carrinho);
+                    Toast.makeText(getContext(), "Produto adicionado ao carrinho com sucesso", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(), "Produto já adicionado ao carrinho", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

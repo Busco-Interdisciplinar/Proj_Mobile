@@ -66,6 +66,8 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
                 if (quantidadeAtual[0] > 1) {
                     quantidadeAtual[0]--;
                     carrinhoItem.setQuantidade(quantidadeAtual[0]);
+                    CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
+                    carrinhoDAO.atualizarQuantidadePorNome(carrinhoItem.getNome(), carrinhoItem.getQuantidade());
                     notifyDataSetChanged();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -97,6 +99,8 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
                 if (quantidadeAtual[0] < 20) {
                     quantidadeAtual[0]++;
                     carrinhoItem.setQuantidade(quantidadeAtual[0]);
+                    CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
+                    carrinhoDAO.atualizarQuantidadePorNome(carrinhoItem.getNome(), carrinhoItem.getQuantidade());
                     notifyDataSetChanged();
                 } else {
                     Toast.makeText(getContext(), "Quantidade máxima atingida (20)", Toast.LENGTH_SHORT).show();

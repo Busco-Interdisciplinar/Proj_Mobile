@@ -12,10 +12,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE carrinho (id integer, nome text, quantidade integer, preco double, foto text, cupom text);");
+        sqLiteDatabase.execSQL("CREATE TABLE usuario (id integer, email text, senha text, cep text, nome text, cpf text, telefone text, data_cadastro text, qnt_doacao integer);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        sqLiteDatabase.execSQL("CREATE TABLE carrinho (id integer, nome text, quantidade integer, preco double, foto text, cupom text);");
     }
 }
