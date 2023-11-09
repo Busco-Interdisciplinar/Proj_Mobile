@@ -97,21 +97,21 @@ public class Login extends AppCompatActivity {
         googleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Recurso previsto em próximas atualizações", Toast.LENGTH_SHORT).show();
             }
         });
 
         facebookImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Recurso previsto em próximas atualizações", Toast.LENGTH_SHORT).show();
             }
         });
 
         instagramImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this, "Este serviço não está disponível", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Recurso previsto em próximas atualizações", Toast.LENGTH_SHORT).show();
             }
         });
     }
