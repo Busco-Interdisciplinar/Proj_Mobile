@@ -54,7 +54,7 @@
                     android:id="@+id/nome_produto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/outfit_bold"
                     android:letterSpacing="0.1"
                     android:text="Nome"
@@ -63,11 +63,17 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/cupom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="cupom" />
+
+                <TextView
                     android:id="@+id/preco"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="21dp"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/font_outfit"
                     android:letterSpacing="0.1"
                     android:text="R$ "
