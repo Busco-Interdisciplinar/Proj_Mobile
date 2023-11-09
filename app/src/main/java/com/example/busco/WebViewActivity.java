@@ -27,11 +27,12 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web_view);
 
         webView = findViewById(R.id.webView);
-        barra = (ProgressBar) findViewById(R.id.progressBar);
+        barra = findViewById(R.id.progressBar);
 
-        barra.setVisibility(View.INVISIBLE);
+        barra.setVisibility(View.VISIBLE);
 
-        String url = getIntent().getStringExtra("URL");
+        String url = getIntent().getStringExtra("url"); // Use a chave correta
+
         if (isNetworkAvailable()) {
             webView.setWebViewClient(new WebViewClient() {
                 @Override
@@ -54,13 +55,14 @@ public class WebViewActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(WebViewActivity.this, Erro.class);
             startActivity(intent);
+            finish(); // Encerre esta atividade para evitar voltar para a WebViewActivity após a tela de erro.
         }
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if(keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()){
+        if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
             webView.goBack();
             return true;
         }
@@ -68,8 +70,7 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+        finish();
     }
 
     private boolean isNetworkAvailable() {

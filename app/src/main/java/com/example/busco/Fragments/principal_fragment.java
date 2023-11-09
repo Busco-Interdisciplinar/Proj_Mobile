@@ -66,6 +66,7 @@ public class principal_fragment extends Fragment {
 
     private void abrirLandPage() {
         Intent intent = new Intent(requireContext(), WebViewActivity.class);
+        intent.putExtra("url", "https://landpage-w1bj.onrender.com"); // Substitua a URL pela desejada
         startActivity(intent);
     }
 }
