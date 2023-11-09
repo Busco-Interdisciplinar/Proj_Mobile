@@ -177,7 +177,7 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
                                         Connection connection = Connection.getInstance();
                                         DatabaseReference databaseReference = connection.getDatabaseReference();
 
-                                        //Formatando data
+                                        //formatando data
                                         Date currentDate = new Date();
                                         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                                         String formattedDateTime = dateFormat.format(currentDate);
@@ -213,8 +213,6 @@ public class ConfirmaCadastro_RedefinirSenha extends AppCompatActivity {
                 }
             }
         }
-
-
     }
 
     public void resetarSenha(String email, String novaSenha, String codigoCompleto){
