@@ -181,6 +181,7 @@
         android:layout_height="60dp"
         android:layout_weight="1"
         android:fontFamily="@font/outfit_extra_bold"
+        android:onClick="agendar"
         android:text="Agendar produtos"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"

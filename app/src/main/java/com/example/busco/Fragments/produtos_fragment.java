@@ -171,10 +171,10 @@ public class  produtos_fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Produto produto = produtos.get(position);
-                EditText quantidade = view.findViewById(R.id.quantidade);
-                String quantidadeString = quantidade.getText().toString();
-                int quantidadeInt = Integer.parseInt(quantidadeString);
-                Carrinho carrinho = new Carrinho(produto.getNome(), quantidadeInt, produto.getPreco(), produto.getFoto(), null);
+//                EditText quantidade = view.findViewById(R.id.quantidade);
+//                String quantidadeString = quantidade.getText().toString();
+//                int quantidadeInt = Integer.parseInt(quantidadeString);
+                Carrinho carrinho = new Carrinho(produto.getNome(), 1, produto.getPreco(), produto.getFoto(), null);
                 CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
                 carrinhoDAO.salvar(carrinho);
             }

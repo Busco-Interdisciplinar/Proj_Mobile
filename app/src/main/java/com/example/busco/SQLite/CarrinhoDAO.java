@@ -43,7 +43,6 @@ public class CarrinhoDAO {
         info.put("foto", c.getFoto());
         info.put("cupom", c.getCupom());
 
-        database.delete("carrinho", null, null);
         long id = database.insert("carrinho", null, info);
         c.setId((int) id);
 
@@ -51,28 +50,38 @@ public class CarrinhoDAO {
         return c;
     }
 
-    public List<Usuarios> listar() throws ParseException {
-        List<Usuarios> listaCliente = new ArrayList<>();
+    public List<Carrinho> listar() throws ParseException {
+        List<Carrinho> listaCarrinho = new ArrayList<>();
         oppen();
         Cursor cursor = database.rawQuery("SELECT * FROM carrinho", null);
         if(cursor.moveToFirst()){
             do{
                 int id = cursor.getInt(0);
-                String email = cursor.getString(1);
-                String senha = cursor.getString(2);
-                String cep = cursor.getString(3);
-                String nome = cursor.getString(4);
-                String cpf = cursor.getString(5);
-                String telefone = cursor.getString(6);
-                String dataCadastro = cursor.getString(7);
-                int qnt_doacao = cursor.getInt(8);
-                Usuarios usuario = new Usuarios(id, email, senha, cep, nome, cpf, telefone);
-                listaCliente.add(usuario);
+                String nome = cursor.getString(1);
+                int quantidade = cursor.getInt(2);
+                double preco = cursor.getDouble(3);
+                String foto = cursor.getString(4);
+                String cupom = cursor.getString(5);
+                Carrinho carrinho = new Carrinho(id, nome, quantidade, preco, foto, cupom);
+                listaCarrinho.add(carrinho);
             }while (cursor.moveToNext());
         }
 
         close();
-        return listaCliente;
+        return listaCarrinho;
+    }
+
+    public void remover(){
+        oppen();
+        database.delete("carrinho", null, null);
+        close();
+    }
+    public int remove2(String nome){
+        oppen();
+        String where[] = new String[]{String.valueOf(nome)};
+        int resultado = database.delete("carrinho", "nome=?", where);
+        close();
+        return resultado;
     }
 
 }

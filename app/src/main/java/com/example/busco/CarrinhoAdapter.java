@@ -1,4 +1,4 @@
-package com.example.busco.NavigationManager;
+package com.example.busco;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,9 +12,12 @@ import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.busco.Api.Models.Carrinho;
 import com.example.busco.Api.Models.Produto;
 import com.example.busco.R;
+import com.example.busco.SQLite.CarrinhoDAO;
 
 import java.util.List;
 
@@ -37,6 +40,10 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
 
         nomeProduto.setText(carrinhoItem.getNome());
         precoProduto.setText("R$ " + carrinhoItem.getPreco());
+        Glide.with(getContext())
+                .load(carrinhoItem.getFoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(fotoProduto);
 
         TextView quantidadeProduto = convertView.findViewById(R.id.quantidade);
         Button btnDiminuir = convertView.findViewById(R.id.btnDiminuir);
@@ -59,6 +66,8 @@ public class CarrinhoAdapter extends ArrayAdapter<Carrinho> {
                     builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
+                            carrinhoDAO.remove2(carrinhoItem.getNome());
                             remove(carrinhoItem);
                             notifyDataSetChanged();
                         }
