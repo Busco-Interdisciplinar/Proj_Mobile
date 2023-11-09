@@ -15,19 +15,22 @@
             android:id="@+id/editTextNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Nome" />
 
         <EditText
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Email" />
 
         <EditText
             android:id="@+id/editTextSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:fontFamily="@font/font_outfit"
+            android:hint="Senha (Opcional)"
             android:inputType="textPassword" />
 
     </LinearLayout>
@@ -37,7 +40,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E3641B"
+        android:fontFamily="@font/outfit_bold"
         android:padding="12dp"
         android:text="Salvar"
         android:textStyle="bold"
@@ -50,7 +54,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E3641B"
+        android:fontFamily="@font/outfit_bold"
         android:padding="12dp"
         android:text="Cancelar"
         android:textStyle="bold"

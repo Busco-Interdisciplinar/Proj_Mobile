@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:background="@drawable/fundo_branco" />
+                android:background="@drawable/fundo" />
 
             <LinearLayout
                 android:id="@+id/prod"

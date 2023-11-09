@@ -25,6 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
+        android:fontFamily="@font/outfit_bold"
         android:text="Doação"
         android:textColor="#191818"
         android:textSize="20sp"
@@ -35,43 +36,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutProdutoDoacao"
+        android:id="@+id/spinnerLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
-        app:boxStrokeColor="@color/orangeBusco"
-        app:hintTextColor="@color/orangeBusco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
 
-        <EditText
-            android:id="@+id/editTextProdutoDoacao"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Produto "
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_gravity="center_vertical">
 
-    <ImageView
-        android:id="@+id/checkIconProdutoDoacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/check_cinza"
-        app:layout_constraintEnd_toEndOf="@id/textInputLayoutProdutoDoacao"
-        app:layout_constraintTop_toTopOf="@id/textInputLayoutProdutoDoacao" />
+            <Spinner
+                android:id="@+id/spinnerCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/spiner_border" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Seta"
+                android:src="@drawable/seta_data" />
+
+        </FrameLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutQuantidadeKilos"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutProdutoDoacao"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
@@ -84,6 +87,7 @@
             android:id="@+id/editTextQuantidadeKilos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/font_outfit"
             android:hint="Quantidade (Kg)"
             android:inputType="textEmailSubject" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -116,11 +120,12 @@
             android:id="@+id/editTextDataDoacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Data "
-            android:inputType="none"
+            android:clickable="true"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:clickable="true"/>
+            android:fontFamily="@font/font_outfit"
+            android:hint="Data "
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -140,6 +145,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/font_outfit"
         android:text="Aceito e concordo com os termos de contrato."
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDataDoacao" />
@@ -150,7 +156,8 @@
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="#5BE53E"
+        android:backgroundTint="#E2641B"
+        android:fontFamily="@font/outfit_bold"
         android:onClick="confirmar"
         android:text="Continuar"
         android:textStyle="bold"

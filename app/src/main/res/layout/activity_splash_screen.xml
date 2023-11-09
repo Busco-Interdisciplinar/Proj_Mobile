@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/verde_claro"
+    android:background="@color/verde"
     tools:context=".SplashScreen">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/gifemail"
         android:layout_width="214dp"
         android:layout_height="236dp"
         app:layout_constraintBottom_toBottomOf="parent"

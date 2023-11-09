@@ -1,8 +1,11 @@
 package com.example.busco.Cadastros.Cadastro_Fornecedor;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,9 +18,20 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.busco.Api.ApiResponse;
+import com.example.busco.Api.ApiService;
+import com.example.busco.Api.Models.Fornecedor;
+import com.example.busco.Api.Models.Usuarios;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
+import com.example.busco.Cadastros.Cadastro_Usuario.ConfirmaCadastro_RedefinirSenha;
 import com.example.busco.Fragments.perfil_fragment;
+import com.example.busco.Login;
 import com.example.busco.R;
+import com.google.gson.Gson;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CadastroFornecedor extends AppCompatActivity {
     private EditText cnpj;
@@ -43,12 +57,6 @@ public class CadastroFornecedor extends AppCompatActivity {
         cnpj.addTextChangedListener(createMask(cnpj, "##.###.###/####-##"));
         cnpj.addTextChangedListener(createTextWatcher(checkIconCNPJ, this::cnpjValido));
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> verificarEstadoBotao());
-
-        Spinner spinnerCategoria = findViewById(R.id.spinnerCategoria);
-        String[] categorias = {"Vegetais", "Frutas", "Legumes", "Todos"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategoria.setAdapter(adapter);
     }
 
     private TextWatcher createTextWatcher(ImageView checkIcon, CadastroFornecedor.TextValidator validator) {
@@ -157,7 +165,7 @@ public class CadastroFornecedor extends AppCompatActivity {
 
     private void desabilitarBotaoCinza() {
         buttonCriarConta.setBackgroundResource(R.drawable.button_background);
-        buttonCriarConta.setEnabled(false);
+        buttonCriarConta.setEnabled(true);
     }
 
     private boolean imagensVerdes() {
@@ -197,8 +205,7 @@ public class CadastroFornecedor extends AppCompatActivity {
     }
 
     public void voltar(View view) {
-        Intent intent = new Intent(this, perfil_fragment.class);
-        startActivity(intent);
+        finish();
     }
 
     public void cadastrar(View view) {
@@ -213,7 +220,34 @@ public class CadastroFornecedor extends AppCompatActivity {
         }
 
         if (camposValidos() && checkBox.isChecked()){
-            //api
+            EditText cnpjEditText = findViewById(R.id.cnpj);
+            String cnpj = cnpjEditText.getText().toString();
+            cnpj = cnpj.replace(".", "").replace("/", "").replace("-", "");
+            Gson gson = new Gson();
+
+            SharedPreferences sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            String json = sharedPreferences.getString("user", "");
+            Usuarios usuario = gson.fromJson(json, Usuarios.class);
+            Fornecedor fornecedor = new Fornecedor(cnpj, usuario.getTelefone(), usuario.getNome(), usuario.getEmail(), usuario.getId());
+
+            ApiService.getInstance().inserirFornecedor(fornecedor).enqueue(new Callback<ApiResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                    if (response.isSuccessful()){
+                        if (response.body() != null && response.body().isResponseSucessfull()){
+                            Toast.makeText(getApplicationContext(), "Você agora é um fornecedor, obrigado!", Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Falha ao cadastrar fornecedor", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+
+                }
+            });
         }
     }
 

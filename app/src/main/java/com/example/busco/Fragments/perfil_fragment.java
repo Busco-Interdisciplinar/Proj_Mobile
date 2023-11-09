@@ -1,11 +1,10 @@
     package com.example.busco.Fragments;
-
     import android.content.Context;
     import android.content.DialogInterface;
     import androidx.constraintlayout.widget.ConstraintLayout;
-
     import android.content.SharedPreferences;
     import android.os.Bundle;
+    import android.util.Base64;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
@@ -30,21 +29,24 @@
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
     import static android.app.Activity.RESULT_OK;
-
     //import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Api.Models.Usuarios;
     import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
+    import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
+    import com.example.busco.MainActivity;
     import com.example.busco.R;
+    import com.example.busco.SQLite.UsuarioDAO;
     import com.example.busco.SobreNos;
     import com.example.busco.Usuario;
     import com.google.gson.Gson;
-
     import org.w3c.dom.Text;
-
+    import java.io.ByteArrayOutputStream;
+    import java.io.IOException;
     import java.util.Objects;
+    import android.net.Uri;
 
     public class perfil_fragment extends Fragment {
         private static final int PICK_IMAGE = 1;
@@ -210,6 +212,10 @@
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(requireContext(), MainActivity.class);
+                    startActivity(intent);
+                    UsuarioDAO usuarioDAO = new UsuarioDAO(getActivity());
+                    usuarioDAO.remover();
                     getActivity().finish();
                 }
             });
@@ -272,10 +278,30 @@
             if (resultCode == RESULT_OK) {
                 if (requestCode == PICK_IMAGE) {
                     Uri selectedImageUri = data.getData();
-                    profileImageView.setImageURI(selectedImageUri);
+
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), selectedImageUri);
+
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                        byte[] imageBytes = baos.toByteArray();
+                        String base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+                        profileImageView.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 } else if (requestCode == CAMERA_REQUEST_CODE) {
                     Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     if (bitmap != null) {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                        byte[] imageBytes = baos.toByteArray();
+                        String base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+
                         profileImageView.setImageBitmap(bitmap);
                     }
                 }

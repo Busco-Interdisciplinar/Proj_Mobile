@@ -5,13 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#E3641B"
+        android:orientation="horizontal"></LinearLayout>
+
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/outfit_bold"
         android:text="Meu perfil"
-        android:textColor="#FF9800"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +29,7 @@
         android:id="@+id/fotoUsuario"
         android:layout_width="135dp"
         android:layout_height="135dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="250dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +56,9 @@
     <TextView
         android:id="@+id/nomeUsuario"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/font_outfit"
         android:text="Nome"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +69,8 @@
         android:id="@+id/emailUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/font_outfit"
         android:text="E-mail"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,10 +83,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintHorizontal_bias="0.237"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailUsuario"
-        app:layout_constraintVertical_bias="0.31">
+        app:layout_constraintVertical_bias="0.243">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -97,7 +106,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
-                android:text="Editar perfil"
+                android:fontFamily="@font/font_outfit"
+                android:text="Editar informações"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
 
@@ -120,6 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:text="Seja uma instituição"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
@@ -143,6 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:text="Seja um fornecedor"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
@@ -166,6 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:text="Fazer doação"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
@@ -189,6 +202,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:text="Localização"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
@@ -212,6 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:text="Sobre nós"
                 tools:ignore="TouchTargetSizeCheck" />
         </LinearLayout>
@@ -235,6 +250,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/font_outfit"
                 android:onClick="sair"
                 android:text="Sair"
                 tools:ignore="TouchTargetSizeCheck" />

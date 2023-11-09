@@ -3,58 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#5BE53E"
-        android:orientation="vertical">
+        android:background="#E3641B"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
-        <LinearLayout
-            android:layout_width="423dp"
+        <TextView
+            android:id="@+id/nomeCliente"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/nomeCliente"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:text="Olá, Nome Usuário"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp" />
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="8dp"
-                android:layout_weight="1"
-                android:src="@drawable/busquinho" />
-        </LinearLayout>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/outfit_medium"
+            android:text="Olá, Nome Usuário"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="-21dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font_outfit"
             android:text="Busco mais barato"
-            android:textColor="#9A000000"
+            android:textColor="#FFFFFF"
             android:textSize="16sp" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/outfit_bold"
         android:text="Principais promoções"
-        android:textColor="#FF7B00"
+        android:textAlignment="center"
+        android:textColor="#E3641B"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,14 +69,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
+                android:background="@drawable/fundo_branco"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-                tools:layout_editor_absoluteX="16dp"
-                android:background="@drawable/rounded_background">
+                tools:layout_editor_absoluteX="16dp">
 
                 <LinearLayout
                     android:layout_width="240dp"
@@ -100,8 +89,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 20% OFF"
-                        android:textColor="#219009"
+                        android:textColor="#943404"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -111,8 +101,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo frutas vermelhas"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#943404"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -122,7 +113,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
-                        android:backgroundTint="#FBAB4D"
+                        android:backgroundTint="#E3641B"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
@@ -138,10 +130,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_background"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/fundo_branco"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
@@ -158,8 +150,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 30% OFF"
-                        android:textColor="#219009"
+                        android:textColor="#943404"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -169,8 +162,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo vegetais"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#943404"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -180,7 +174,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
-                        android:backgroundTint="#FBAB4D"
+                        android:backgroundTint="#E3641B"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
@@ -196,29 +191,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/rounded_background"
+                android:background="@drawable/fundo_branco"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-                tools:layout_editor_absoluteX="16dp">
+                tools:layout_editor_absoluteX="16dp"
+                android:layout_marginEnd="16dp">
 
                 <LinearLayout
                     android:layout_width="240dp"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                     >
 
                     <TextView
                         android:id="@+id/promocao15"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="15dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Promoção 15% OFF"
-                        android:textColor="#219009"
+                        android:textColor="#943404"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -228,8 +225,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
+                        android:fontFamily="@font/outfit_medium"
                         android:text="Combo legumes"
-                        android:textColor="#FFFFFF"
+                        android:textColor="#943404"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -239,15 +237,16 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="10dp"
-                        android:backgroundTint="#FBAB4D"
+                        android:backgroundTint="#E3641B"
+                        android:fontFamily="@font/outfit_bold"
                         android:text="Ver oferta"
                         app:cornerRadius="20dp" />
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/legumes"
-                    android:layout_width="150dp"
-                    android:layout_height="260dp"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:src="@drawable/legumes" />
@@ -260,6 +259,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/outfit_bold"
         android:text="Produtos mais vendidos"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -289,7 +289,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -301,10 +301,9 @@
                 <ImageView
                     android:id="@+id/imageView12"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/tomate" />
@@ -318,7 +317,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="1,5kg de Tomate"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -329,7 +328,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 13,90 por 7,90"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -348,7 +347,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -360,10 +359,9 @@
                 <ImageView
                     android:id="@+id/imageViewproduto"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/morango" />
@@ -377,7 +375,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="500g de Morango"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -388,7 +386,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 9,90 por 5,90"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -407,7 +405,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -419,10 +417,9 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoCenoura"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/cenoura" />
@@ -435,7 +432,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="1kg de Cenoura"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -446,7 +443,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 7,90 por 3,80"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -465,7 +462,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -477,10 +474,9 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoBatata"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/batata_promocao" />
@@ -494,7 +490,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="1kg de Batata"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -505,7 +501,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 12,70 por 7,30"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -524,7 +520,7 @@
                 android:layout_width="163dp"
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -536,10 +532,9 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoBrocolis"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/brocolis" />
@@ -553,7 +548,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="600g de Brócolis"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -564,7 +559,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 9,90 por 6,00"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -584,7 +579,7 @@
                 android:layout_height="207dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo_branco"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -596,10 +591,9 @@
                 <ImageView
                     android:id="@+id/imageViewprodutoAbacaxi"
                     android:layout_width="146dp"
-                    android:layout_height="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:background="@drawable/fundo_branco"
                     android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/abacaxi" />
@@ -613,7 +607,7 @@
                     android:fontFamily="@font/outfit_semi_bold"
                     android:gravity="center"
                     android:text="1kg de Abacaxi"
-                    android:textColor="#FDFCFC"
+                    android:textColor="#E3641B"
                     android:textSize="14dp" />
 
                 <TextView
@@ -624,7 +618,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
                     android:text="De 8,90 por 4,50"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#E3641B"
                     android:textSize="11dp" />
 
                 <Button
@@ -645,71 +639,79 @@
 
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_orange"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout12"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2">
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView2"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginLeft="35dp"
+            android:fontFamily="@font/outfit_medium"
+            android:gravity="center"
             android:text="Ações socias "
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
             android:src="@drawable/seta_promocao" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout12"
-        android:layout_width="230dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="50dp"
+        android:id="@+id/linearLayout72"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_orange"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout6"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_goneMarginTop="16dp">
 
         <TextView
             android:id="@+id/textView20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:layout_marginLeft="35dp"
-            android:text="Quem somos?"
+            android:gravity="center"
+            android:text="Quem somos? "
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView21"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:id="@+id/imageView54"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
             android:src="@drawable/seta_promocao" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
