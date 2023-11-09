@@ -19,31 +19,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-    <ImageView
-        android:id="@+id/errorImage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/img"
-        android:layout_marginTop="8dp"
-        android:contentDescription="@string/no_internet_image_description" />
+        <ImageView
+            android:id="@+id/errorImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/img" />
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OPS!..."
-        android:textSize="24sp"
-        android:textColor="#333333"
-        android:layout_marginTop="16dp" />
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/font_outfit"
+            android:text="OPS!..."
+            android:textColor="#333333"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/messageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Falha ao conectar com o servidor"
-        android:textSize="16sp"
-        android:textColor="#666666"
-        android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/font_outfit"
+            android:text="Falha ao conectar com o servidor"
+            android:textColor="#666666"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/buttonTentar"
@@ -53,9 +54,10 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:height="65dp"
-            android:backgroundTint="#5BE53E"
-            android:text="Tentar Novamente"
+            android:backgroundTint="#E3641B "
+            android:fontFamily="@font/outfit_bold"
             android:onClick="tentarNovamente"
+            android:text="Tentar Novamente"
             android:textStyle="bold"
             app:cornerRadius="50dp" />
 
@@ -68,6 +70,7 @@
             android:layout_marginEnd="16dp"
             android:height="65dp"
             android:backgroundTint="@color/white"
+            android:fontFamily="@font/outfit_bold"
             android:onClick="sair"
             android:text="Sair"
             android:textColor="#100F0F"

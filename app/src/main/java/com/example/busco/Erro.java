@@ -7,8 +7,18 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+import java.util.List;
 
 public class Erro extends AppCompatActivity {
     @Override
@@ -18,16 +28,14 @@ public class Erro extends AppCompatActivity {
     }
 
     public void sair(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
-        finish();
+        finishAffinity();
     }
 
     public void tentarNovamente(View view) {
         if (isNetworkAvailable()) {
-            Intent intent = new Intent(this, WebViewActivity.class);
+            Intent intent = new Intent(this, Login.class);
             startActivity(intent);
-            finish();
+            //finish();
         } else {
             Toast.makeText(this, "Falha ao reconectar. Verifique sua conexão com a internet.", Toast.LENGTH_SHORT).show();
         }

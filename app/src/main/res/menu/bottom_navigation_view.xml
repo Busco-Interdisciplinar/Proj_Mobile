@@ -11,32 +11,26 @@
     </item>
     <item
         android:id="@+id/produto"
-        android:icon="@drawable/produtos_icon"
+        android:icon="@drawable/produto"
         android:title=""
         app:showAsAction="ifRoom"
         app:itemBackground="@drawable/selected_item_background">
     </item>
     <item
         android:id="@+id/carrinho"
-        android:icon="@drawable/produtos_icon"
+        android:icon="@drawable/carrinho_icon"
         android:title=""
-        app:showAsAction="ifRoom"
         app:itemBackground="@drawable/selected_item_background"
-        >
-    </item>
+        app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/promocao"
-        android:icon="@drawable/produtos_icon"
+        android:icon="@drawable/promocao_icon"
         android:title=""
-        app:showAsAction="ifRoom"
         app:itemBackground="@drawable/selected_item_background"
-        >
-    </item>
+        app:showAsAction="ifRoom"></item>
     <item
         android:id="@+id/perfil"
-        android:icon="@drawable/produtos_icon"
+        android:icon="@drawable/perfil_icon"
         android:title=""
-        app:itemBackground="@drawable/selected_item_background"
-        >
-    </item>
+        app:itemBackground="@drawable/selected_item_background"></item>
 </menu>
