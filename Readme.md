@@ -1,25 +1,17 @@
-# Nome da Sua Aplicação Móvel
-
-![Inserir logotipo ou imagem da aplicação, se aplicável](link-para-imagem)
+# Busco (mais barato)
 
 ## Índice
 
 - [Visão Geral](#visao-geral)
-- [Capturas de Tela](#capturas-de-tela)
 - [Funcionalidades Principais](#funcionalidades-principais)
 - [Começando](#comecando)
 - [Requisitos de Sistema](#requisitos-de-sistema)
-- [Instalação](#instalacao)
 - [Como Usar](#como-usar)
 - [Contato](#contato)
 
 ## Visão Geral
 
-A **Nome da Sua Aplicação Móvel** é uma plataforma móvel que oferece uma experiência única para os usuários. Ela é projetada para tornar sua vida mais fácil e prática, fornecendo acesso rápido a uma variedade de recursos. Desde a tela inicial até funcionalidades avançadas, nossa aplicação visa atender a todas as suas necessidades.
-
-## Capturas de Tela
-
-[Inserir imagens de capturas de tela da aplicação]
+A Busco é uma plataforma móvel que oferece uma experiência única para os usuários. Ela é projetada para tornar sua vida mais fácil e prática, fornecendo acesso rápido a uma variedade de recursos. Desde a tela inicial até funcionalidades avançadas, nossa aplicação visa atender a todas as suas necessidades.
 
 ## Funcionalidades Principais
 
@@ -97,15 +89,10 @@ Para começar a usar a **Nome da Sua Aplicação Móvel**, siga estas etapas sim
 
 Certifique-se de que seu dispositivo atenda aos requisitos mínimos de sistema:
 
-- Sistema Operacional: Android 7.0 ou superior / iOS 12.0 ou superior
+- Sistema Operacional: Android 11.0 ou superior
 - Conexão com a Internet
-- Espaço de Armazenamento: [Inserir requisitos de espaço de armazenamento, se aplicável]
+- Espaço de Armazenamento: 50mb
 
-## Instalação
-
-1. Faça o download da aplicação na [Google Play Store](link-para-o-google-play) ou na [Apple App Store](link-para-a-app-store).
-2. Siga as instruções de instalação na loja de aplicativos.
-3. Abra o aplicativo após a conclusão da instalação.
 
 ## Como Usar
 
