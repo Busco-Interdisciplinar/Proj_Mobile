@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_outfit"
-            android:hint="Senha"
+            android:hint="Senha (Opcional)"
             android:inputType="textPassword" />
 
     </LinearLayout>
