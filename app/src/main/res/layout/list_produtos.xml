@@ -19,7 +19,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/rounded_orange"
+            android:background="@drawable/fundo_branco"
             android:orientation="horizontal">
 
             <ImageView
@@ -38,7 +38,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_orange"
+                android:background="@drawable/fundo"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:padding="16dp"
@@ -58,7 +58,7 @@
                     android:fontFamily="@font/outfit_bold"
                     android:letterSpacing="0.1"
                     android:text="Nome"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
                     android:fontFamily="@font/outfit_light"
                     android:letterSpacing="0.1"
                     android:text="EMBALAGEM"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#000000"
                     android:textSize="10sp"
                     android:textStyle="normal" />
 
@@ -87,7 +87,7 @@
                         android:fontFamily="@font/font_outfit"
                         android:letterSpacing="0.1"
                         android:text="R$ "
-                        android:textColor="#FFFFFF"
+                        android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
