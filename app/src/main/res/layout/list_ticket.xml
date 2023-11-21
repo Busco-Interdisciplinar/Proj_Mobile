@@ -52,17 +52,26 @@
                     tools:layout_editor_absoluteY="411dp">
 
                     <TextView
-                        android:id="@+id/oferta_promocao"
-                        android:layout_width="wrap_content"
+                    android:id="@+id/oferta_promocao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/outfit_medium"
+                    android:text="Morango"
+                    android:textColor="#943404"
+                    android:textSize="14dp"
+                    tools:ignore="TextSizeCheck" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/outfit_medium"
-                        android:text="1,5Kg de Morango"
-                        android:textColor="#943404"
-                        android:textSize="14dp"
-                        tools:ignore="TextSizeCheck" />
+                        android:text="R$ 5.1"
+                        android:fontFamily="@font/outfit_semi_bold"
+                        android:textAlignment="center"/>
 
                     <Button
                         android:id="@+id/usar_promocaoAbacaxi"
@@ -70,7 +79,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="10dp"
                         android:backgroundTint="#5BE53E"
                         android:fontFamily="@font/outfit_semi_bold"
                         android:text="Comprar"

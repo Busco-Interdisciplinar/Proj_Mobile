@@ -316,7 +316,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="1,5kg de Tomate"
+                    android:text="Tomate"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 
@@ -375,7 +375,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="500g de Morango"
+                    android:text="Morango"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 
@@ -433,7 +433,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="1kg de Cenoura"
+                    android:text="Cenoura"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 
@@ -492,7 +492,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="1kg de Batata"
+                    android:text="Batata"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 
@@ -551,7 +551,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="600g de Brócolis"
+                    android:text="Brócolis"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 
@@ -611,7 +611,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/font_outfit"
                     android:gravity="center"
-                    android:text="1kg de Abacaxi"
+                    android:text="Abacaxi"
                     android:textColor="#000000"
                     android:textSize="14dp" />
 

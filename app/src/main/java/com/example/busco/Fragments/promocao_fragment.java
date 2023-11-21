@@ -24,16 +24,15 @@ public class promocao_fragment extends Fragment {
         ListView listView = view.findViewById(R.id.list_ticket);
 
         ArrayList<Ticket> promocoes = new ArrayList<>();
-        promocoes.add(new Ticket("1,5kg de Morango", R.drawable.morango, R.drawable.morango_promocao));
-        promocoes.add(new Ticket("600g de Batata", R.drawable.batata_promocao, R.drawable.batata));
-        promocoes.add(new Ticket("500g de Laranja", R.drawable.laranja, R.drawable.laranja_promocao));
-        promocoes.add(new Ticket("300g de Mamão", R.drawable.mamao, R.drawable.mamao_promocao));
-        promocoes.add(new Ticket("250g de Maracujá", R.drawable.maracuja, R.drawable.maracuja_promocao));
-        promocoes.add(new Ticket("250g de Abacate", R.drawable.abacate, R.drawable.abacate));
+        promocoes.add(new Ticket("Morango", "R$ 5.1",R.drawable.morango, R.drawable.morango_promocao));
+        promocoes.add(new Ticket("Batata", "R$ 8,55",R.drawable.batata_promocao, R.drawable.batata));
+        promocoes.add(new Ticket("Laranja", "R$ 2.4",R.drawable.laranja, R.drawable.laranja_promocao));
+        promocoes.add(new Ticket("Mamão", "R$ 4.3",R.drawable.mamao, R.drawable.mamao_promocao));
+        promocoes.add(new Ticket("Alface","R$ 3,2", R.drawable.alface, R.drawable.maracuja_promocao));
+        promocoes.add(new Ticket("Abacate", "R$ 4.5", R.drawable.abacate, R.drawable.abacate));
 
         TicketAdapter adapter = new TicketAdapter(getActivity(), promocoes);
         listView.setAdapter(adapter);
-
         return view;
     }
 

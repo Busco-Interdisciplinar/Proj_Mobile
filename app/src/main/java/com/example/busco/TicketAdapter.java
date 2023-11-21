@@ -33,6 +33,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
 
         ImageView imageViewProduto = convertView.findViewById(R.id.foto_promo);
         TextView nomeProduto = convertView.findViewById(R.id.oferta_promocao);
+        TextView precoProduto = convertView.findViewById(R.id.textView9);
         Button usarPromocao = convertView.findViewById(R.id.usar_promocaoAbacaxi);
 
         Glide.with(getContext())
@@ -42,6 +43,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
                 .into(imageViewProduto);
 
         nomeProduto.setText(ticket.getNome());
+        precoProduto.setText(ticket.getPreco());
 
         Glide.with(getContext())
                 .load(ticket.getFotoProdutoPromoResource())
