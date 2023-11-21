@@ -59,6 +59,8 @@ public class carrinho_fragment extends Fragment {
         listaCupons.put("Laranja", "Laranja20");
         listaCupons.put("Abacate", "Abacate15");
         listaCupons.put("Cenoura", "Cenoura25");
+        listaCupons.put("Tomate", "Tomate5");
+
 
         listView = view.findViewById(R.id.list);
         carrinhoAdapter = new CarrinhoAdapter(getContext(), listaCarrinho);

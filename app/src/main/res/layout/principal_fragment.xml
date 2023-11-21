@@ -327,7 +327,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 13,90 por 7,90"
+                    android:text="De 3.99 por 2.99"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
@@ -386,7 +386,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 9,90 por 5,90"
+                    android:text="De 8.5 por 5,1"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
@@ -444,7 +444,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 7,90 por 3,80"
+                    android:text="De 9.0 por 6.75"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
@@ -503,7 +503,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 12,70 por 7,30"
+                    android:text="De 9.5 por 8.55"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
@@ -562,7 +562,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 9,90 por 6,00"
+                    android:text="De 8.5 por 5.5"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
@@ -622,7 +622,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/font_outfit"
-                    android:text="De 8,90 por 4,50"
+                    android:text="De 12.5 por 8,75"
                     android:textColor="#000000"
                     android:textSize="11dp" />
 
