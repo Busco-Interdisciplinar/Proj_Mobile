@@ -45,6 +45,7 @@ public class UsuarioDAO {
         info.put("cpf", c.getCpf());
         info.put("telefone", c.getTelefone());
         info.put("qnt_doacao", c.getQnt_doacao());
+        info.put("foto", c.getFoto());
 
         database.delete("usuario", null, null);
         long id = database.insert("usuario", null, info);

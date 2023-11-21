@@ -36,6 +36,7 @@
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
+    import com.example.busco.Login;
     import com.example.busco.MainActivity;
     import com.example.busco.R;
     import com.example.busco.SQLite.UsuarioDAO;
@@ -65,11 +66,14 @@
         private TextView sobre;
         Gson gson = new Gson();
 
+        TextView nomeText;
+        TextView emailText;
+
         public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.perfil_fragment, container, false);
 
-            TextView nomeText = view.findViewById(R.id.nomeUsuario);
-            TextView emailText = view.findViewById(R.id.emailUsuario);
+            nomeText = view.findViewById(R.id.nomeUsuario);
+            emailText = view.findViewById(R.id.emailUsuario);
 
             SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
             String json = sharedPreferences.getString("user", "");
@@ -166,16 +170,65 @@
 
             EditText nomeEditText = dialogView.findViewById(R.id.editNome);
             EditText emailEditText = dialogView.findViewById(R.id.editEmail);
+            EditText senhaEditText = dialogView.findViewById(R.id.editEmail2);
+
+            Gson gson = new Gson();
+            SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+            String json = sharedPreferences.getString("user", "");
+            Usuarios usuario = gson.fromJson(json, Usuarios.class);
+
+            nomeEditText.setText(usuario.getNome());
+            emailEditText.setText(usuario.getEmail());
 
             builder.setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     String novoNome = nomeEditText.getText().toString();
                     String novoEmail = emailEditText.getText().toString();
+                    String novaSenha = senhaEditText.getText().toString();
+
+                    if (novaSenha.equals("")){
+                        novaSenha = usuario.getSenha();
+                    }
 
                     if (nomeValido(novoNome) && emailValido(novoEmail)) {
-                        //lógica de API
-                        Toast.makeText(requireContext(), "Perfil atualizado com sucesso!", Toast.LENGTH_SHORT).show();
+                        usuario.setNome(novoNome);
+                        usuario.setEmail(novoEmail);
+                        usuario.setSenha(novaSenha);
+                        ApiService.getInstance().atualizarUsuario(usuario).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.isSuccessful()){
+                                    if (response.body() != null && response.body().isResponseSucessfull()){
+                                        List<Object> usuarioObject = response.body().getObject();
+                                        String objetoJson = gson.toJson(usuarioObject.get(0));
+                                        Usuarios usuarioLogado = gson.fromJson(objetoJson, Usuarios.class);
+
+                                        UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+                                        usuarioDAO.remover();
+                                        usuarioDAO.salvar(usuarioLogado);
+
+                                        String usuarioJson = gson.toJson(usuarioLogado);
+
+                                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("user", usuarioJson);
+                                        editor.apply();
+
+                                        emailText.setText(usuarioLogado.getEmail());
+                                        nomeText.setText(usuarioLogado.getNome());
+
+                                        Toast.makeText(requireContext(), "Perfil atualizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }else{
+                                    Toast.makeText(requireContext(), "Erro ao inserir usuário", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                     } else {
                         Toast.makeText(requireContext(), "Nome ou email inválido. Certifique-se de que o nome contenha apenas letras e o email contenha '@gmail.com'.", Toast.LENGTH_SHORT).show();
                     }
@@ -193,11 +246,11 @@
         }
 
         private boolean nomeValido(String name) {
-            return name.matches("^[a-zA-Z]+$");
+            return name.trim().matches("^[a-zA-ZÀ-ÖØ-öø-ÿĀ-ž ]+$");
         }
 
         private boolean emailValido(String email) {
-            return email.endsWith("@gmail.com");
+            return email != null && email.trim().matches("^[A-Za-z0-9+_.-]+@[gmail|outlook|hotmail|germinare|org]+\\.(com|com.br|org|org.br)$");
         }
 
 

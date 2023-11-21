@@ -51,4 +51,7 @@ public interface EndpointsMap {
 
     @PATCH("/api/usuarios/atualizarFoto")
     Call<ApiResponse> atualizarFoto(@Body Base64Image base64Image);
+
+    @PATCH("/api/usuarios/atualizarUsuario")
+    Call<ApiResponse> atualizarUsuario(@Body Usuarios usuarios);
 }
