@@ -50,7 +50,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:height="65dp"
-        android:backgroundTint="#E3641B "
+        android:backgroundTint="#5BE53E"
         android:onClick="comecar"
         android:text="Começar"
         android:textStyle="bold"

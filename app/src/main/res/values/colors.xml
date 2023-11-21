@@ -7,9 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="verde_claro">#E3641B</color>
-    <color name="orangeBuscoLightOpacity">#FBAB4D</color>
+    <color name="verde_claro">#3CA324</color>
+    <color name="orangeBuscoLightOpacity">#5BE53E</color>
     <color name="orangeBuscoLight">#FF7B00</color>
     <color name="orangeBusco">#F27F1B</color>
-    <color name="verde">#5BF33B</color>
+    <color name="verde">#3CA324</color>
 </resources>

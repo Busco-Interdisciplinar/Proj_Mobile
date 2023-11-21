@@ -53,38 +53,29 @@
 
                     <TextView
                         android:id="@+id/oferta_promocao"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/outfit_medium"
-                        android:text="10% OFF Em morango"
+                        android:text="1,5Kg de Morango"
                         android:textColor="#943404"
                         android:textSize="14dp"
                         tools:ignore="TextSizeCheck" />
 
-                    <LinearLayout
-                        android:layout_width="224dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/botao_usarcupom_morango"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginLeft="14dp"
-                            android:layout_marginEnd="14dp"
-                            android:layout_marginTop="25dp"
-                            android:layout_weight="2"
-                            android:background="@drawable/button_backgroud_on"
-                            android:backgroundTint="#E3641B"
-                            android:fontFamily="@font/outfit_semi_bold"
-                            android:text="Usar cupom"
-                            android:textColor="#FFFFFF"
-                            android:textSize="10sp" />
-
-                    </LinearLayout>
+                    <Button
+                        android:id="@+id/usar_promocaoAbacaxi"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="30dp"
+                        android:backgroundTint="#5BE53E"
+                        android:fontFamily="@font/outfit_semi_bold"
+                        android:text="Comprar"
+                        android:textSize="10sp"
+                        app:cornerRadius="50sp" />
 
                 </LinearLayout>
 

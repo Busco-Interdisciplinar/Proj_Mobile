@@ -18,7 +18,6 @@ public class SQLite extends SQLiteOpenHelper {
         String script2 = "CREATE TABLE carrinho (id integer, nome text, quantidade integer, preco double, foto text, cupom text)";
         db.execSQL(script);
         db.execSQL(script2);
-
     }
 
     @Override
