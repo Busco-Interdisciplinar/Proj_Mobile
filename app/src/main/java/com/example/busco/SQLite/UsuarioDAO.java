@@ -70,13 +70,22 @@ public class UsuarioDAO {
                 String telefone = cursor.getString(6);
                 String dataCadastro = cursor.getString(7);
                 int qnt_doacao = cursor.getInt(8);
-                Usuarios usuario = new Usuarios(id, email, senha, cep, nome, cpf, telefone);
+                String foto = cursor.getString(9);
+                Usuarios usuario = new Usuarios(id, email, senha, cep, nome, cpf, telefone, foto);
                 listaCliente.add(usuario);
             }while (cursor.moveToNext());
         }
 
         close();
         return listaCliente;
+    }
+
+    public void atualizarFoto(int usuarioId, String novaFoto) {
+        oppen();
+        ContentValues values = new ContentValues();
+        values.put("foto", novaFoto);
+        database.update("usuario", values, "id=?", new String[]{String.valueOf(usuarioId)});
+        close();
     }
 
     public void remover(){

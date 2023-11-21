@@ -15,8 +15,6 @@ import android.content.DialogInterface;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.busco.Api.Models.Carrinho;
-import com.example.busco.Api.Models.Produto;
-import com.example.busco.R;
 import com.example.busco.SQLite.CarrinhoDAO;
 
 import java.util.List;

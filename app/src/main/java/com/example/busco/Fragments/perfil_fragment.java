@@ -1,14 +1,13 @@
     package com.example.busco.Fragments;
     import android.content.Context;
     import android.content.DialogInterface;
-    import androidx.constraintlayout.widget.ConstraintLayout;
     import android.content.SharedPreferences;
+    import android.graphics.BitmapFactory;
     import android.os.Bundle;
     import android.util.Base64;
     import android.view.LayoutInflater;
     import android.view.View;
     import android.view.ViewGroup;
-    import android.widget.Button;
     import android.widget.EditText;
     import android.widget.ImageView;
     import androidx.annotation.NonNull;
@@ -24,29 +23,33 @@
     import android.provider.MediaStore;
     import android.widget.TextView;
     import android.widget.Toast;
-    import androidx.annotation.NonNull;
-    import androidx.annotation.Nullable;
+
     import androidx.core.app.ActivityCompat;
     import androidx.core.content.ContextCompat;
     import static android.app.Activity.RESULT_OK;
-    //import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
+
+    import com.example.busco.Api.ApiResponse;
+    import com.example.busco.Api.ApiService;
+    import com.example.busco.Api.Models.Base64Image;
     import com.example.busco.Api.Models.Usuarios;
     import com.example.busco.Cadastros.Cadastro_Fornecedor.CadastroFornecedor;
     import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
-    import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
     import com.example.busco.Doacao.Doacao;
     import com.example.busco.Localizacao;
     import com.example.busco.MainActivity;
     import com.example.busco.R;
     import com.example.busco.SQLite.UsuarioDAO;
     import com.example.busco.SobreNos;
-    import com.example.busco.Usuario;
     import com.google.gson.Gson;
-    import org.w3c.dom.Text;
+
     import java.io.ByteArrayOutputStream;
     import java.io.IOException;
+    import java.util.List;
     import java.util.Objects;
-    import android.net.Uri;
+
+    import retrofit2.Call;
+    import retrofit2.Callback;
+    import retrofit2.Response;
 
     public class perfil_fragment extends Fragment {
         private static final int PICK_IMAGE = 1;
@@ -82,6 +85,14 @@
             editarPerfil = view.findViewById(R.id.editPerfil);
             local = view.findViewById(R.id.localizacao);
             sobre = view.findViewById(R.id.sobre);
+
+            String base64Image = usuario.getFoto();
+            if (base64Image  != null){
+                byte[] decodedBytes = Base64.decode(base64Image, Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+                profileImageView.setImageBitmap(bitmap);
+            }
+
 
             doacao.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -288,6 +299,42 @@
                         byte[] imageBytes = baos.toByteArray();
                         String base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
+                        Gson gson = new Gson();
+                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                        String json = sharedPreferences.getString("user", "");
+                        Usuarios usuario = gson.fromJson(json, Usuarios.class);
+
+                        Base64Image base64Image1 = new Base64Image(usuario.getId(), base64Image);
+
+                        ApiService.getInstance().atualizarFoto(base64Image1).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.isSuccessful()){
+                                    if (response.body() != null && response.body().isResponseSucessfull()){
+                                        List<Object> usuarioObject = response.body().getObject();
+                                        String objetoJson = gson.toJson(usuarioObject.get(0));
+                                        Usuarios usuarioAlterado = gson.fromJson(objetoJson, Usuarios.class);
+
+                                        String usuarioJson = gson.toJson(usuarioAlterado);
+
+                                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("user", usuarioJson);
+                                        editor.apply();
+
+                                        UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+                                        usuarioDAO.atualizarFoto(usuarioAlterado.getId(), base64Image);
+
+                                        Toast.makeText(getContext(), "Foto de perfil atualizada com Sucesso", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
+
                         profileImageView.setImageBitmap(bitmap);
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -301,7 +348,41 @@
                         byte[] imageBytes = baos.toByteArray();
                         String base64Image = Base64.encodeToString(imageBytes, Base64.DEFAULT);
 
+                        Gson gson = new Gson();
+                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                        String json = sharedPreferences.getString("user", "");
+                        Usuarios usuario = gson.fromJson(json, Usuarios.class);
 
+                        Base64Image base64Image1 = new Base64Image(usuario.getId(), base64Image);
+
+                        ApiService.getInstance().atualizarFoto(base64Image1).enqueue(new Callback<ApiResponse>() {
+                            @Override
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                if (response.isSuccessful()){
+                                    if (response.body() != null && response.body().isResponseSucessfull()){
+                                        List<Object> usuarioObject = response.body().getObject();
+                                        String objetoJson = gson.toJson(usuarioObject.get(0));
+                                        Usuarios usuarioAlterado = gson.fromJson(objetoJson, Usuarios.class);
+
+                                        String usuarioJson = gson.toJson(usuarioAlterado);
+
+                                        SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("user", usuarioJson);
+                                        editor.apply();
+
+                                        UsuarioDAO usuarioDAO = new UsuarioDAO(getContext());
+                                        usuarioDAO.atualizarFoto(usuarioAlterado.getId(), base64Image);
+
+                                        Toast.makeText(getContext(), "Foto de perfil atualizada com Sucesso", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            }
+                            @Override
+                            public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                         profileImageView.setImageBitmap(bitmap);
                     }
                 }

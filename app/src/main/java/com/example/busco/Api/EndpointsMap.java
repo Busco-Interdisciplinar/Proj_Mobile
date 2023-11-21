@@ -2,6 +2,7 @@ package com.example.busco.Api;
 
 import retrofit2.Call;
 
+import com.example.busco.Api.Models.Base64Image;
 import com.example.busco.Api.Models.Doacao;
 import com.example.busco.Api.Models.Fornecedor;
 import com.example.busco.Api.Models.Instituicao;
@@ -47,4 +48,7 @@ public interface EndpointsMap {
 
     @POST("/api/doacao/fazerDoacao")
     Call<ApiResponse>  fazerDoacao(@Body Doacao doacao);
+
+    @PATCH("/api/usuarios/atualizarFoto")
+    Call<ApiResponse> atualizarFoto(@Body Base64Image base64Image);
 }

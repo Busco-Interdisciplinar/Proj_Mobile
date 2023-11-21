@@ -2,7 +2,6 @@ package com.example.busco.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -16,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.busco.SQLite.CarrinhoDAO;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,8 +29,6 @@ import com.example.busco.Api.Models.Produto;
 import com.example.busco.Firebase.Connection;
 import com.example.busco.ProdutoAdapter;
 import com.example.busco.R;
-import com.example.busco.SQLite.CarrinhoDAO;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -167,24 +165,21 @@ public class  produtos_fragment extends Fragment {
             }
         });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Produto produto = produtos.get(position);
-//                EditText quantidade = view.findViewById(R.id.quantidade);
-//                String quantidadeString = quantidade.getText().toString();
-//                int quantidadeInt = Integer.parseInt(quantidadeString);
-                Carrinho carrinho = new Carrinho(produto.getNome(), 1, produto.getPreco(), produto.getFoto(), null);
-                CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
-                Carrinho produtoPesquisado = carrinhoDAO.pesquisar(carrinho.getNome());
-                if (produtoPesquisado == null){
-                    carrinhoDAO.salvar(carrinho);
-                    Toast.makeText(getContext(), "Produto adicionado ao carrinho com sucesso", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(getContext(), "Produto já adicionado ao carrinho", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Produto produto = produtos.get(position);
+//                Carrinho carrinho = new Carrinho(produto.getNome(), 1, produto.getPreco(), produto.getFoto(), null);
+//                CarrinhoDAO carrinhoDAO = new CarrinhoDAO(getContext());
+//                Carrinho produtoPesquisado = carrinhoDAO.pesquisar(carrinho.getNome());
+//                if (produtoPesquisado == null){
+//                    carrinhoDAO.salvar(carrinho);
+//                    Toast.makeText(getContext(), "Produto adicionado ao carrinho com sucesso", Toast.LENGTH_LONG).show();
+//                }else{
+//                    Toast.makeText(getContext(), "Produto já adicionado ao carrinho", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
         return view;
     }

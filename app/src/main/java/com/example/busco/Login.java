@@ -2,14 +2,11 @@ package com.example.busco;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -19,20 +16,15 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.busco.Api.ApiResponse;
 import com.example.busco.Api.ApiService;
 import com.example.busco.Api.Models.Usuarios;
-import com.example.busco.Cadastros.Cadastro_Instituicao.CadastroInstituicao;
 import com.example.busco.Cadastros.Cadastro_Usuario.Cadastro;
-import com.example.busco.Doacao.Doacao;
 import com.example.busco.Firebase.Connection;
 import com.example.busco.Firebase.Log;
 import com.example.busco.Fragments.inflate;
-import com.example.busco.Fragments.principal_fragment;
 import com.example.busco.SQLite.UsuarioDAO;
 import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
@@ -49,7 +41,6 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     private final Gson gson = new Gson();
-
     public boolean contagem = true;
 
     @Override

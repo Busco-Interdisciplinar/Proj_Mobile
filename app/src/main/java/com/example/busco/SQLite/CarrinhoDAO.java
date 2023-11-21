@@ -101,6 +101,18 @@ public class CarrinhoDAO {
         close();
     }
 
+    public void atualizarCupomPorNome(String nome, String cupom) {
+        oppen();
+
+        ContentValues values = new ContentValues();
+        values.put("cupom", cupom);
+
+        database.update("carrinho", values, "nome = ?", new String[]{nome});
+
+        close();
+    }
+
+
 
     public void remover(){
         oppen();
