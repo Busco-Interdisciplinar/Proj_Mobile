@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="600dp"
         android:height="65dp"
-        android:backgroundTint="#E3641B "
+        android:backgroundTint="#5BE53E"
         android:fontFamily="@font/outfit_bold"
         android:onClick="voltar"
         android:text="voltar"

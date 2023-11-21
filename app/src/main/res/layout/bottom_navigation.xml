@@ -17,7 +17,7 @@
         android:layout_gravity="bottom"
         android:background="@drawable/bar_nabar"
         app:backgroundTint="#FFFFFF"
-        app:itemIconTint="#E3641B"
+        app:itemIconTint="#3CA324"
         app:itemTextColor="@color/black"
         app:menu="@menu/bottom_navigation_view" />
 

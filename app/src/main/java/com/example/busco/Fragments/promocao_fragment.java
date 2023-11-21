@@ -23,7 +23,6 @@ public class promocao_fragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.list_ticket);
 
-
         ArrayList<Ticket> promocoes = new ArrayList<>();
         promocoes.add(new Ticket("1,5kg de Morango", R.drawable.morango, R.drawable.morango_promocao));
         promocoes.add(new Ticket("600g de Batata", R.drawable.batata_promocao, R.drawable.batata));

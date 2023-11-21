@@ -33,7 +33,7 @@ public class TicketAdapter extends ArrayAdapter<Ticket> {
 
         ImageView imageViewProduto = convertView.findViewById(R.id.foto_promo);
         TextView nomeProduto = convertView.findViewById(R.id.oferta_promocao);
-        Button usarPromocao = convertView.findViewById(R.id.botao_usarcupom_morango);
+        Button usarPromocao = convertView.findViewById(R.id.usar_promocaoAbacaxi);
 
         Glide.with(getContext())
                 .load(ticket.getFotoResource())
